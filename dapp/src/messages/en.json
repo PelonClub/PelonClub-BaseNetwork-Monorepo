@@ -1,0 +1,75 @@
+{
+  "common": {
+    "appName": "Pelon Club",
+    "selectLanguage": "Select language",
+    "toggleMenu": "Toggle menu"
+  },
+  "navigation": {
+    "home": "Home",
+    "courses": "Courses",
+    "community": "Community",
+    "leaderboard": "Leaderboard",
+    "tokenomics": "Tokenomics"
+  },
+  "wallet": {
+    "connect": "Connect Wallet",
+    "wrongNetwork": "Wrong Network"
+  },
+  "meta": {
+    "title": "Pelon Club",
+    "description": "Pelon Club - Token gated educational resources and activities"
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Leaderboard - Pelon Club",
+      "description": "Ranking of the top Pelon Club Token holders"
+    },
+    "title": "Token Holders Leaderboard",
+    "subtitle": "Discover who are the top holders of Pelon Club Token and their position in the rankings",
+    "rankings": "Rankings",
+    "viewTokenomics": "View details",
+    "info": {
+      "title": "How it works?",
+      "description1": "This leaderboard shows the top holders of Pelon Club Token (PELON) based on their current balances.",
+      "description2": "Rankings are automatically updated every minute to reflect the most recent transfers."
+    }
+  },
+  "tokenomics": {
+    "meta": {
+      "title": "Tokenomics - Pelon Club",
+      "description": "Complete tokenomics distribution of Pelon Club Token (PELON) - 1 Trillion tokens strategically allocated"
+    },
+    "title": "PELON Tokenomics",
+    "subtitle": "Discover how 1 Trillion PELON tokens are strategically allocated to build a sustainable and community-driven ecosystem",
+    "stats": {
+      "totalSupply": "Total Supply",
+      "teamAllocation": "Team Allocation",
+      "communityAllocation": "Community Allocation",
+      "liquidityAllocation": "Liquidity Allocation",
+      "marketingAllocation": "Marketing Allocation",
+      "treasuryAllocation": "Treasury Allocation",
+      "reserveAllocation": "Reserve Fund"
+    },
+    "charts": {
+      "distribution": "Token Distribution",
+      "subcategories": "Subcategories Breakdown",
+      "percentage": "Percentage (%)"
+    },
+    "table": {
+      "title": "Detailed Allocation",
+      "category": "Category",
+      "subcategory": "Subcategory",
+      "percentage": "Percentage",
+      "tokens": "Tokens (B)",
+      "wallet": "Wallet Address",
+      "total": "Total"
+    },
+    "info": {
+      "title": "Why This Tokenomics Model Works",
+      "description1": "Our conservative yet strategic allocation model prioritizes community growth (35%), market stability (25%), and long-term alignment (20% team allocation).",
+      "description2": "With 35% allocated to community initiatives, we ensure that value flows directly to users who contribute to the platform's success.",
+      "description3": "All allocations are transparent and verifiable on-chain through the Base network explorer using the wallet addresses provided above."
+    }
+  }
+}
+

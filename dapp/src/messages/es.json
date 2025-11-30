@@ -1,0 +1,75 @@
+{
+  "common": {
+    "appName": "Pelon Club",
+    "selectLanguage": "Seleccionar idioma",
+    "toggleMenu": "Alternar menú"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "courses": "Cursos",
+    "community": "Comunidad",
+    "leaderboard": "Leaderboard",
+    "tokenomics": "Tokenomics"
+  },
+  "wallet": {
+    "connect": "Conectar Wallet",
+    "wrongNetwork": "Red Incorrecta"
+  },
+  "meta": {
+    "title": "Pelon Club",
+    "description": "Pelon Club - Recursos educativos y actividades con acceso mediante tokens"
+  },
+  "leaderboard": {
+    "meta": {
+      "title": "Leaderboard - Pelon Club",
+      "description": "Ranking de los principales holders del Pelon Club Token"
+    },
+    "title": "Leaderboard de Holders",
+    "subtitle": "Descubre quiénes son los principales holders del Pelon Club Token y su posición en el ranking",
+    "rankings": "Rankings",
+    "viewTokenomics": "Ver detalles",
+    "info": {
+      "title": "¿Cómo funciona?",
+      "description1": "Este leaderboard muestra los principales holders del Pelon Club Token (PELON) basado en sus balances actuales.",
+      "description2": "Los rankings se actualizan automáticamente cada minuto para reflejar las transferencias más recientes."
+    }
+  },
+  "tokenomics": {
+    "meta": {
+      "title": "Tokenomics - Pelon Club",
+      "description": "Distribución tokenómica completa del Pelon Club Token (PELON) - 1 Billón de tokens asignados estratégicamente"
+    },
+    "title": "Tokenomics PELON",
+    "subtitle": "Descubre cómo 1 Billón de tokens PELON están asignados estratégicamente para construir un ecosistema sostenible e impulsado por la comunidad",
+    "stats": {
+      "totalSupply": "Suministro Total",
+      "teamAllocation": "Asignación a Equipo",
+      "communityAllocation": "Asignación a Comunidad",
+      "liquidityAllocation": "Asignación a Liquidez",
+      "marketingAllocation": "Asignación a Marketing",
+      "treasuryAllocation": "Asignación a Tesorería",
+      "reserveAllocation": "Fondo de Reserva"
+    },
+    "charts": {
+      "distribution": "Distribución de Tokens",
+      "subcategories": "Desglose de Subcategorías",
+      "percentage": "Porcentaje (%)"
+    },
+    "table": {
+      "title": "Asignación Detallada",
+      "category": "Categoría",
+      "subcategory": "Subcategoría",
+      "percentage": "Porcentaje",
+      "tokens": "Tokens (B)",
+      "wallet": "Dirección de Wallet",
+      "total": "Total"
+    },
+    "info": {
+      "title": "Por Qué Este Modelo Tokenómico Funciona",
+      "description1": "Nuestro modelo de asignación conservador pero estratégico prioriza el crecimiento comunitario (35%), la estabilidad del mercado (25%) y la alineación a largo plazo (20% asignación al equipo).",
+      "description2": "Con 35% asignado a iniciativas comunitarias, aseguramos que el valor fluya directamente a los usuarios que contribuyen al éxito de la plataforma.",
+      "description3": "Todas las asignaciones son transparentes y verificables on-chain a través del explorador de la red Base usando las direcciones de wallet proporcionadas arriba."
+    }
+  }
+}
+
