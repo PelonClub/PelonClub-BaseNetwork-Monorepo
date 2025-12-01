@@ -1,4 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("hardhat-slither");
 require("dotenv").config();
 
 module.exports = {

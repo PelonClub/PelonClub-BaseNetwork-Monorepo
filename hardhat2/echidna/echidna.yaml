@@ -1,0 +1,48 @@
+# Echidna Configuration for TokenSale Fuzzing
+# This configuration file defines how Echidna will run property-based tests
+
+# Test mode: property-based testing
+testMode: property
+
+# Number of test sequences to generate
+testLimit: 50000
+
+# Maximum number of shrink attempts
+shrinkLimit: 5000
+
+# Sequence length (number of transactions per test)
+seqLen: 50
+
+# Enable coverage analysis
+coverage: true
+
+# Output format
+format: text
+
+# Solidity compiler version
+solc: "0.8.30"
+
+# Solidity compiler optimization
+# Include node_modules path for OpenZeppelin imports
+# Add remappings for OpenZeppelin contracts
+solcArgs: "--optimize --optimize-runs 200 --allow-paths .,/code/node_modules"
+remappings:
+  - "@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/"
+
+# Timeout for each test (in seconds)
+timeout: 300
+
+# Seed for random number generation (optional, for reproducibility)
+# seed: 12345
+
+# Filter functions (only test functions starting with echidna_)
+# Note: Functions with arguments are treated as fuzzing functions, not properties
+# filterFunctions: ["echidna_"]
+
+# Sender addresses to use for fuzzing
+sender: ["0x10000", "0x20000", "0x30000", "0x40000", "0x50000"]
+
+# Maximum value for uint256 in fuzzing (to avoid overflow)
+# Using a large but safe value for fuzzing
+maxValue: 1000000000000000000000000000
+
