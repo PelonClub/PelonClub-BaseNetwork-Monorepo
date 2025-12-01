@@ -121,8 +121,8 @@ export function useTokenHolders() {
     queryKey: ['tokenHolders', PELON_CLUB_TOKEN_ADDRESS],
     queryFn: () => fetchTokenHolders(publicClient),
     enabled: !!publicClient,
-    staleTime: 30000, // 30 seconds
-    refetchInterval: 60000, // Refetch every minute
+    staleTime: 30000,
+    refetchInterval: 60000,
   });
 }
 

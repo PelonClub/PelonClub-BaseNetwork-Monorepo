@@ -9,7 +9,8 @@
     "courses": "Cursos",
     "community": "Comunidad",
     "leaderboard": "Leaderboard",
-    "tokenomics": "Tokenomics"
+    "tokenomics": "Tokenomics",
+    "tokenSale": "Venta de Tokens"
   },
   "wallet": {
     "connect": "Conectar Wallet",
@@ -17,12 +18,34 @@
   },
   "meta": {
     "title": "Pelon Club",
-    "description": "Pelon Club - Recursos educativos y actividades con acceso mediante tokens"
+    "description": "Pelon Club - Recursos educativos y actividades con acceso mediante tokens",
+    "keywords": "Pelon Club, PELON, token, Web3, educación, blockchain, token gated, recursos educativos, Base network, DeFi, crypto",
+    "author": "Pelon Club",
+    "ogImage": "/img/icon.png",
+    "twitterHandle": "@PelonClub"
+  },
+  "home": {
+    "bento": {
+      "tokenSale": {
+        "title": "Venta de Tokens",
+        "description": "Participa en la venta de tokens PELON y únete a la comunidad de Pelon Club"
+      },
+      "leaderboard": {
+        "title": "Leaderboard",
+        "description": "Descubre quiénes son los principales holders del Pelon Club Token"
+      },
+      "tokenomics": {
+        "title": "Tokenomics",
+        "description": "Explora la distribución completa de tokens PELON y su modelo económico"
+      },
+      "cta": "Explorar"
+    }
   },
   "leaderboard": {
     "meta": {
       "title": "Leaderboard - Pelon Club",
-      "description": "Ranking de los principales holders del Pelon Club Token"
+      "description": "Ranking de los principales holders del Pelon Club Token",
+      "keywords": "Pelon Club, leaderboard, ranking, holders, PELON token, top holders, Base network, blockchain"
     },
     "title": "Leaderboard de Holders",
     "subtitle": "Descubre quiénes son los principales holders del Pelon Club Token y su posición en el ranking",
@@ -37,7 +60,8 @@
   "tokenomics": {
     "meta": {
       "title": "Tokenomics - Pelon Club",
-      "description": "Distribución tokenómica completa del Pelon Club Token (PELON) - 1 Billón de tokens asignados estratégicamente"
+      "description": "Distribución tokenómica completa del Pelon Club Token (PELON) - 1 Billón de tokens asignados estratégicamente",
+      "keywords": "Pelon Club, tokenomics, PELON, distribución de tokens, token allocation, blockchain, Base network, DeFi, crypto economics"
     },
     "title": "Tokenomics PELON",
     "subtitle": "Descubre cómo 1 Billón de tokens PELON están asignados estratégicamente para construir un ecosistema sostenible e impulsado por la comunidad",
@@ -66,9 +90,91 @@
     },
     "info": {
       "title": "Por Qué Este Modelo Tokenómico Funciona",
-      "description1": "Nuestro modelo de asignación conservador pero estratégico prioriza el crecimiento comunitario (35%), la estabilidad del mercado (25%) y la alineación a largo plazo (20% asignación al equipo).",
-      "description2": "Con 35% asignado a iniciativas comunitarias, aseguramos que el valor fluya directamente a los usuarios que contribuyen al éxito de la plataforma.",
+      "description1": "Nuestro modelo de asignación conservador pero estratégico prioriza el crecimiento comunitario (15%), la estabilidad del mercado (25%) y la alineación a largo plazo (20% asignación al equipo).",
+      "description2": "Con 15% asignado a iniciativas comunitarias, aseguramos que el valor fluya directamente a los usuarios que contribuyen al éxito de la plataforma.",
       "description3": "Todas las asignaciones son transparentes y verificables on-chain a través del explorador de la red Base usando las direcciones de wallet proporcionadas arriba."
+    }
+  },
+  "tokenSale": {
+    "meta": {
+      "title": "Venta de Tokens - Pelon Club",
+      "description": "Participa en la venta de tokens PELON y únete a la comunidad de Pelon Club",
+      "keywords": "Pelon Club, token sale, PELON, comprar tokens, bonding curve, Base network, Web3, DeFi, crypto investment"
+    },
+    "title": "Venta de Tokens PELON",
+    "subtitle": "Obtén tokens PELON ahora y forma parte del ecosistema educativo más innovador de Web3",
+    "stats": {
+      "unitPrice": "Precio Unitario",
+      "totalAvailable": "Total Disponible",
+      "tokensSold": "Tokens Vendidos",
+      "percentageSold": "Porcentaje Vendido",
+      "totalRaised": "Total Recaudado",
+      "uniqueParticipants": "Participantes Únicos"
+    },
+    "purchase": {
+      "title": "Comprar Tokens",
+      "amountInTokens": "Cantidad en Tokens",
+      "amountInUSDC": "Cantidad en USDC",
+      "switchToUSDC": "Cambiar a USDC",
+      "switchToTokens": "Cambiar a Tokens",
+      "enterTokens": "Ingresa cantidad de tokens",
+      "enterUSDC": "Ingresa cantidad en USDC",
+      "youWillReceive": "Recibirás",
+      "youWillPay": "Pagarás",
+      "buyNow": "Comprar Ahora",
+      "processing": "Procesando...",
+      "minPurchase": "Compra mínima: {min} tokens",
+      "maxPurchase": "Compra máxima: {max} tokens por transacción",
+      "pricePerToken": "Precio por token: {price} USDC",
+      "errorMinPurchase": "La compra mínima es de {min} tokens",
+      "errorMaxPurchase": "La compra máxima es de {max} tokens por transacción",
+      "errorNotEnoughTokens": "No hay suficientes tokens disponibles",
+      "errorInvalidAmount": "Cantidad inválida",
+      "successMessage": "¡Compra exitosa! Los tokens serán transferidos a tu wallet.",
+      "connectWallet": "Conecta tu wallet para comprar tokens",
+      "balance": "Balance",
+      "errorSalePaused": "La venta está pausada temporalmente",
+      "errorWalletLimit": "Esta compra excedería el límite por wallet",
+      "errorTotalSaleLimit": "Esta compra excedería el límite total de venta",
+      "errorInsufficientBalance": "Balance de USDC insuficiente",
+      "errorPurchaseFailed": "Error al procesar la compra",
+      "errorApprovalFailed": "Error al aprobar USDC",
+      "successApprovalMessage": "¡Aprobación de USDC exitosa! Ahora puedes comprar tokens.",
+      "approving": "Aprobando...",
+      "approveUSDC": "Aprobar USDC",
+      "purchasedSoFar": "Comprado hasta ahora",
+      "maxPerWallet": "Máximo por wallet",
+      "remainingTokens": "Tokens restantes"
+    },
+    "recentPurchases": {
+      "title": "Compras Recientes",
+      "tokens": "Tokens",
+      "paid": "Pagado",
+      "noPurchases": "Aún no hay compras recientes",
+      "loading": "Cargando..."
+    },
+    "info": {
+      "title": "Información Importante",
+      "bondingCurve": {
+        "title": "Bonding Curve (Curva de Enlace)",
+        "description": "El precio de PELON sigue una curva sigmoide que aumenta gradualmente conforme se venden más tokens. El precio comienza en un precio inicial bajo y se acerca gradualmente a un precio máximo configurado. Esta mecánica asegura que los primeros compradores obtengan mejores precios mientras que el precio aumenta de forma predecible y transparente."
+      },
+      "priceFluctuation": {
+        "title": "Fluctuación del Precio",
+        "description": "El precio aumenta automáticamente con cada compra según la fórmula matemática de la curva sigmoide. No hay manipulación externa del precio - cada compra aumenta el precio de forma determinística y transparente. El precio actual se calcula en tiempo real basado en la cantidad total de tokens vendidos."
+      },
+      "noFees": {
+        "title": "Sin Fees de Compra/Venta",
+        "description": "El contrato TokenSale no cobra fees adicionales. Pagas exactamente el precio calculado por la bonding curve, sin comisiones ocultas ni fees de transacción adicionales. El único costo es el precio del token según la curva actual."
+      },
+      "noOwnerFunctions": {
+        "title": "Sin Funciones de Owner que Afecten las Compras",
+        "description": "Aunque el contrato tiene funciones de owner (como pausar la venta o ajustar parámetros), estas no afectan el mecanismo fundamental de compra/venta. El precio se calcula automáticamente según la fórmula de la bonding curve y no puede ser manipulado por el owner. Las compras funcionan de forma descentralizada y transparente."
+      },
+      "noMint": {
+        "title": "Sin Función de Mint",
+        "description": "El token PELON no tiene función de mint. Todos los tokens fueron creados en el momento del deployment y están disponibles en el contrato TokenSale. No se pueden crear nuevos tokens, lo que garantiza un suministro fijo y predecible."
+      }
     }
   }
 }

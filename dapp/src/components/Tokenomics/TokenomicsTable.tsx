@@ -97,14 +97,20 @@ export default function TokenomicsTable() {
                         'p-4 border-b-[2px] border-black'
                       )}
                     >
-                      <Link
-                        href={getBaseScanUrl(category.walletAddress)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-primary-hover font-medium text-xs sm:text-sm break-all underline"
-                      >
-                        {category.walletAddress}
-                      </Link>
+                      {category.walletAddress.startsWith('0x') ? (
+                        <Link
+                          href={getBaseScanUrl(category.walletAddress)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:text-primary-hover font-medium text-xs sm:text-sm break-all underline"
+                        >
+                          {category.walletAddress}
+                        </Link>
+                      ) : (
+                        <span className="text-foreground font-medium text-xs sm:text-sm break-all">
+                          {category.walletAddress}
+                        </span>
+                      )}
                     </td>
                   </tr>
                   {category.subcategories.map((subcategory, subIndex) => {

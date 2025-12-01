@@ -9,7 +9,8 @@
     "courses": "Courses",
     "community": "Community",
     "leaderboard": "Leaderboard",
-    "tokenomics": "Tokenomics"
+    "tokenomics": "Tokenomics",
+    "tokenSale": "Token Sale"
   },
   "wallet": {
     "connect": "Connect Wallet",
@@ -17,12 +18,34 @@
   },
   "meta": {
     "title": "Pelon Club",
-    "description": "Pelon Club - Token gated educational resources and activities"
+    "description": "Pelon Club - Token gated educational resources and activities",
+    "keywords": "Pelon Club, PELON, token, Web3, education, blockchain, token gated, educational resources, Base network, DeFi, crypto",
+    "author": "Pelon Club",
+    "ogImage": "/img/icon.png",
+    "twitterHandle": "@PelonClub"
+  },
+  "home": {
+    "bento": {
+      "tokenSale": {
+        "title": "Token Sale",
+        "description": "Participate in the PELON token sale and join the Pelon Club community"
+      },
+      "leaderboard": {
+        "title": "Leaderboard",
+        "description": "Discover who are the top holders of Pelon Club Token"
+      },
+      "tokenomics": {
+        "title": "Tokenomics",
+        "description": "Explore the complete PELON token distribution and economic model"
+      },
+      "cta": "Explore"
+    }
   },
   "leaderboard": {
     "meta": {
       "title": "Leaderboard - Pelon Club",
-      "description": "Ranking of the top Pelon Club Token holders"
+      "description": "Ranking of the top Pelon Club Token holders",
+      "keywords": "Pelon Club, leaderboard, ranking, holders, PELON token, top holders, Base network, blockchain"
     },
     "title": "Token Holders Leaderboard",
     "subtitle": "Discover who are the top holders of Pelon Club Token and their position in the rankings",
@@ -37,7 +60,8 @@
   "tokenomics": {
     "meta": {
       "title": "Tokenomics - Pelon Club",
-      "description": "Complete tokenomics distribution of Pelon Club Token (PELON) - 1 Trillion tokens strategically allocated"
+      "description": "Complete tokenomics distribution of Pelon Club Token (PELON) - 1 Trillion tokens strategically allocated",
+      "keywords": "Pelon Club, tokenomics, PELON, token distribution, token allocation, blockchain, Base network, DeFi, crypto economics"
     },
     "title": "PELON Tokenomics",
     "subtitle": "Discover how 1 Trillion PELON tokens are strategically allocated to build a sustainable and community-driven ecosystem",
@@ -66,9 +90,91 @@
     },
     "info": {
       "title": "Why This Tokenomics Model Works",
-      "description1": "Our conservative yet strategic allocation model prioritizes community growth (35%), market stability (25%), and long-term alignment (20% team allocation).",
-      "description2": "With 35% allocated to community initiatives, we ensure that value flows directly to users who contribute to the platform's success.",
+      "description1": "Our conservative yet strategic allocation model prioritizes community growth (15%), market stability (25%), and long-term alignment (20% team allocation).",
+      "description2": "With 15% allocated to community initiatives, we ensure that value flows directly to users who contribute to the platform's success.",
       "description3": "All allocations are transparent and verifiable on-chain through the Base network explorer using the wallet addresses provided above."
+    }
+  },
+  "tokenSale": {
+    "meta": {
+      "title": "Token Sale - Pelon Club",
+      "description": "Participate in the PELON token sale and join the Pelon Club community",
+      "keywords": "Pelon Club, token sale, PELON, buy tokens, bonding curve, Base network, Web3, DeFi, crypto investment"
+    },
+    "title": "PELON Token Sale",
+    "subtitle": "Get PELON tokens now and be part of the most innovative Web3 educational ecosystem",
+    "stats": {
+      "unitPrice": "Unit Price",
+      "totalAvailable": "Total Available",
+      "tokensSold": "Tokens Sold",
+      "percentageSold": "Percentage Sold",
+      "totalRaised": "Total Raised",
+      "uniqueParticipants": "Unique Participants"
+    },
+    "purchase": {
+      "title": "Buy Tokens",
+      "amountInTokens": "Amount in Tokens",
+      "amountInUSDC": "Amount in USDC",
+      "switchToUSDC": "Switch to USDC",
+      "switchToTokens": "Switch to Tokens",
+      "enterTokens": "Enter token amount",
+      "enterUSDC": "Enter USDC amount",
+      "youWillReceive": "You will receive",
+      "youWillPay": "You will pay",
+      "buyNow": "Buy Now",
+      "processing": "Processing...",
+      "minPurchase": "Minimum purchase: {min} tokens",
+      "maxPurchase": "Maximum purchase: {max} tokens per transaction",
+      "pricePerToken": "Price per token: {price} USDC",
+      "errorMinPurchase": "Minimum purchase is {min} tokens",
+      "errorMaxPurchase": "Maximum purchase is {max} tokens per transaction",
+      "errorNotEnoughTokens": "Not enough tokens available",
+      "errorInvalidAmount": "Invalid amount",
+      "successMessage": "Purchase successful! Tokens will be transferred to your wallet.",
+      "connectWallet": "Connect your wallet to buy tokens",
+      "balance": "Balance",
+      "errorSalePaused": "The sale is temporarily paused",
+      "errorWalletLimit": "This purchase would exceed the wallet limit",
+      "errorTotalSaleLimit": "This purchase would exceed the total sale limit",
+      "errorInsufficientBalance": "Insufficient USDC balance",
+      "errorPurchaseFailed": "Error processing purchase",
+      "errorApprovalFailed": "Error approving USDC",
+      "successApprovalMessage": "USDC approval successful! You can now purchase tokens.",
+      "approving": "Approving...",
+      "approveUSDC": "Approve USDC",
+      "purchasedSoFar": "Purchased so far",
+      "maxPerWallet": "Max per wallet",
+      "remainingTokens": "Remaining tokens"
+    },
+    "recentPurchases": {
+      "title": "Recent Purchases",
+      "tokens": "Tokens",
+      "paid": "Paid",
+      "noPurchases": "No recent purchases yet",
+      "loading": "Loading..."
+    },
+    "info": {
+      "title": "Important Information",
+      "bondingCurve": {
+        "title": "Bonding Curve",
+        "description": "PELON price follows a sigmoid curve that gradually increases as more tokens are sold. The price starts at a low initial price and gradually approaches a configured maximum price. This mechanism ensures early buyers get better prices while the price increases in a predictable and transparent manner."
+      },
+      "priceFluctuation": {
+        "title": "Price Fluctuation",
+        "description": "The price automatically increases with each purchase according to the sigmoid curve mathematical formula. There is no external price manipulation - each purchase increases the price deterministically and transparently. The current price is calculated in real-time based on the total amount of tokens sold."
+      },
+      "noFees": {
+        "title": "No Buy/Sell Fees",
+        "description": "The TokenSale contract does not charge additional fees. You pay exactly the price calculated by the bonding curve, with no hidden commissions or additional transaction fees. The only cost is the token price according to the current curve."
+      },
+      "noOwnerFunctions": {
+        "title": "No Owner Functions Affecting Purchases",
+        "description": "Although the contract has owner functions (such as pausing the sale or adjusting parameters), these do not affect the fundamental purchase/sale mechanism. The price is automatically calculated according to the bonding curve formula and cannot be manipulated by the owner. Purchases work in a decentralized and transparent manner."
+      },
+      "noMint": {
+        "title": "No Mint Function",
+        "description": "The PELON token has no mint function. All tokens were created at deployment time and are available in the TokenSale contract. No new tokens can be created, ensuring a fixed and predictable supply."
+      }
     }
   }
 }

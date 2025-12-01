@@ -1,21 +1,31 @@
 import type { GetStaticProps } from 'next';
-import Head from 'next/head';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/router';
 import { routing } from '@/i18n/routing';
 import LeaderboardStats from '@/components/Leaderboard/LeaderboardStats';
 import LeaderboardTable from '@/components/Leaderboard/LeaderboardTable';
 import { cn } from '@/lib/utils';
+import Metadata from '@/components/SEO/Metadata';
+import { getCanonicalUrl } from '@/lib/seo';
 
 export default function Leaderboard() {
   const t = useTranslations();
+  const router = useRouter();
+  const locale = (router.query.locale as string) || router.locale || 'es';
+  const canonicalUrl = getCanonicalUrl('/leaderboard', locale);
 
   return (
     <>
-      <Head>
-        <title>{t('leaderboard.meta.title')}</title>
-        <meta content={t('leaderboard.meta.description')} name="description" />
-        <link href="/favicon.ico" rel="icon" />
-      </Head>
+      <Metadata
+        title={t('leaderboard.meta.title')}
+        description={t('leaderboard.meta.description')}
+        keywords={t('leaderboard.meta.keywords')}
+        author={t('meta.author')}
+        ogImage={t('meta.ogImage')}
+        canonicalUrl={canonicalUrl}
+        locale={locale}
+        twitterHandle={t('meta.twitterHandle')}
+      />
 
       <main className="min-h-screen bg-background">
         <div className="w-full bg-background-secondary border-b-[4px] border-solid border-black py-12 sm:py-16">

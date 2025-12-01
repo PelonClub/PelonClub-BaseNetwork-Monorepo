@@ -5,3 +5,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function stringifyWithBigInt(obj: any): string {
+  return JSON.stringify(obj, (key, value) =>
+    typeof value === 'bigint' ? value.toString() : value
+  );
+}
+

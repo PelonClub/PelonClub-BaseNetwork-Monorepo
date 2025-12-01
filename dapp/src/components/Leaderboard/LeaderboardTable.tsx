@@ -1,3 +1,5 @@
+'use client';
+
 import { useTokenHolders } from '@/hooks/useTokenHolders';
 import { TokenHolder } from '@/contracts/pelonClubToken';
 import LeaderboardCard from './LeaderboardCard';

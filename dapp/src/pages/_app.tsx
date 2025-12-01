@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { Toaster } from 'react-hot-toast';
 
 import { config } from '../wagmi';
 import Navigation from '../components/Navigation';
@@ -42,7 +43,19 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [locale, pageProps.messages]);
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider
+      locale={locale}
+      messages={messages}
+      onError={(error) => {
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('next-intl error:', error);
+        }
+      }}
+      getMessageFallback={({ namespace, key, error }) => {
+        const path = [namespace, key].filter((part) => part != null).join('.');
+        return `[${path}]`;
+      }}
+    >
       <WagmiProvider config={config}>
         <QueryClientProvider client={client}>
           <RainbowKitProvider
@@ -54,6 +67,41 @@ function MyApp({ Component, pageProps }: AppProps) {
           >
             <Navigation />
             <Component {...pageProps} />
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                className: '',
+                style: {
+                  background: '#1e293b',
+                  color: '#f1f5f9',
+                  border: '3px solid #000000',
+                  borderRadius: '0px',
+                  boxShadow: '4px 4px 0px 0px #000000',
+                  fontSize: '14px',
+                  fontWeight: '700',
+                  padding: '16px',
+                },
+                success: {
+                  iconTheme: {
+                    primary: '#10b981',
+                    secondary: '#ffffff',
+                  },
+                  style: {
+                    borderColor: '#10b981',
+                  },
+                },
+                error: {
+                  iconTheme: {
+                    primary: '#ef4444',
+                    secondary: '#ffffff',
+                  },
+                  style: {
+                    borderColor: '#ef4444',
+                  },
+                },
+                duration: 4000,
+              }}
+            />
           </RainbowKitProvider>
         </QueryClientProvider>
       </WagmiProvider>

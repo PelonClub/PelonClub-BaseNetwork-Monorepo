@@ -1,4 +1,4 @@
-import { FaTwitter, FaDiscord, FaGithub } from 'react-icons/fa';
+import { FaTwitter, FaGithub, FaTelegram } from 'react-icons/fa';
 import { cn } from '@/lib/utils';
 
 interface SocialIconsProps {
@@ -8,19 +8,19 @@ interface SocialIconsProps {
 export default function SocialIcons({ className }: SocialIconsProps) {
   const socialLinks = [
     {
-      name: 'Twitter',
-      url: 'https://twitter.com',
+      name: 'GitHub',
+      url: 'https://github.com/PelonClub',
+      icon: FaGithub,
+    },
+    {
+      name: 'X',
+      url: 'https://x.com/PelonClub',
       icon: FaTwitter,
     },
     {
-      name: 'Discord',
-      url: 'https://discord.com',
-      icon: FaDiscord,
-    },
-    {
-      name: 'GitHub',
-      url: 'https://github.com',
-      icon: FaGithub,
+      name: 'Telegram',
+      url: 'https://t.me/PelonClub',
+      icon: FaTelegram,
     },
   ];
 

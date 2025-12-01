@@ -1,3 +1,5 @@
+'use client';
+
 import { useReadContract } from 'wagmi';
 import { formatUnits } from 'viem';
 import { PELON_CLUB_TOKEN_ABI, PELON_CLUB_TOKEN_ADDRESS } from '@/contracts/pelonClubToken';
@@ -20,7 +22,7 @@ function AnimatedNumber({ value, decimals = 0, suffix = '', className }: Animate
   const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
-    const duration = 1000; // 1 second
+    const duration = 1000;
     const steps = 30;
     const increment = value / steps;
     let current = 0;
@@ -117,7 +119,6 @@ export default function LeaderboardStats() {
             'p-6',
             'rounded-none',
             'transition-all',
-            'hover:shadow-neobrutal-colored',
             'hover:translate-x-[-2px]',
             'hover:translate-y-[-2px]'
           )}
@@ -149,7 +150,6 @@ export default function LeaderboardStats() {
           'p-6',
           'rounded-none',
           'transition-all',
-          'hover:shadow-neobrutal-colored',
           'hover:translate-x-[-2px]',
           'hover:translate-y-[-2px]',
           'cursor-pointer',

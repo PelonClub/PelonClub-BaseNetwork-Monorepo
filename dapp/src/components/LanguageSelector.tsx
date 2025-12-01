@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { useLocale, useTranslations } from 'next-intl';

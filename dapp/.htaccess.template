@@ -1,0 +1,87 @@
+# Apache configuration for Next.js static export with next-intl
+
+# Deshabilitar listado de directorios
+Options -Indexes
+
+# Habilitar rewrite engine
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Manejar raíz - servir index.html si existe
+  RewriteCond %{REQUEST_URI} ^/$
+  RewriteCond %{DOCUMENT_ROOT}/index.html -f
+  RewriteRule ^$ index.html [L]
+
+  # 2. Si la solicitud es para la raíz y NO existe index.html, redirigir al locale por defecto
+  RewriteCond %{REQUEST_URI} ^/$
+  RewriteCond %{DOCUMENT_ROOT}/index.html !-f
+  RewriteRule ^$ /es [R=302,L]
+
+  # 2.5. Manejar directorios de locales (en/, es/) - servir el .html correspondiente en la raíz
+  RewriteCond %{REQUEST_URI} ^/(en|es)/?$
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(en|es)/?$ /$1.html [L]
+
+  # 3. Si es directorio y existe .html correspondiente, servirlo internamente
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !\.html$
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
+  RewriteRule ^(.+)$ $1.html [L]
+
+  # 4. Si no es archivo/directorio y existe .html, redirigir a .html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !\.html$
+  RewriteCond %{REQUEST_URI} !^/$
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
+  RewriteRule ^(.+)$ $1.html [L,R=301]
+
+  # 5. Eliminar trailing slash (solo si no es raíz, no es directorio y no causa bucle)
+  RewriteCond %{REQUEST_URI} ^(.+)/$
+  RewriteCond %{REQUEST_URI} !^/$
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{ENV:REDIRECT_STATUS} ^$
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+</IfModule>
+
+# Configuración de tipos MIME
+<IfModule mod_mime.c>
+  AddType text/html .html
+  AddType text/css .css
+  AddType application/javascript .js
+  AddType application/json .json
+  AddType image/svg+xml .svg
+  AddType image/png .png
+  AddType image/jpeg .jpg .jpeg
+  AddType image/webp .webp
+  AddType font/woff .woff
+  AddType font/woff2 .woff2
+</IfModule>
+
+# Headers de seguridad y caché
+<IfModule mod_headers.c>
+  # Cache para archivos estáticos
+  <FilesMatch "\\.(ico|jpg|jpeg|png|gif|webp|svg|css|js|woff|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  
+  # Cache para HTML (más corto)
+  <FilesMatch "\\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  
+  # Headers de seguridad
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Compresión
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Página de error personalizada
+ErrorDocument 404 /404.html
+

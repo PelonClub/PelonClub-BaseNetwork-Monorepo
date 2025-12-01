@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/router';
@@ -20,6 +22,7 @@ export default function Navigation() {
     { name: t('navigation.home'), href: '/' },
     { name: t('navigation.leaderboard'), href: '/leaderboard' },
     { name: t('navigation.tokenomics'), href: '/tokenomics' },
+    { name: t('navigation.tokenSale'), href: '/token-sale' },
   ];
 
   const getLocalizedHref = (href: string) => {
@@ -232,6 +235,9 @@ export default function Navigation() {
             <Link
               href={getLocalizedHref('/')}
               className="
+                flex
+                items-center
+                gap-2
                 text-2xl sm:text-3xl
                 font-bold
                 text-foreground
@@ -239,6 +245,13 @@ export default function Navigation() {
                 transition-colors
               "
             >
+              <Image
+                src="/img/icon.png"
+                alt="Pelon Club"
+                width={32}
+                height={32}
+                className="rounded-none"
+              />
               {t('common.appName')}
             </Link>
 

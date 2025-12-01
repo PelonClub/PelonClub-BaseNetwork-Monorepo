@@ -1,7 +1,10 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import { TOTAL_SUPPLY, TOKENOMICS_DATA } from '@/data/tokenomics';
+import { useTokenSale } from '@/hooks/useTokenSale';
+import { useTokenSaleStats } from '@/hooks/useTokenSaleStats';
 
 interface AnimatedNumberProps {
   value: number;
@@ -58,70 +61,59 @@ function AnimatedNumber({ value, decimals = 0, suffix = '', className }: Animate
   );
 }
 
-export default function TokenomicsStats() {
-  const t = useTranslations('tokenomics.stats');
+export default function TokenSaleStats() {
+  const t = useTranslations('tokenSale.stats');
+  const { currentPrice, totalSold, maxTotalSale, percentageSold, isLoading: isLoadingTokenSale } = useTokenSale();
+  const { data: statsData, isLoading: isLoadingStats } = useTokenSaleStats();
 
-  const communityAllocation = TOKENOMICS_DATA.find(c => c.name === 'Community & Ecosystem');
-  const liquidityAllocation = TOKENOMICS_DATA.find(c => c.name === 'Liquidity & Market Making');
-  const teamAllocation = TOKENOMICS_DATA.find(c => c.name === 'Team & Founders');
-  const marketingAllocation = TOKENOMICS_DATA.find(c => c.name === 'Marketing & Growth');
-  const treasuryAllocation = TOKENOMICS_DATA.find(c => c.name === 'Treasury & Operations');
-  const reserveAllocation = TOKENOMICS_DATA.find(c => c.name === 'Reserve Fund');
+  const isLoading = isLoadingTokenSale || isLoadingStats;
 
-  const totalSupplyStat = {
-    label: t('totalSupply'),
-    value: TOTAL_SUPPLY,
-    suffix: ' PELON',
-    decimals: 0,
-    className: 'text-primary',
-  };
-
-  const otherStats = [
+  const stats = [
     {
-      label: t('teamAllocation'),
-      value: teamAllocation?.percentage || 0,
-      suffix: '%',
+      label: t('unitPrice'),
+      value: currentPrice,
+      suffix: ' USDC',
+      decimals: 6,
+      className: 'text-primary',
+    },
+    {
+      label: t('totalAvailable'),
+      value: maxTotalSale,
+      suffix: ' PELON',
       decimals: 0,
       className: 'text-accent',
     },
     {
-      label: t('communityAllocation'),
-      value: communityAllocation?.percentage || 0,
-      suffix: '%',
+      label: t('tokensSold'),
+      value: totalSold,
+      suffix: ' PELON',
       decimals: 0,
       className: 'text-green-500',
     },
     {
-      label: t('liquidityAllocation'),
-      value: liquidityAllocation?.percentage || 0,
+      label: t('percentageSold'),
+      value: percentageSold,
       suffix: '%',
-      decimals: 0,
+      decimals: 1,
       className: 'text-yellow-500',
     },
     {
-      label: t('marketingAllocation'),
-      value: marketingAllocation?.percentage || 0,
-      suffix: '%',
+      label: t('totalRaised'),
+      value: statsData?.totalRaised ?? 0,
+      suffix: ' USDC',
       decimals: 0,
       className: 'text-orange-500',
     },
     {
-      label: t('treasuryAllocation'),
-      value: treasuryAllocation?.percentage || 0,
-      suffix: '%',
-      decimals: 0,
-      className: 'text-purple-500',
-    },
-    {
-      label: t('reserveAllocation'),
-      value: reserveAllocation?.percentage || 0,
-      suffix: '%',
+      label: t('uniqueParticipants'),
+      value: statsData?.uniqueParticipants ?? 0,
+      suffix: '',
       decimals: 0,
       className: 'text-blue-500',
     },
   ];
 
-  const StatCard = ({ stat, index, className = '' }: { stat: typeof totalSupplyStat; index: number; className?: string }) => (
+  const StatCard = ({ stat, index }: { stat: typeof stats[0]; index: number }) => (
     <div
       key={stat.label}
       className={cn(
@@ -129,9 +121,7 @@ export default function TokenomicsStats() {
         'border-neobrutal',
         'shadow-neobrutal-md',
         'p-6',
-        'rounded-none',
-        'transition-all',
-        className
+        'rounded-none'
       )}
       style={{
         animationDelay: `${index * 100}ms`,
@@ -145,20 +135,27 @@ export default function TokenomicsStats() {
           suffix={stat.suffix}
         />
       </div>
+      {stat.label === t('percentageSold') && (
+        <div className="mt-4">
+          <div className="w-full bg-background h-4 border-neobrutal border-2">
+            <div
+              className="h-full bg-primary transition-all duration-500"
+              style={{ width: `${percentageSold}%` }}
+            />
+          </div>
+        </div>
+      )}
+      {isLoading && (
+        <div className="text-xs text-muted-foreground mt-2">Loading...</div>
+      )}
     </div>
   );
 
   return (
-    <div className="space-y-4">
-      <div className="lg:w-full">
-        <StatCard stat={totalSupplyStat} index={0} />
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-        {otherStats.map((stat, index) => (
-          <StatCard key={stat.label} stat={stat} index={index + 1} />
-        ))}
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+      {stats.map((stat, index) => (
+        <StatCard key={stat.label} stat={stat} index={index} />
+      ))}
     </div>
   );
 }

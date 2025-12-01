@@ -52,7 +52,6 @@ export default function LeaderboardCard({
         'rounded-none',
         'transition-all',
         'hover:bg-background',
-        'hover:shadow-neobrutal-colored',
         'hover:translate-x-[-2px]',
         'hover:translate-y-[-2px]',
         isTopThree && 'hover:scale-[1.02]',

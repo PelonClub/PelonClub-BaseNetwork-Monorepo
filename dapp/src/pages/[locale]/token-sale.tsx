@@ -2,25 +2,25 @@ import type { GetStaticProps } from 'next';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/router';
 import { routing } from '@/i18n/routing';
-import TokenomicsStats from '@/components/Tokenomics/TokenomicsStats';
-import { TokenomicsPieChart, TokenomicsBarChart } from '@/components/Tokenomics/TokenomicsCharts';
-import TokenomicsTable from '@/components/Tokenomics/TokenomicsTable';
+import TokenSaleStats from '@/components/TokenSale/TokenSaleStats';
+import TokenSalePurchase from '@/components/TokenSale/TokenSalePurchase';
+import RecentPurchases from '@/components/TokenSale/RecentPurchases';
 import { cn } from '@/lib/utils';
 import Metadata from '@/components/SEO/Metadata';
 import { getCanonicalUrl } from '@/lib/seo';
 
-export default function Tokenomics() {
+export default function TokenSale() {
   const t = useTranslations();
   const router = useRouter();
   const locale = (router.query.locale as string) || router.locale || 'es';
-  const canonicalUrl = getCanonicalUrl('/tokenomics', locale);
+  const canonicalUrl = getCanonicalUrl('/token-sale', locale);
 
   return (
     <>
       <Metadata
-        title={t('tokenomics.meta.title')}
-        description={t('tokenomics.meta.description')}
-        keywords={t('tokenomics.meta.keywords')}
+        title={t('tokenSale.meta.title')}
+        description={t('tokenSale.meta.description')}
+        keywords={t('tokenSale.meta.keywords')}
         author={t('meta.author')}
         ogImage={t('meta.ogImage')}
         canonicalUrl={canonicalUrl}
@@ -41,32 +41,26 @@ export default function Tokenomics() {
                   'drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]'
                 )}
               >
-                💎 {t('tokenomics.title')}
+                🚀 {t('tokenSale.title')}
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-                {t('tokenomics.subtitle')}
+                {t('tokenSale.subtitle')}
               </p>
             </div>
           </div>
         </div>
 
         <div className="container mx-auto px-4 py-8 sm:py-12">
+          <TokenSaleStats />
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             <div className="lg:order-1">
-              <TokenomicsStats />
+              <TokenSalePurchase />
             </div>
             
             <div className="lg:order-2">
-              <TokenomicsPieChart />
+              <RecentPurchases />
             </div>
-          </div>
-
-          <div className="mb-8">
-            <TokenomicsBarChart />
-          </div>
-
-          <div className="mb-8">
-            <TokenomicsTable />
           </div>
 
           <div
@@ -80,12 +74,29 @@ export default function Tokenomics() {
             )}
           >
             <h3 className="text-xl font-bold text-foreground mb-4">
-              {t('tokenomics.info.title')}
+              {t('tokenSale.info.title')}
             </h3>
-            <div className="space-y-3 text-muted-foreground">
-              <p>{t('tokenomics.info.description1')}</p>
-              <p>{t('tokenomics.info.description2')}</p>
-              <p>{t('tokenomics.info.description3')}</p>
+            <div className="space-y-4 text-muted-foreground">
+              <div>
+                <h4 className="text-foreground font-bold mb-2">{t('tokenSale.info.bondingCurve.title')}</h4>
+                <p>{t('tokenSale.info.bondingCurve.description')}</p>
+              </div>
+              <div>
+                <h4 className="text-foreground font-bold mb-2">{t('tokenSale.info.priceFluctuation.title')}</h4>
+                <p>{t('tokenSale.info.priceFluctuation.description')}</p>
+              </div>
+              <div>
+                <h4 className="text-foreground font-bold mb-2">{t('tokenSale.info.noFees.title')}</h4>
+                <p>{t('tokenSale.info.noFees.description')}</p>
+              </div>
+              <div>
+                <h4 className="text-foreground font-bold mb-2">{t('tokenSale.info.noOwnerFunctions.title')}</h4>
+                <p>{t('tokenSale.info.noOwnerFunctions.description')}</p>
+              </div>
+              <div>
+                <h4 className="text-foreground font-bold mb-2">{t('tokenSale.info.noMint.title')}</h4>
+                <p>{t('tokenSale.info.noMint.description')}</p>
+              </div>
             </div>
           </div>
         </div>

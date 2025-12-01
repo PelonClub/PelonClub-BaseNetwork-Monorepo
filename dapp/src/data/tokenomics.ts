@@ -1,7 +1,7 @@
 export interface TokenomicsCategory {
   name: string;
   percentage: number;
-  tokens: number; // in billions
+  tokens: number;
   walletAddress: string;
   subcategories: TokenomicsSubcategory[];
 }
@@ -9,21 +9,29 @@ export interface TokenomicsCategory {
 export interface TokenomicsSubcategory {
   name: string;
   percentage: number;
-  tokens: number; // in billions
+  tokens: number;
 }
 
-export const TOTAL_SUPPLY = 1_000_000_000_000; // 1 Trillion PELON
+export const TOTAL_SUPPLY = 1_000_000_000_000;
 
 export const TOKENOMICS_DATA: TokenomicsCategory[] = [
   {
+    name: 'Public Sale',
+    percentage: 20,
+    tokens: 200,
+    walletAddress: 'TokenSale Contract',
+    subcategories: [
+      { name: 'Public Token Sale', percentage: 20, tokens: 200 },
+    ],
+  },
+  {
     name: 'Community & Ecosystem',
-    percentage: 35,
-    tokens: 350,
+    percentage: 15,
+    tokens: 150,
     walletAddress: '0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5',
     subcategories: [
       { name: 'Initial Airdrops', percentage: 5, tokens: 50 },
-      { name: 'Participation Incentives', percentage: 10, tokens: 100 },
-      { name: 'Educational Rewards', percentage: 10, tokens: 100 },
+      { name: 'Participation Incentives', percentage: 5, tokens: 50 },
       { name: 'Referral Program', percentage: 5, tokens: 50 },
       { name: 'DAO Governance', percentage: 5, tokens: 50 },
     ],
@@ -81,12 +89,12 @@ export const TOKENOMICS_DATA: TokenomicsCategory[] = [
 ];
 
 export const CHART_COLORS = [
-  '#4338ca', // indigo-700 (primary)
-  '#6366f1', // indigo-500 (accent)
-  '#818cf8', // indigo-400
-  '#a5b4fc', // indigo-300
-  '#c7d2fe', // indigo-200
-  '#e0e7ff', // indigo-100
+  '#4338ca',
+  '#6366f1',
+  '#818cf8',
+  '#a5b4fc',
+  '#c7d2fe',
+  '#e0e7ff',
 ];
 
 export const getBaseScanUrl = (address: string, chainId: number = 8453) => {
