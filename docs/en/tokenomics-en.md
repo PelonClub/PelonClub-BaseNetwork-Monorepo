@@ -20,7 +20,8 @@ Our conservative allocation model prioritizes community growth, market stability
 
 ```mermaid
 pie title PELON Token Allocation (1 Trillion Total)
-    "Community & Ecosystem" : 35
+    "Public Sale" : 20
+    "Community & Ecosystem" : 15
     "Liquidity & Market Making" : 25
     "Team & Founders" : 20
     "Marketing & Growth" : 10
@@ -32,7 +33,8 @@ pie title PELON Token Allocation (1 Trillion Total)
 
 | Category | Percentage | Tokens | Purpose |
 |----------|-----------|--------|---------|
-| **Community & Ecosystem** | 35% | 350B | Drive adoption and engagement |
+| **Public Sale** | 20% | 200B | Public token sale using USDC |
+| **Community & Ecosystem** | 15% | 150B | Drive adoption and engagement |
 | **Liquidity & Market Making** | 25% | 250B | Ensure market stability |
 | **Team & Founders** | 20% | 200B | Align long-term incentives |
 | **Marketing & Growth** | 10% | 100B | Accelerate user acquisition |
@@ -43,12 +45,14 @@ pie title PELON Token Allocation (1 Trillion Total)
 
 | Category | Subcategory | Percentage | Tokens | Wallet Address |
 |----------|-------------|-----------|--------|----------------|
-| **Community & Ecosystem** | **TOTAL** | **35%** | **350B** | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
+| **Public Sale** | **TOTAL** | **20%** | **200B** | TokenSale Contract |
+| Public Sale | Public Token Sale | 20% | 200B | TokenSale Contract |
+| **Community & Ecosystem** | **TOTAL** | **15%** | **150B** | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
 | Community & Ecosystem | Initial Airdrops | 5% | 50B | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
-| Community & Ecosystem | Participation Incentives | 10% | 100B | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
-| Community & Ecosystem | Educational Rewards | 10% | 100B | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
+| Community & Ecosystem | Participation Incentives | 5% | 50B | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
 | Community & Ecosystem | Referral Program | 5% | 50B | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
 | Community & Ecosystem | DAO Governance | 5% | 50B | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
+| **Note:** The Community & Ecosystem category originally totaled 35% (350B). 200B tokens were subtracted for the public sale, leaving 15% (150B) distributed proportionally among the remaining subcategories. |
 | **Liquidity & Market Making** | **TOTAL** | **25%** | **250B** | `0xFF9e0a72842751698A62050e94fad0CE8C0b368a` |
 | Liquidity & Market Making | Initial DEX Liquidity | 15% | 150B | `0xFF9e0a72842751698A62050e94fad0CE8C0b368a` |
 | Liquidity & Market Making | Liquidity Reserve | 10% | 100B | `0xFF9e0a72842751698A62050e94fad0CE8C0b368a` |
@@ -69,18 +73,20 @@ pie title PELON Token Allocation (1 Trillion Total)
 
 ```mermaid
 flowchart TD
-    A[Total Supply: 1 Trillion PELON] --> B[Community & Ecosystem: 35% - 350B]
+    A[Total Supply: 1 Trillion PELON] --> H[Public Sale: 20% - 200B]
+    A --> B[Community & Ecosystem: 15% - 150B]
     A --> C[Liquidity & Market Making: 25% - 250B]
     A --> D[Team & Founders: 20% - 200B]
     A --> E[Marketing & Growth: 10% - 100B]
     A --> F[Treasury & Operations: 5% - 50B]
     A --> G[Reserve Fund: 5% - 50B]
     
+    H --> H1[Public Token Sale: 20% - 200B]
+    
     B --> B1[Initial Airdrops: 5% - 50B]
-    B --> B2[Participation Incentives: 10% - 100B]
-    B --> B3[Educational Rewards: 10% - 100B]
-    B --> B4[Referral Program: 5% - 50B]
-    B --> B5[DAO Governance: 5% - 50B]
+    B --> B2[Participation Incentives: 5% - 50B]
+    B --> B3[Referral Program: 5% - 50B]
+    B --> B4[DAO Governance: 5% - 50B]
     
     C --> C1[Initial DEX Liquidity: 15% - 150B]
     C --> C2[Liquidity Reserve: 10% - 100B]
@@ -98,6 +104,7 @@ flowchart TD
     G --> G1[Strategic Reserve: 5% - 50B]
     
     style A fill:#4338ca,stroke:#000,stroke-width:3px,color:#fff
+    style H fill:#4f46e5,stroke:#000,stroke-width:2px,color:#fff
     style B fill:#6366f1,stroke:#000,stroke-width:2px,color:#fff
     style C fill:#818cf8,stroke:#000,stroke-width:2px,color:#fff
     style D fill:#a5b4fc,stroke:#000,stroke-width:2px,color:#fff
@@ -108,18 +115,41 @@ flowchart TD
 
 ---
 
-## 1. Community & Ecosystem (35% - 350B PELON)
+## 0. Public Token Sale (20% - 200B PELON)
 
-The largest allocation reflects our commitment to building a thriving, engaged community. This category drives user acquisition, retention, and platform growth.
+A significant portion of the total supply is allocated to public token sale, allowing the community and investors to participate directly in the ecosystem from the start.
+
+**Sale Features:**
+- **Pricing:** Sigmoid bonding curve with dynamic pricing
+- **Initial Price:** 0.000003 USDC per PELON token (1 USDC = 333,333.33 PELON tokens)
+- **Price Mechanism:** Price increases dynamically as tokens are sold, reaching a maximum configurable price
+- **Payment Method:** USDC (USD Coin)
+- **Anti-Whale Mechanism:** Maximum limit per wallet to prevent excessive concentration
+- **Total Limit:** 200B tokens (20% of total supply)
+- **Contract:** TokenSale deployed on Base Mainnet
+
+**Breakdown:**
+- **Public Sale (20% - 200B):** Tokens available for public purchase using USDC through the TokenSale contract
+
+**Important Note:** The 200B tokens allocated to the public sale were subtracted from the original Community & Ecosystem allocation (35% - 350B), leaving 15% (150B) for the remaining community initiatives. This ensures the total supply of 1 trillion tokens remains balanced.
+
+**Why This Matters:** The public sale democratizes token access, allows the community to participate from the start, and provides initial capital for platform development and growth. The anti-whale mechanism ensures more equitable distribution among participants.
+
+---
+
+## 1. Community & Ecosystem (15% - 150B PELON)
+
+This allocation reflects our commitment to building a thriving, engaged community. This category drives user acquisition, retention, and platform growth.
 
 **Breakdown:**
 - **Initial Airdrops (5% - 50B):** Reward early adopters and build initial user base
-- **Participation Incentives (10% - 100B):** Encourage active engagement and platform usage
-- **Educational Rewards (10% - 100B):** Incentivize learning and content consumption
+- **Participation Incentives (5% - 50B):** Encourage active engagement and platform usage
 - **Referral Program (5% - 50B):** Viral growth mechanism for organic user acquisition
 - **DAO Governance (5% - 50B):** Empower community decision-making and decentralization
 
-**Why This Matters:** A strong community is the foundation of any successful Web3 project. By allocating 35% to community initiatives, we ensure that value flows directly to users who contribute to the platform's success.
+**Note on Original Allocation:** The Community & Ecosystem category was originally allocated 35% (350B tokens), including subcategories such as Educational Rewards (10% - 100B) and Participation Incentives (10% - 100B). From this original allocation, 200B tokens were subtracted for the public sale, with the remainder redistributed proportionally among the remaining subcategories.
+
+**Why This Matters:** A strong community is the foundation of any successful Web3 project. Although the allocation was reduced to include the public sale, we continue to prioritize community initiatives that ensure value flows directly to users who contribute to the platform's success.
 
 ---
 
@@ -187,18 +217,35 @@ Strategic reserves provide flexibility for future opportunities, unexpected mark
 
 All token allocations are managed through dedicated wallet addresses on the Base network. Each category has its own wallet for transparent and verifiable on-chain allocation tracking.
 
+### 📍 Public Sale
+
+**TokenSale Contract:** Contract address (to be updated after deployment)  
+**Total Allocation:** 20% (200B PELON)  
+**Pricing:** Sigmoid bonding curve with dynamic pricing  
+**Initial Price:** 0.000003 USDC per PELON token  
+**Payment Method:** USDC (USD Coin)
+
+**Features:**
+- Public token sale using USDC
+- Anti-whale mechanism (per-wallet limit)
+- Total sale limit: 200B tokens
+
+**USDC Funds Receipt Wallet:** `0xe76117151DCD6D9cb4DcEE496DCA2F8513Ca7D7f`  
+This wallet automatically receives all USDC from each purchase. Funds are transferred directly from the buyer to this address in each transaction, without being stored in the TokenSale contract. This improves security by not holding funds in the contract.
+
 ### 📍 Community & Ecosystem
 
 **Wallet Address:** `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5`  
-**Total Allocation:** 35% (350B PELON)  
+**Total Allocation:** 15% (150B PELON) - Adjusted from original 35% (350B)  
 **Funding Transaction:** [View on BaseScan](https://sepolia.basescan.org/tx/0x40fbddd3c2c7f1b947de5264726d88fb5672191d950878d0de8e28ff4f4eb990)
 
 **Subcategories:**
 - Initial Airdrops: 5% (50B)
-- Participation Incentives: 10% (100B)
-- Educational Rewards: 10% (100B)
+- Participation Incentives: 5% (50B) - Adjusted from original 10% (100B)
 - Referral Program: 5% (50B)
 - DAO Governance: 5% (50B)
+
+**Note:** The original Community & Ecosystem allocation was 35% (350B), including Educational Rewards (10% - 100B). 200B tokens were subtracted for the public sale, with the remainder redistributed among the remaining subcategories.
 
 ### 📍 Liquidity & Market Making
 
@@ -268,7 +315,8 @@ All allocations can be verified on-chain through the Base network explorer using
 ### Conservative Yet Strategic
 
 Our allocation model balances multiple objectives:
-- **Community-first approach** with 35% allocation ensures user value creation
+- **Public access** with 20% allocation to public sale democratizes participation
+- **Community-first approach** with 15% allocation ensures user value creation
 - **Market stability** through 25% liquidity allocation builds investor confidence
 - **Long-term alignment** with 20% team allocation ensures sustained development
 - **Growth acceleration** through 10% marketing allocation drives adoption
@@ -293,12 +341,14 @@ All allocations are clearly defined and can be verified on-chain. This transpare
 Pelon Club Token represents a unique opportunity to participate in the convergence of education and Web3 technology. With a clear use case, strong tokenomics, and a committed team, PELON is positioned to capture value in the growing token-gated education market.
 
 **Key Investment Highlights:**
-- Largest allocation to community (35%) ensures user-driven growth
+- Accessible public sale (20%) allows participation from the start
+- Community allocation (15%) ensures user-driven growth
 - Strong liquidity allocation (25%) provides market stability
 - Conservative team allocation (20%) aligns long-term incentives
 - Clear utility through token-gated educational resources
 - Governance rights through ERC20Votes integration
 - Built on Base for low-cost, scalable transactions
+- Anti-whale mechanism for equitable distribution
 
 ---
 

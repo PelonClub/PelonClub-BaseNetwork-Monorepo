@@ -20,7 +20,8 @@ Nuestro modelo de asignación conservador prioriza el crecimiento comunitario, l
 
 ```mermaid
 pie title Asignación de Tokens PELON (1 Billón Total)
-    "Comunidad y Ecosistema" : 35
+    "Venta Pública" : 20
+    "Comunidad y Ecosistema" : 15
     "Liquidez y Market Making" : 25
     "Equipo y Fundadores" : 20
     "Marketing y Crecimiento" : 10
@@ -32,7 +33,8 @@ pie title Asignación de Tokens PELON (1 Billón Total)
 
 | Categoría | Porcentaje | Tokens | Propósito |
 |-----------|-----------|--------|-----------|
-| **Comunidad y Ecosistema** | 35% | 350B | Impulsar adopción y participación |
+| **Venta Pública** | 20% | 200B | Venta pública de tokens usando USDC |
+| **Comunidad y Ecosistema** | 15% | 150B | Impulsar adopción y participación |
 | **Liquidez y Market Making** | 25% | 250B | Garantizar estabilidad del mercado |
 | **Equipo y Fundadores** | 20% | 200B | Alinear incentivos a largo plazo |
 | **Marketing y Crecimiento** | 10% | 100B | Acelerar adquisición de usuarios |
@@ -43,12 +45,14 @@ pie title Asignación de Tokens PELON (1 Billón Total)
 
 | Categoría | Subcategoría | Porcentaje | Tokens | Dirección de Wallet |
 |-----------|--------------|-----------|--------|---------------------|
-| **Comunidad y Ecosistema** | **TOTAL** | **35%** | **350B** | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
+| **Venta Pública** | **TOTAL** | **20%** | **200B** | Contrato TokenSale |
+| Venta Pública | Venta Pública de Tokens | 20% | 200B | Contrato TokenSale |
+| **Comunidad y Ecosistema** | **TOTAL** | **15%** | **150B** | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
 | Comunidad y Ecosistema | Airdrops Iniciales | 5% | 50B | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
-| Comunidad y Ecosistema | Incentivos Participación | 10% | 100B | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
-| Comunidad y Ecosistema | Recompensas Educativas | 10% | 100B | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
+| Comunidad y Ecosistema | Incentivos Participación | 5% | 50B | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
 | Comunidad y Ecosistema | Programa Referidos | 5% | 50B | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
 | Comunidad y Ecosistema | Gobernanza DAO | 5% | 50B | `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5` |
+| **Nota:** Las categorías de Comunidad y Ecosistema originalmente sumaban 35% (350B). Se restaron 200B para la venta pública, quedando 15% (150B) distribuidas proporcionalmente entre las subcategorías. |
 | **Liquidez y Market Making** | **TOTAL** | **25%** | **250B** | `0xFF9e0a72842751698A62050e94fad0CE8C0b368a` |
 | Liquidez y Market Making | Liquidez Inicial DEX | 15% | 150B | `0xFF9e0a72842751698A62050e94fad0CE8C0b368a` |
 | Liquidez y Market Making | Reserva Liquidez | 10% | 100B | `0xFF9e0a72842751698A62050e94fad0CE8C0b368a` |
@@ -69,18 +73,20 @@ pie title Asignación de Tokens PELON (1 Billón Total)
 
 ```mermaid
 flowchart TD
-    A[Suministro Total: 1 Billón PELON] --> B[Comunidad y Ecosistema: 35% - 350B]
+    A[Suministro Total: 1 Billón PELON] --> H[Venta Pública: 20% - 200B]
+    A --> B[Comunidad y Ecosistema: 15% - 150B]
     A --> C[Liquidez y Market Making: 25% - 250B]
     A --> D[Equipo y Fundadores: 20% - 200B]
     A --> E[Marketing y Crecimiento: 10% - 100B]
     A --> F[Tesorería y Operaciones: 5% - 50B]
     A --> G[Fondo de Reserva: 5% - 50B]
     
+    H --> H1[Venta Pública de Tokens: 20% - 200B]
+    
     B --> B1[Airdrops Iniciales: 5% - 50B]
-    B --> B2[Incentivos Participación: 10% - 100B]
-    B --> B3[Recompensas Educativas: 10% - 100B]
-    B --> B4[Programa Referidos: 5% - 50B]
-    B --> B5[Gobernanza DAO: 5% - 50B]
+    B --> B2[Incentivos Participación: 5% - 50B]
+    B --> B3[Programa Referidos: 5% - 50B]
+    B --> B4[Gobernanza DAO: 5% - 50B]
     
     C --> C1[Liquidez Inicial DEX: 15% - 150B]
     C --> C2[Reserva Liquidez: 10% - 100B]
@@ -98,6 +104,7 @@ flowchart TD
     G --> G1[Reserva Estratégica: 5% - 50B]
     
     style A fill:#4338ca,stroke:#000,stroke-width:3px,color:#fff
+    style H fill:#4f46e5,stroke:#000,stroke-width:2px,color:#fff
     style B fill:#6366f1,stroke:#000,stroke-width:2px,color:#fff
     style C fill:#818cf8,stroke:#000,stroke-width:2px,color:#fff
     style D fill:#a5b4fc,stroke:#000,stroke-width:2px,color:#fff
@@ -108,18 +115,41 @@ flowchart TD
 
 ---
 
-## 1. Comunidad y Ecosistema (35% - 350B PELON)
+## 0. Venta Pública de Tokens (20% - 200B PELON)
 
-La asignación más grande refleja nuestro compromiso con la construcción de una comunidad próspera y comprometida. Esta categoría impulsa la adquisición de usuarios, la retención y el crecimiento de la plataforma.
+Una porción significativa del suministro total se destina a la venta pública de tokens, permitiendo que la comunidad y los inversores participen directamente en el ecosistema desde el inicio.
+
+**Características de la Venta:**
+- **Precio:** Bonding curve sigmoide con precio dinámico
+- **Precio Inicial:** 0.000003 USDC por PELON token (1 USDC = 333,333.33 PELON tokens)
+- **Mecanismo de Precio:** El precio aumenta dinámicamente a medida que se venden tokens, alcanzando un precio máximo configurable
+- **Método de Pago:** USDC (USD Coin)
+- **Mecanismo Anti-Whale:** Límite máximo por wallet para prevenir concentración excesiva
+- **Límite Total:** 200B tokens (20% del suministro total)
+- **Contrato:** TokenSale desplegado en Base Mainnet
+
+**Desglose:**
+- **Venta Pública (20% - 200B):** Tokens disponibles para compra pública usando USDC a través del contrato TokenSale
+
+**Nota Importante:** Los 200B tokens destinados a la venta pública fueron restados de la asignación original de Comunidad y Ecosistema (35% - 350B), quedando 15% (150B) para las iniciativas comunitarias restantes. Esto asegura que el suministro total de 1 billón de tokens se mantenga balanceado.
+
+**Por Qué Importa:** La venta pública democratiza el acceso al token, permite que la comunidad participe desde el inicio, y proporciona capital inicial para el desarrollo y crecimiento de la plataforma. El mecanismo anti-whale asegura una distribución más equitativa entre los participantes.
+
+---
+
+## 1. Comunidad y Ecosistema (15% - 150B PELON)
+
+Esta asignación refleja nuestro compromiso con la construcción de una comunidad próspera y comprometida. Esta categoría impulsa la adquisición de usuarios, la retención y el crecimiento de la plataforma.
 
 **Desglose:**
 - **Airdrops Iniciales (5% - 50B):** Recompensar early adopters y construir base de usuarios inicial
-- **Incentivos de Participación (10% - 100B):** Fomentar participación activa y uso de la plataforma
-- **Recompensas Educativas (10% - 100B):** Incentivar aprendizaje y consumo de contenido
+- **Incentivos de Participación (5% - 50B):** Fomentar participación activa y uso de la plataforma
 - **Programa de Referidos (5% - 50B):** Mecanismo de crecimiento viral para adquisición orgánica de usuarios
 - **Gobernanza DAO (5% - 50B):** Empoderar toma de decisiones comunitaria y descentralización
 
-**Por Qué Importa:** Una comunidad fuerte es la base de cualquier proyecto Web3 exitoso. Al asignar 35% a iniciativas comunitarias, aseguramos que el valor fluya directamente a los usuarios que contribuyen al éxito de la plataforma.
+**Nota sobre Asignación Original:** La categoría de Comunidad y Ecosistema originalmente estaba asignada con 35% (350B tokens), incluyendo subcategorías como Recompensas Educativas (10% - 100B) e Incentivos de Participación (10% - 100B). De esta asignación original, se restaron 200B tokens para la venta pública, redistribuyendo el resto proporcionalmente entre las subcategorías restantes.
+
+**Por Qué Importa:** Una comunidad fuerte es la base de cualquier proyecto Web3 exitoso. Aunque la asignación se redujo para incluir la venta pública, seguimos priorizando iniciativas comunitarias que aseguran que el valor fluya directamente a los usuarios que contribuyen al éxito de la plataforma.
 
 ---
 
@@ -187,18 +217,35 @@ Las reservas estratégicas proporcionan flexibilidad para oportunidades futuras,
 
 Todas las asignaciones de tokens se gestionan a través de direcciones de wallet dedicadas en la red Base. Cada categoría tiene su propia wallet para un seguimiento transparente y verificable de las asignaciones on-chain.
 
+### 📍 Venta Pública
+
+**Contrato TokenSale:** Dirección del contrato (se actualizará después del deployment)  
+**Asignación Total:** 20% (200B PELON)  
+**Precio:** Bonding curve sigmoide con precio dinámico  
+**Precio Inicial:** 0.000003 USDC por PELON token  
+**Método de Pago:** USDC (USD Coin)
+
+**Características:**
+- Venta pública de tokens usando USDC
+- Mecanismo anti-whale (límite por wallet)
+- Límite total de venta: 200B tokens
+
+**Wallet de Recepción de Fondos USDC:** `0xe76117151DCD6D9cb4DcEE496DCA2F8513Ca7D7f`  
+Esta wallet recibe automáticamente todos los USDC de cada compra. Los fondos se transfieren directamente del comprador a esta dirección en cada transacción, sin almacenarse en el contrato TokenSale. Esto mejora la seguridad al no mantener fondos en el contrato.
+
 ### 📍 Comunidad y Ecosistema
 
 **Dirección de Wallet:** `0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5`  
-**Asignación Total:** 35% (350B PELON)  
+**Asignación Total:** 15% (150B PELON) - Ajustada desde 35% (350B) original  
 **Transacción de Funding:** [Ver en BaseScan](https://sepolia.basescan.org/tx/0x40fbddd3c2c7f1b947de5264726d88fb5672191d950878d0de8e28ff4f4eb990)
 
 **Subcategorías:**
 - Airdrops Iniciales: 5% (50B)
-- Incentivos Participación: 10% (100B)
-- Recompensas Educativas: 10% (100B)
+- Incentivos Participación: 5% (50B) - Ajustado desde 10% (100B) original
 - Programa Referidos: 5% (50B)
 - Gobernanza DAO: 5% (50B)
+
+**Nota:** La asignación original de Comunidad y Ecosistema era 35% (350B), incluyendo Recompensas Educativas (10% - 100B). Se restaron 200B para la venta pública, redistribuyendo el resto entre las subcategorías restantes.
 
 ### 📍 Liquidez y Market Making
 
@@ -268,7 +315,8 @@ Todas las asignaciones pueden ser verificadas on-chain a través del explorador 
 ### Conservador Pero Estratégico
 
 Nuestro modelo de asignación equilibra múltiples objetivos:
-- **Enfoque comunitario** con 35% de asignación asegura creación de valor para usuarios
+- **Acceso público** con 20% de asignación a venta pública democratiza la participación
+- **Enfoque comunitario** con 15% de asignación asegura creación de valor para usuarios
 - **Estabilidad del mercado** a través de 25% de asignación de liquidez construye confianza de inversores
 - **Alineación a largo plazo** con 20% de asignación del equipo asegura desarrollo sostenido
 - **Aceleración del crecimiento** a través de 10% de asignación de marketing impulsa adopción
@@ -293,12 +341,14 @@ Todas las asignaciones están claramente definidas y pueden ser verificadas on-c
 Pelon Club Token representa una oportunidad única para participar en la convergencia de educación y tecnología Web3. Con un caso de uso claro, tokenómica sólida y un equipo comprometido, PELON está posicionado para capturar valor en el creciente mercado de educación token-gated.
 
 **Puntos Destacados de Inversión:**
-- Mayor asignación a comunidad (35%) asegura crecimiento impulsado por usuarios
+- Venta pública accesible (20%) permite participación desde el inicio
+- Asignación a comunidad (15%) asegura crecimiento impulsado por usuarios
 - Asignación de liquidez fuerte (25%) proporciona estabilidad del mercado
 - Asignación conservadora del equipo (20%) alinea incentivos a largo plazo
 - Utilidad clara a través de recursos educativos token-gated
 - Derechos de gobernanza a través de integración ERC20Votes
 - Construido en Base para transacciones de bajo costo y escalables
+- Mecanismo anti-whale para distribución equitativa
 
 ---
 
