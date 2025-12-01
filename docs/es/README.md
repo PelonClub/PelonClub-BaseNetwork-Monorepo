@@ -10,6 +10,8 @@ Este directorio contiene toda la documentación del proyecto traducida al españ
 
 - **[Tokenomics](tokenomics-es.md)** - Documentación completa sobre la asignación tokenómica del Pelon Club Token (PELON), incluyendo distribución, estructura y estrategia de sostenibilidad.
 
+- **[Guía de Curva Sigmoid](guia-curva-sigmoid.md)** - Guía de usuario completa que explica cómo funciona la curva de vinculación sigmoid para la venta de tokens PELON. Incluye explicación de los tiers de precio, ejemplos prácticos, comparaciones entre compradores tempranos y tardíos, instrucciones paso a paso para comprar, y estrategias para maximizar la adquisición de tokens.
+
 - **[TokenSale Contract](token-sale-contract.md)** - Análisis técnico exhaustivo del contrato inteligente de venta de tokens. Incluye análisis arquitectónico, seguridad, mecanismos de control, flujos de transacciones, funciones administrativas y de consulta, eventos, consideraciones técnicas y diagramas Mermaid.
 
 - **[Security Slither Analysis](security-slither.md)** - Análisis técnico exhaustivo del análisis de seguridad estático realizado con Slither. Incluye metodología del análisis, problemas identificados y corregidos, impacto de las correcciones en seguridad, gas y precisión, y recomendaciones futuras para mantener la seguridad del código.

@@ -10,6 +10,20 @@ Detailed documentation about the tokenomics allocation of Pelon Club Token (PELO
 
 - **[Tokenomics (English)](./tokenomics-en.md)** - Complete tokenomics documentation
 
+### Sigmoid Bonding Curve User Guide
+
+User-friendly guide explaining how the sigmoid bonding curve works for the PELON token sale:
+
+- **[Sigmoid Bonding Curve Guide (English)](./sigmoid-bonding-curve-guide.md)** - Complete user guide explaining the bonding curve, price tiers, and how to buy tokens
+
+The bonding curve guide includes:
+- Simple explanation of how bonding curves work
+- Four price tiers with real-world examples
+- Comparison tables showing early vs late buyer advantages
+- Step-by-step buying instructions
+- Frequently asked questions
+- Strategies for maximizing token acquisition
+
 ### Smart Contracts
 
 Comprehensive technical documentation about the project's smart contracts:
@@ -91,12 +105,13 @@ Information about contracts deployed on Base Sepolia Testnet:
 
 ```
 docs/en/
-├── tokenomics-en.md          # Tokenomics documentation in English
-├── token-sale-contract.md     # TokenSale contract technical documentation
-├── security-slither.md        # Slither security analysis documentation
-├── token-sale-testing.md      # TokenSale testing documentation
-├── fuzzing-echidna.md         # Echidna fuzzing documentation
-└── README.md                  # This file
+├── tokenomics-en.md                    # Tokenomics documentation in English
+├── sigmoid-bonding-curve-guide.md      # Sigmoid bonding curve user guide
+├── token-sale-contract.md               # TokenSale contract technical documentation
+├── security-slither.md                  # Slither security analysis documentation
+├── token-sale-testing.md                # TokenSale testing documentation
+├── fuzzing-echidna.md                   # Echidna fuzzing documentation
+└── README.md                             # This file
 ```
 
 ## About Pelon Club

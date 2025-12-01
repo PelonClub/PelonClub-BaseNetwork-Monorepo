@@ -22,6 +22,21 @@ Detailed documentation about the tokenomics allocation of the Pelon Club Token (
 - **Tokenomics (English)**: [docs/en/tokenomics-en.md](docs/en/tokenomics-en.md) - Complete tokenomics documentation
 - **Tokenomics (Español)**: [docs/es/tokenomics-es.md](docs/es/tokenomics-es.md) - Complete tokenomics documentation (Spanish)
 
+### Sigmoid Bonding Curve User Guide
+
+User-friendly guide explaining how the sigmoid bonding curve works for the PELON token sale, including price tiers, examples, and buying strategies:
+
+- **Sigmoid Bonding Curve Guide (English)**: [docs/en/sigmoid-bonding-curve-guide.md](docs/en/sigmoid-bonding-curve-guide.md) - Complete user guide explaining the bonding curve, price tiers, and how to buy tokens
+- **Guía de Curva Sigmoid (Español)**: [docs/es/guia-curva-sigmoid.md](docs/es/guia-curva-sigmoid.md) - Guía de usuario completa explicando la curva de vinculación, tiers de precio y cómo comprar tokens
+
+The bonding curve guide includes:
+- Simple explanation of how bonding curves work
+- Four price tiers with real-world examples
+- Comparison tables showing early vs late buyer advantages
+- Step-by-step buying instructions
+- Frequently asked questions
+- Strategies for maximizing token acquisition
+
 ### Smart Contracts
 
 Comprehensive technical documentation about the project's smart contracts:

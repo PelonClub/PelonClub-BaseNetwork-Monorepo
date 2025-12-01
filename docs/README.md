@@ -11,6 +11,21 @@ Detailed documentation about the tokenomic allocation of Pelon Club Token (PELON
 - **[Tokenomics (Español)](./es/tokenomics-es.md)** - Documentation in Spanish
 - **[Tokenomics (English)](./en/tokenomics-en.md)** - Documentation in English
 
+### Sigmoid Bonding Curve User Guide
+
+User-friendly guide explaining how the sigmoid bonding curve works for the PELON token sale, including price tiers, examples, and buying strategies:
+
+- **[Sigmoid Bonding Curve Guide (Español)](./es/guia-curva-sigmoid.md)** - Complete user guide in Spanish explaining the bonding curve, price tiers, and how to buy tokens
+- **[Sigmoid Bonding Curve Guide (English)](./en/sigmoid-bonding-curve-guide.md)** - Complete user guide in English explaining the bonding curve, price tiers, and how to buy tokens
+
+The bonding curve guide includes:
+- Simple explanation of how bonding curves work
+- Four price tiers with real-world examples
+- Comparison tables showing early vs late buyer advantages
+- Step-by-step buying instructions
+- Frequently asked questions
+- Strategies for maximizing token acquisition
+
 ### Smart Contracts
 
 Comprehensive technical documentation about the project's smart contracts:
@@ -98,6 +113,7 @@ Information about contracts deployed on Base Sepolia Testnet:
 docs/
 ├── es/                          # Documentation in Spanish
 │   ├── tokenomics-es.md
+│   ├── guia-curva-sigmoid.md
 │   ├── token-sale-contract.md
 │   ├── security-slither.md
 │   ├── token-sale-testing.md
@@ -105,6 +121,7 @@ docs/
 │   └── README.md
 ├── en/                          # Documentation in English
 │   ├── tokenomics-en.md
+│   ├── sigmoid-bonding-curve-guide.md
 │   ├── token-sale-contract.md
 │   ├── security-slither.md
 │   ├── token-sale-testing.md
