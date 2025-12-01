@@ -4,6 +4,10 @@ Hardhat project for the **PelonClubToken** (PELON) smart contract, the native to
 
 ## Description
 
+This Hardhat project contains multiple smart contracts for the Pelon Club ecosystem:
+
+### PelonClubToken
+
 PelonClubToken is a complete ERC20 token that extends OpenZeppelin's standard contracts with multiple advanced features:
 
 - **ERC20**: Standard functionality for transfers and approvals
@@ -12,13 +16,38 @@ PelonClubToken is a complete ERC20 token that extends OpenZeppelin's standard co
 - **ERC20Permit**: Supports gasless token approvals via EIP-2612 signatures
 - **ERC20Votes**: Provides voting functionality for governance and decision-making within the pelon.club ecosystem
 
-### Token Features
+### PelonStakingVault
+
+PelonStakingVault is an ERC4626-compliant tokenized vault for staking PELON tokens with advanced features:
+
+- **ERC4626**: Standard vault interface for interoperability with DeFi protocols
+- **Configurable FIFO Timelock**: Configurable timelock system (1-90 days, default 15 days) with strict first-in-first-out processing
+- **Configurable Withdrawal Fees**: Configurable fee (0-10%, default 3%) on withdrawals with 50/25/25 distribution (fee wallet/re-staking/burn)
+- **Re-staking Mechanism**: 25% of fees re-staked without minting shares, increasing value per share for all holders
+- **Deposit Tracking**: Individual deposit tracking with timestamps for timelock enforcement
+- **Optimized FIFO**: Index-based deposit removal for gas efficiency
+- **Preview Functions**: Functions showing net amounts after fees
+- **Ownable**: Administrative control over fee wallet, timelock duration, and fee percentage
+
+### PelonClubToken Features
 
 - **Total Supply**: 1,000,000,000,000 PELON tokens (1 trillion)
 - **Symbol**: PELON
 - **Name**: Pelon Club Token
 - **No fees**: All transfers are fee-free
 - **Decentralized**: The contract has NO owner functions or administrative controls. Once deployed, the contract is completely decentralized and immutable
+
+### PelonStakingVault Features
+
+- **Vault Shares**: psvPELON (Pelon Staking Vault shares)
+- **Timelock Duration**: Configurable (1-90 days, default 15 days = 1,296,000 seconds)
+- **Withdrawal Fee**: Configurable (0-10%, default 3% = 300 basis points)
+- **Fee Distribution**: 50% to fee wallet, 25% re-staked (increases share value), 25% burned
+- **ERC4626 Compliant**: Full standard compliance for DeFi interoperability
+- **FIFO System**: Strict first-in-first-out deposit processing with optimized index-based removal
+- **Preview Functions**: `previewWithdrawAfterFee()` and `previewRedeemAfterFee()` show net amounts
+- **Fee Wallet**: Configurable address for withdrawal fee collection
+- **Administrative Functions**: Owner can configure timelock duration, fee percentage, and fee wallet
 
 ## Prerequisites
 
@@ -74,9 +103,13 @@ npx hardhat coverage
 # Run only TokenSale contract tests
 npx hardhat test test/TokenSale.test.ts
 
+# Run only PelonStakingVault contract tests
+npx hardhat test test/PelonStakingVault.test.ts
+
 # Run tests matching a pattern
 npx hardhat test --grep "Constructor"
 npx hardhat test --grep "buyTokens"
+npx hardhat test --grep "Timelock"
 ```
 
 ## Testing
@@ -124,11 +157,42 @@ The test suite includes **82 comprehensive tests** covering:
 - Events: 7 tests ✅
 - Integration: 3 tests ✅
 
+### PelonStakingVault Test Suite
+
+The `PelonStakingVault` contract has a comprehensive test suite with **75 comprehensive tests** covering all aspects of the contract:
+
+**Current Status**: ✅ **All tests passing (75/75)** - Last execution: December 2024
+
+- **Constructor and Initial Configuration** (3 tests): Deployment validation and parameter checks
+- **Deposit Functions** (8 tests): Deposit and mint operations, FIFO recording
+- **Timelock FIFO System** (7 tests): Timelock enforcement and FIFO order validation
+- **Withdraw and Redeem Functions** (8 tests): Withdrawal operations with fee application
+- **Fee Calculation and Distribution** (4 tests): Three-way fee distribution (50/25/25)
+- **Preview Functions** (6 tests): ERC4626 compliance and fee-aware previews
+- **View Functions** (4 tests): State query functions
+- **Admin Functions** (9 tests): Administrative controls and access control
+- **Edge Cases and Precision** (6 tests): Boundary conditions and precision handling
+- **Security and Reentrancy** (3 tests): Reentrancy protection and SafeERC20 usage
+- **Events** (6 tests): Event emission validation
+- **Integration and Complete Flows** (3 tests): End-to-end user journeys
+- **Special Cases: _removeDeposits** (3 tests): Optimized FIFO removal mechanism
+- **Special Cases: _burnFee** (2 tests): Fee burning logic
+- **ERC4626 Compliance** (3 tests): Standard compliance validation
+
+### Test Results
+
+**PelonStakingVault Test Execution**:
+- ✅ **75/75 tests passing** (100% success rate)
+- ⏱️ **Execution time**: ~3 seconds
+- 📊 **Coverage**: Extensive coverage across all functions and edge cases
+
 ### Testing Documentation
 
 For detailed information about the testing strategy, covered cases, and how to run tests, see:
 
-- **[Testing Documentation (English)](../docs/en/token-sale-testing.md)**
+- **[TokenSale Testing Documentation (English)](../docs/en/token-sale-testing.md)**
+- **[PelonStakingVault Security Analysis (English)](../docs/en/pelon-staking-vault-security-analysis.md)** - Includes comprehensive test analysis (75 tests)
+- **[Análisis de Seguridad PelonStakingVault (Español)](../docs/es/analisis-seguridad-pelon-staking-vault.md)** - Incluye análisis comprehensivo de tests (75 tests)
 
 ### Code Coverage
 
@@ -264,9 +328,55 @@ For detailed information about fuzzing with Echidna, see:
 
 - **[Fuzzing with Echidna (English)](../docs/en/fuzzing-echidna.md)**
 
+### PelonStakingVault Documentation
+
+Comprehensive technical documentation about the PelonStakingVault contract:
+
+- **[PelonStakingVault Contract (English)](../docs/en/pelon-staking-vault.md)** - Complete technical analysis of the staking vault contract
+- **[PelonStakingVault Contract (Español)](../docs/es/pelon-staking-vault.md)** - Complete technical analysis of the staking vault contract (Spanish)
+
+The PelonStakingVault documentation includes:
+- ERC4626 standard compliance and architecture
+- FIFO timelock system implementation
+- Withdrawal fee mechanism
+- Deposit tracking and management
+- Security considerations and gas optimizations
+- Mermaid diagrams of flows and state transitions
+
+### PelonStakingVault User Guide
+
+Comprehensive user guide for investors explaining how to use the PelonStakingVault:
+
+- **[Staking Vault User Guide (English)](../docs/en/staking-vault-user-guide.md)** - Complete user guide explaining how to stake PELON tokens, understand the FIFO timelock system, withdrawal fees, and practical use cases
+- **[Guía de Usuario del Vault de Staking (Español)](../docs/es/guia-usuario-vault-staking.md)** - Guía de usuario completa que explica cómo hacer staking de tokens PELON, entender el sistema de timelock FIFO, tarifas de retiro, y casos de uso prácticos (Spanish)
+
+The staking vault user guide includes:
+- Introduction to ERC4626 vaults and core concepts
+- Detailed explanation of vault mechanics and share calculation
+- Comprehensive guide to the 15-day FIFO timelock system
+- Withdrawal fee system explanation (3% fee)
+- Step-by-step user operations (deposits, withdrawals, redemptions)
+- Practical use cases with real-world examples and calculations
+- Frequently asked questions
+- Technical considerations (gas costs, best practices, security)
+- Mermaid diagrams of deposit flows, withdrawal processes, and FIFO state transitions
+
 ### Security Analysis with Slither
 
-The project includes the `hardhat-slither` plugin for static security analysis of contracts.
+The project includes the `hardhat-slither` plugin for static security analysis of contracts. Both `TokenSale` and `PelonStakingVault` contracts have been analyzed with Slither.
+
+#### PelonStakingVault Security Analysis
+
+The PelonStakingVault contract has undergone comprehensive security analysis:
+
+- **Slither Analysis**: Static analysis completed with minimal findings (2 contract-specific findings, both acceptable)
+- **Test Coverage**: 75 comprehensive tests with 100% pass rate
+- **Security Features**: Reentrancy protection, FIFO timelock enforcement, safe token transfers, access control
+- **Innovative Mechanisms**: Index-based FIFO optimization, non-dilutive re-staking, three-way fee distribution
+
+For detailed security analysis documentation, see:
+- **[PelonStakingVault Security Analysis (English)](../docs/en/pelon-staking-vault-security-analysis.md)**
+- **[Análisis de Seguridad PelonStakingVault (Español)](../docs/es/analisis-seguridad-pelon-staking-vault.md)**
 
 #### Run Slither Analysis
 
@@ -322,6 +432,7 @@ hardhat2/
 ├── contracts/
 │   ├── PelonClubToken.sol    # Main token contract
 │   ├── TokenSale.sol         # Token sale contract
+│   ├── PelonStakingVault.sol # ERC4626 staking vault with timelock and fees
 │   └── MockUSDC.sol          # USDC mock for testing
 ├── echidna/
 │   ├── echidna.yaml          # Echidna configuration

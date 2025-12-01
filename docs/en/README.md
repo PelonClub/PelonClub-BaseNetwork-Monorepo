@@ -29,6 +29,7 @@ The bonding curve guide includes:
 Comprehensive technical documentation about the project's smart contracts:
 
 - **[TokenSale Contract (English)](./token-sale-contract.md)** - Complete technical analysis of the token sale contract
+- **[PelonStakingVault Contract (English)](./pelon-staking-vault.md)** - Complete technical analysis of the staking vault contract
 
 The TokenSale contract documentation includes:
 - Architectural analysis and contract inheritance
@@ -37,6 +38,35 @@ The TokenSale contract documentation includes:
 - Administrative and query functions
 - Technical considerations and edge cases
 - Mermaid diagrams of architecture and flows
+
+The PelonStakingVault contract documentation includes:
+- ERC4626 standard compliance and architecture
+- Configurable FIFO timelock system (1-90 days, default 15 days)
+- Configurable withdrawal fee mechanism (0-10%, default 3%) with 50/25/25 distribution
+- Re-staking mechanism that increases value per share for all holders
+- Deposit tracking and management with optimized index-based FIFO
+- Preview functions showing net amounts after fees
+- Security considerations and gas optimizations
+- Mermaid diagrams of flows and state transitions
+
+### Staking Vault User Guide
+
+Comprehensive user guide for investors explaining how to use the PelonStakingVault:
+
+- **[Staking Vault User Guide (English)](./staking-vault-user-guide.md)** - Complete user guide explaining how to stake PELON tokens, understand the FIFO timelock system, withdrawal fees, and practical use cases
+
+The staking vault user guide includes:
+- Introduction to ERC4626 vaults and core concepts
+- Detailed explanation of vault mechanics and share calculation
+- Comprehensive guide to the configurable FIFO timelock system (1-90 days, default 15 days)
+- Withdrawal fee system explanation with 50/25/25 distribution (configurable 0-10%, default 3%)
+- Re-staking benefits that increase value per share for all holders
+- Step-by-step user operations (deposits, withdrawals, redemptions)
+- Preview functions showing net amounts after fees
+- Practical use cases with real-world examples and calculations
+- Frequently asked questions
+- Technical considerations (gas costs, best practices, security)
+- Mermaid diagrams of deposit flows, withdrawal processes, and FIFO state transitions
 
 ### Security Analysis
 
@@ -51,19 +81,37 @@ The security documentation includes:
 - Improvements in security, gas, and precision
 - Future recommendations for maintaining security
 
+### PelonStakingVault Security Analysis
+
+Comprehensive security analysis and testing documentation for the PelonStakingVault contract:
+
+- **[PelonStakingVault Security Analysis (English)](./pelon-staking-vault-security-analysis.md)** - Exhaustive technical analysis including Slither findings, comprehensive test coverage (75 tests), security features, best practices, and innovative mechanisms
+
+The PelonStakingVault security analysis includes:
+- Complete Slither static analysis results and findings
+- Comprehensive test suite analysis (75 tests, 100% pass rate)
+- Security features and mechanisms (reentrancy protection, FIFO timelock, fee distribution)
+- Best practices and conventions (OpenZeppelin usage, ERC4626 compliance, gas optimization)
+- Innovative features (index-based FIFO, non-dilutive re-staking, three-way fee distribution)
+- Mermaid diagrams (architecture, flows, state transitions)
+- Metrics and statistics (gas analysis, test coverage, security metrics)
+- Guidelines and recommendations for auditors, developers, and users
+
 ### Testing
 
-Comprehensive documentation about the TokenSale contract test suite:
+Comprehensive documentation about contract test suites:
 
 - **[TokenSale Testing (English)](./token-sale-testing.md)** - Complete documentation about testing strategy, covered cases, and execution guide
 
-The testing documentation includes:
+The TokenSale testing documentation includes:
 - Testing strategy and test structure
 - Complete test coverage (82 comprehensive tests)
 - Edge cases and scenarios covered
 - Test execution guide and coverage reports
 - Metrics and testing statistics
 - References and additional resources
+
+**PelonStakingVault Testing**: The PelonStakingVault contract has **75 comprehensive tests** with 100% pass rate. Detailed test analysis is included in the [PelonStakingVault Security Analysis](./pelon-staking-vault-security-analysis.md) documentation.
 
 ### Fuzzing
 
@@ -108,7 +156,10 @@ docs/en/
 ├── tokenomics-en.md                    # Tokenomics documentation in English
 ├── sigmoid-bonding-curve-guide.md      # Sigmoid bonding curve user guide
 ├── token-sale-contract.md               # TokenSale contract technical documentation
+├── pelon-staking-vault.md               # PelonStakingVault contract technical documentation
+├── staking-vault-user-guide.md          # PelonStakingVault user guide for investors
 ├── security-slither.md                  # Slither security analysis documentation
+├── pelon-staking-vault-security-analysis.md  # PelonStakingVault security analysis and testing
 ├── token-sale-testing.md                # TokenSale testing documentation
 ├── fuzzing-echidna.md                   # Echidna fuzzing documentation
 └── README.md                             # This file
