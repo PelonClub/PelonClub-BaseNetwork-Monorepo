@@ -1,80 +1,80 @@
-# Documentación de Pelon Club
+# Pelon Club Documentation
 
-Bienvenido a la documentación de Pelon Club. Esta carpeta contiene documentación relevante sobre el proyecto.
+Welcome to the Pelon Club documentation. This folder contains relevant documentation about the project.
 
-## Contenido
+## Content
 
 ### Tokenomics
 
-Documentación detallada sobre la asignación tokenómica del Pelon Club Token (PELON):
+Detailed documentation about the tokenomic allocation of Pelon Club Token (PELON):
 
-- **[Tokenomics (Español)](./es/tokenomics-es.md)** - Documentación en español
+- **[Tokenomics (Español)](./es/tokenomics-es.md)** - Documentation in Spanish
 - **[Tokenomics (English)](./en/tokenomics-en.md)** - Documentation in English
 
-### Contratos Inteligentes
+### Smart Contracts
 
-Documentación técnica exhaustiva sobre los contratos inteligentes del proyecto:
+Comprehensive technical documentation about the project's smart contracts:
 
-- **[TokenSale Contract (Español)](./es/token-sale-contract.md)** - Análisis técnico completo del contrato de venta de tokens
+- **[TokenSale Contract (Español)](./es/token-sale-contract.md)** - Complete technical analysis of the token sale contract
 - **[TokenSale Contract (English)](./en/token-sale-contract.md)** - Complete technical analysis of the token sale contract
 
-La documentación del contrato TokenSale incluye:
-- Análisis arquitectónico y herencia de contratos
-- Análisis de seguridad y mecanismos de protección
-- Flujos de transacciones y validaciones
-- Funciones de administración y consulta
-- Consideraciones técnicas y casos edge
-- Diagramas Mermaid de arquitectura y flujos
+The TokenSale contract documentation includes:
+- Architectural analysis and contract inheritance
+- Security analysis and protection mechanisms
+- Transaction flows and validations
+- Administration and query functions
+- Technical considerations and edge cases
+- Mermaid diagrams of architecture and flows
 
-### Análisis de Seguridad
+### Security Analysis
 
-Documentación técnica detallada sobre el análisis de seguridad estático realizado con Slither:
+Detailed technical documentation about the static security analysis performed with Slither:
 
-- **[Security Slither Analysis (Español)](./es/security-slither.md)** - Análisis técnico exhaustivo de los problemas encontrados por Slither y las correcciones aplicadas
+- **[Security Slither Analysis (Español)](./es/security-slither.md)** - Comprehensive technical analysis of issues found by Slither and applied fixes
 - **[Security Slither Analysis (English)](./en/security-slither.md)** - Comprehensive technical analysis of Slither findings and applied fixes
 
-La documentación de seguridad incluye:
-- Metodología del análisis con Slither
-- Problemas identificados y su análisis técnico detallado
-- Correcciones implementadas y su impacto
-- Mejoras en seguridad, gas y precisión
-- Recomendaciones futuras para mantener la seguridad
+The security documentation includes:
+- Slither analysis methodology
+- Identified issues and their detailed technical analysis
+- Implemented fixes and their impact
+- Improvements in security, gas, and precision
+- Future recommendations to maintain security
 
 ### Testing
 
-Documentación exhaustiva sobre la suite de tests del contrato TokenSale:
+Comprehensive documentation about the TokenSale contract test suite:
 
-- **[TokenSale Testing (Español)](./es/token-sale-testing.md)** - Documentación completa sobre la estrategia de testing, casos cubiertos, y guía de ejecución
+- **[TokenSale Testing (Español)](./es/token-sale-testing.md)** - Complete documentation about testing strategy, covered cases, and execution guide
 - **[TokenSale Testing (English)](./en/token-sale-testing.md)** - Complete documentation about testing strategy, covered cases, and execution guide
 
-La documentación de testing incluye:
-- Estrategia de testing y estructura de tests
-- Cobertura completa de tests (82 tests comprehensivos)
-- Casos límite y escenarios edge cubiertos
-- Guía de ejecución de tests y reportes de cobertura
-- Métricas y estadísticas de testing
-- Referencias y recursos adicionales
+The testing documentation includes:
+- Testing strategy and test structure
+- Complete test coverage (82 comprehensive tests)
+- Edge cases and covered scenarios
+- Test execution guide and coverage reports
+- Testing metrics and statistics
+- References and additional resources
 
 ### Fuzzing
 
-Documentación técnica sobre pruebas de fuzzing basadas en propiedades con Echidna:
+Technical documentation about property-based fuzzing tests with Echidna:
 
-- **[Fuzzing con Echidna (Español)](./es/fuzzing-echidna.md)** - Guía completa de fuzzing con Echidna para el contrato TokenSale
+- **[Fuzzing con Echidna (Español)](./es/fuzzing-echidna.md)** - Complete guide to fuzzing with Echidna for the TokenSale contract
 - **[Fuzzing with Echidna (English)](./en/fuzzing-echidna.md)** - Complete guide to fuzzing with Echidna for the TokenSale contract
 
-La documentación de fuzzing incluye:
-- Introducción a fuzzing y Echidna
-- Instalación y configuración
-- 15 propiedades invariantes testeadas
-- Guía de ejecución e interpretación de resultados
-- Debugging y mejores prácticas
-- Integración con Hardhat
+The fuzzing documentation includes:
+- Introduction to fuzzing and Echidna
+- Installation and configuration
+- 15 tested invariant properties
+- Execution guide and result interpretation
+- Debugging and best practices
+- Hardhat integration
 
-### Contratos Desplegados
+### Deployed Contracts
 
 #### Base Mainnet
 
-Información sobre los contratos desplegados en Base Mainnet:
+Information about contracts deployed on Base Mainnet:
 
 - **TokenSale**: [`0x42F94856e32bc8817dDe6CD1D8c0e8dF0b740Ba8`](https://basescan.org/address/0x42F94856e32bc8817dDe6CD1D8c0e8dF0b740Ba8)
 - **PelonClubToken**: [`0x591e967fb0496beB4BDa117959e6D70D7Ad49a1C`](https://basescan.org/address/0x591e967fb0496beB4BDa117959e6D70D7Ad49a1C)
@@ -84,7 +84,7 @@ Información sobre los contratos desplegados en Base Mainnet:
 
 #### Base Testnet (Sepolia)
 
-Información sobre los contratos desplegados en Base Sepolia Testnet:
+Information about contracts deployed on Base Sepolia Testnet:
 
 - **TokenSale**: [`0xdF556BD113FFC32CC85E098520BfC615438Ca16B`](https://sepolia.basescan.org/address/0xdF556BD113FFC32CC85E098520BfC615438Ca16B)
 - **PelonClubToken**: [`0x734AE77B7dE9B5cc3Ce9d3D20B92c769d8588f15`](https://sepolia.basescan.org/address/0x734AE77B7dE9B5cc3Ce9d3D20B92c769d8588f15)
@@ -92,11 +92,11 @@ Información sobre los contratos desplegados en Base Sepolia Testnet:
 - **Chain ID**: 84532
 - **Network**: Base Sepolia Testnet
 
-## Estructura
+## Structure
 
 ```
 docs/
-├── es/                          # Documentación en español
+├── es/                          # Documentation in Spanish
 │   ├── tokenomics-es.md
 │   ├── token-sale-contract.md
 │   ├── security-slither.md
@@ -110,6 +110,6 @@ docs/
 │   ├── token-sale-testing.md
 │   ├── fuzzing-echidna.md
 │   └── README.md
-└── README.md                    # Este archivo
+└── README.md                    # This file
 ```
 

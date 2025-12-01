@@ -15,69 +15,69 @@ For a comprehensive overview of all documentation, see the [Documentation Index]
 
 ### Tokenomics
 
-Documentación detallada sobre la asignación tokenómica del Pelon Club Token (PELON):
+Detailed documentation about the tokenomics allocation of the Pelon Club Token (PELON):
 
 - **Tokenomics (English)**: [docs/en/tokenomics-en.md](docs/en/tokenomics-en.md) - Complete tokenomics documentation
-- **Tokenomics (Español)**: [docs/es/tokenomics-es.md](docs/es/tokenomics-es.md) - Documentación completa de tokenomics
+- **Tokenomics (Español)**: [docs/es/tokenomics-es.md](docs/es/tokenomics-es.md) - Complete tokenomics documentation (Spanish)
 
 ### Smart Contracts
 
-Documentación técnica exhaustiva sobre los contratos inteligentes del proyecto:
+Comprehensive technical documentation about the project's smart contracts:
 
 - **TokenSale Contract (English)**: [docs/en/token-sale-contract.md](docs/en/token-sale-contract.md) - Complete technical analysis of the token sale contract
-- **TokenSale Contract (Español)**: [docs/es/token-sale-contract.md](docs/es/token-sale-contract.md) - Análisis técnico completo del contrato de venta de tokens
+- **TokenSale Contract (Español)**: [docs/es/token-sale-contract.md](docs/es/token-sale-contract.md) - Complete technical analysis of the token sale contract (Spanish)
 
-La documentación del contrato TokenSale incluye:
-- Análisis arquitectónico y herencia de contratos
-- Análisis de seguridad y mecanismos de protección
-- Flujos de transacciones y validaciones
-- Funciones de administración y consulta
-- Consideraciones técnicas y casos edge
-- Diagramas Mermaid de arquitectura y flujos
+The TokenSale contract documentation includes:
+- Architectural analysis and contract inheritance
+- Security analysis and protection mechanisms
+- Transaction flows and validations
+- Administration and query functions
+- Technical considerations and edge cases
+- Mermaid diagrams of architecture and flows
 
 ### Security Analysis
 
-Documentación técnica detallada sobre el análisis de seguridad estático realizado con Slither:
+Detailed technical documentation about the static security analysis performed with Slither:
 
 - **Slither Analysis (English)**: [docs/en/security-slither.md](docs/en/security-slither.md) - Comprehensive technical analysis of Slither findings and applied fixes
-- **Slither Analysis (Español)**: [docs/es/security-slither.md](docs/es/security-slither.md) - Análisis técnico exhaustivo de los problemas encontrados por Slither y las correcciones aplicadas
+- **Slither Analysis (Español)**: [docs/es/security-slither.md](docs/es/security-slither.md) - Comprehensive technical analysis of Slither findings and applied fixes (Spanish)
 
-La documentación de seguridad incluye:
-- Metodología del análisis con Slither
-- Problemas identificados y su análisis técnico detallado
-- Correcciones implementadas y su impacto
-- Mejoras en seguridad, gas y precisión
-- Recomendaciones futuras para mantener la seguridad
+The security documentation includes:
+- Slither analysis methodology
+- Identified issues and their detailed technical analysis
+- Implemented fixes and their impact
+- Security, gas, and precision improvements
+- Future recommendations for maintaining security
 
 ### Testing
 
-Documentación exhaustiva sobre la suite de tests del contrato TokenSale:
+Comprehensive documentation about the TokenSale contract test suite:
 
 - **TokenSale Testing (English)**: [docs/en/token-sale-testing.md](docs/en/token-sale-testing.md) - Complete documentation about testing strategy, covered cases, and execution guide
-- **TokenSale Testing (Español)**: [docs/es/token-sale-testing.md](docs/es/token-sale-testing.md) - Documentación completa sobre la estrategia de testing, casos cubiertos, y guía de ejecución
+- **TokenSale Testing (Español)**: [docs/es/token-sale-testing.md](docs/es/token-sale-testing.md) - Complete documentation about testing strategy, covered cases, and execution guide (Spanish)
 
-La documentación de testing incluye:
-- Estrategia de testing y estructura de tests
-- Cobertura completa de tests (82 tests comprehensivos)
-- Casos límite y escenarios edge cubiertos
-- Guía de ejecución de tests y reportes de cobertura
-- Métricas y estadísticas de testing
-- Referencias y recursos adicionales
+The testing documentation includes:
+- Testing strategy and test structure
+- Complete test coverage (82 comprehensive tests)
+- Edge cases and scenarios covered
+- Test execution guide and coverage reports
+- Testing metrics and statistics
+- References and additional resources
 
 ### Fuzzing
 
-Documentación técnica sobre pruebas de fuzzing basadas en propiedades con Echidna:
+Technical documentation about property-based fuzzing tests with Echidna:
 
 - **Fuzzing with Echidna (English)**: [docs/en/fuzzing-echidna.md](docs/en/fuzzing-echidna.md) - Complete guide to fuzzing with Echidna for the TokenSale contract
-- **Fuzzing con Echidna (Español)**: [docs/es/fuzzing-echidna.md](docs/es/fuzzing-echidna.md) - Guía completa de fuzzing con Echidna para el contrato TokenSale
+- **Fuzzing with Echidna (Español)**: [docs/es/fuzzing-echidna.md](docs/es/fuzzing-echidna.md) - Complete guide to fuzzing with Echidna for the TokenSale contract (Spanish)
 
-La documentación de fuzzing incluye:
-- Introducción a fuzzing y Echidna
-- Instalación y configuración
-- 15 propiedades invariantes testeadas
-- Guía de ejecución e interpretación de resultados
-- Debugging y mejores prácticas
-- Integración con Hardhat
+The fuzzing documentation includes:
+- Introduction to fuzzing and Echidna
+- Installation and configuration
+- 15 invariant properties tested
+- Execution guide and result interpretation
+- Debugging and best practices
+- Hardhat integration
 
 ## Deployed Contracts
 
@@ -136,7 +136,7 @@ This will run comprehensive fuzzing tests on the `TokenSale` contract, testing 1
 
 For detailed documentation, see:
 - **[Fuzzing with Echidna (English)](docs/en/fuzzing-echidna.md)**
-- **[Fuzzing con Echidna (Español)](docs/es/fuzzing-echidna.md)**
+- **[Fuzzing with Echidna (Español)](docs/es/fuzzing-echidna.md)**
 
 #### Testing
 
@@ -160,7 +160,7 @@ npx hardhat coverage
 
 For detailed testing documentation, see:
 - **[Testing Documentation (English)](docs/en/token-sale-testing.md)**
-- **[Documentación de Testing (Español)](docs/es/token-sale-testing.md)**
+- **[Testing Documentation (Español)](docs/es/token-sale-testing.md)**
 
 ### [dapp](dapp/)
 

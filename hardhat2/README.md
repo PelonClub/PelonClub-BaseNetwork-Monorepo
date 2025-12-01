@@ -1,147 +1,146 @@
 # PelonClubToken - Hardhat Project
 
-Proyecto Hardhat para el contrato inteligente **PelonClubToken** (PELON), el token nativo que potencia [pelon.club](https://pelon.club), la plataforma educativa token-gated revolucionaria y red social para estudiantes.
+Hardhat project for the **PelonClubToken** (PELON) smart contract, the native token that powers [pelon.club](https://pelon.club), the revolutionary token-gated educational platform and social network for students.
 
-## Descripción
+## Description
 
-PelonClubToken es un token ERC20 completo que extiende los contratos estándar de OpenZeppelin con múltiples características avanzadas:
+PelonClubToken is a complete ERC20 token that extends OpenZeppelin's standard contracts with multiple advanced features:
 
-- **ERC20**: Funcionalidad estándar para transferencias y aprobaciones
-- **ERC20Burnable**: Permite a los holders quemar sus tokens
-- **ERC1363**: Habilita transferencias de tokens pagables, permitiendo que los tokens llamen funciones en contratos receptores
-- **ERC20Permit**: Soporta aprobaciones de tokens sin gas mediante firmas EIP-2612
-- **ERC20Votes**: Proporciona funcionalidad de votación para gobernanza y toma de decisiones dentro del ecosistema pelon.club
+- **ERC20**: Standard functionality for transfers and approvals
+- **ERC20Burnable**: Allows holders to burn their tokens
+- **ERC1363**: Enables payable token transfers, allowing tokens to call functions on receiving contracts
+- **ERC20Permit**: Supports gasless token approvals via EIP-2612 signatures
+- **ERC20Votes**: Provides voting functionality for governance and decision-making within the pelon.club ecosystem
 
-### Características del Token
+### Token Features
 
-- **Total Supply**: 1,000,000,000,000 PELON tokens (1 trillón)
-- **Símbolo**: PELON
-- **Nombre**: Pelon Club Token
-- **Sin fees**: Todas las transferencias son libres de comisiones
-- **Descentralizado**: El contrato NO tiene funciones de owner ni controles administrativos. Una vez desplegado, el contrato es completamente descentralizado e inmutable
+- **Total Supply**: 1,000,000,000,000 PELON tokens (1 trillion)
+- **Symbol**: PELON
+- **Name**: Pelon Club Token
+- **No fees**: All transfers are fee-free
+- **Decentralized**: The contract has NO owner functions or administrative controls. Once deployed, the contract is completely decentralized and immutable
 
-## Requisitos Previos
+## Prerequisites
 
-- Node.js (v16 o superior)
-- npm o yarn
-- Cuenta con ETH en Base Mainnet para deployment
+- Node.js (v16 or higher)
+- npm or yarn
+- Account with ETH on Base Mainnet for deployment
 
-## Instalación
+## Installation
 
 ```shell
 npm install
 ```
 
-## Configuración
+## Configuration
 
-Crea un archivo `.env` en la raíz del proyecto con las siguientes variables:
+Create a `.env` file in the project root with the following variables:
 
 ```env
-PRIVATE_KEY=tu_clave_privada_aqui
-ETHERSCAN_API_KEY=tu_api_key_de_basescan
-MNEMONIC=tu_mnemonic_para_red_local (opcional)
+PRIVATE_KEY=your_private_key_here
+ETHERSCAN_API_KEY=your_basescan_api_key
+MNEMONIC=your_mnemonic_for_local_network (optional)
 ```
 
-## Scripts Disponibles
+## Available Scripts
 
-### Compilar Contratos
+### Compile Contracts
 
 ```shell
 npx hardhat compile
 ```
 
-### Ejecutar Tests
+### Run Tests
 
 ```shell
 npx hardhat test
 ```
 
-### Ejecutar Tests con Reporte de Gas
+### Run Tests with Gas Report
 
 ```shell
 REPORT_GAS=true npx hardhat test
 ```
 
-### Ejecutar Tests con Cobertura
+### Run Tests with Coverage
 
 ```shell
 npx hardhat coverage
 ```
 
-### Ejecutar Tests Específicos
+### Run Specific Tests
 
 ```shell
-# Ejecutar solo tests del contrato TokenSale
+# Run only TokenSale contract tests
 npx hardhat test test/TokenSale.test.ts
 
-# Ejecutar tests que coincidan con un patrón
+# Run tests matching a pattern
 npx hardhat test --grep "Constructor"
 npx hardhat test --grep "buyTokens"
 ```
 
 ## Testing
 
-El proyecto incluye una suite exhaustiva de tests para el contrato `TokenSale` que cubre todos los aspectos del contrato, incluyendo casos límite, validaciones, funciones administrativas, y escenarios de seguridad.
+The project includes a comprehensive test suite for the `TokenSale` contract that covers all aspects of the contract, including edge cases, validations, administrative functions, and security scenarios.
 
-### Suite de Tests de TokenSale
+### TokenSale Test Suite
 
-La suite de tests incluye **82 tests comprehensivos** que cubren:
+The test suite includes **82 comprehensive tests** covering:
 
-**Estado Actual**: ✅ **Todos los tests pasando (82/82)** - Última ejecución: Diciembre 2024
+**Current Status**: ✅ **All tests passing (82/82)** - Last execution: December 2024
 
-- **Tests del Constructor** (11 tests): Validación de todos los parámetros del constructor
-- **Tests de Compras Exitosas** (3 tests): Escenarios de compra exitosa
-- **Tests de Validaciones** (7 tests): Todas las condiciones que causan reverts
-- **Tests de Casos Límite** (6 tests): Condiciones de frontera y escenarios inusuales
-- **Tests de Curva de Precio** (6 tests): Verificación del cálculo de precio sigmoide
-- **Tests de Funciones Administrativas** (13 tests): Todas las funciones onlyOwner
-- **Tests de Pausa/Despausa** (6 tests): Mecanismo de pausa de emergencia
-- **Tests de Retiro** (6 tests): Funcionalidad de retiro de tokens
-- **Tests de Funciones View** (11 tests): Todas las funciones de consulta
-- **Tests de Seguridad** (3 tests): Protección contra reentrancy y control de acceso
-- **Tests de Eventos** (7 tests): Verificación de emisión de eventos
-- **Tests de Integración** (3 tests): Flujos complejos y escenarios completos
+- **Constructor Tests** (11 tests): Validation of all constructor parameters
+- **Successful Purchase Tests** (3 tests): Successful purchase scenarios
+- **Validation Tests** (7 tests): All conditions that cause reverts
+- **Edge Case Tests** (6 tests): Boundary conditions and unusual scenarios
+- **Price Curve Tests** (6 tests): Verification of sigmoid price calculation
+- **Administrative Function Tests** (13 tests): All onlyOwner functions
+- **Pause/Unpause Tests** (6 tests): Emergency pause mechanism
+- **Withdrawal Tests** (6 tests): Token withdrawal functionality
+- **View Function Tests** (11 tests): All query functions
+- **Security Tests** (3 tests): Protection against reentrancy and access control
+- **Event Tests** (7 tests): Event emission verification
+- **Integration Tests** (3 tests): Complex flows and complete scenarios
 
-### Resultados de Tests
+### Test Results
 
-**Última ejecución exitosa**: Diciembre 2024
+**Last successful execution**: December 2024
 
-- ✅ **82/82 tests pasando** (100% de éxito)
-- ⏱️ **Tiempo de ejecución**: ~24 segundos
-- 📊 **Cobertura**: >95% del código del contrato
+- ✅ **82/82 tests passing** (100% success rate)
+- ⏱️ **Execution time**: ~24 seconds
+- 📊 **Coverage**: >95% of contract code
 
-**Desglose por categoría**:
+**Breakdown by category**:
 - Constructor: 11 tests ✅
-- Compras exitosas: 3 tests ✅
-- Validaciones: 7 tests ✅
-- Casos límite: 6 tests ✅
-- Curva de precio: 6 tests ✅
-- Funciones administrativas: 12 tests ✅
-- Pausa/Despausa: 6 tests ✅
-- Retiro de tokens: 6 tests ✅
-- Funciones view: 11 tests ✅
-- Seguridad: 3 tests ✅
-- Eventos: 7 tests ✅
-- Integración: 3 tests ✅
+- Successful purchases: 3 tests ✅
+- Validations: 7 tests ✅
+- Edge cases: 6 tests ✅
+- Price curve: 6 tests ✅
+- Administrative functions: 12 tests ✅
+- Pause/Unpause: 6 tests ✅
+- Token withdrawal: 6 tests ✅
+- View functions: 11 tests ✅
+- Security: 3 tests ✅
+- Events: 7 tests ✅
+- Integration: 3 tests ✅
 
-### Documentación de Testing
+### Testing Documentation
 
-Para información detallada sobre la estrategia de testing, casos cubiertos, y cómo ejecutar los tests, consulta:
+For detailed information about the testing strategy, covered cases, and how to run tests, see:
 
-- **[Documentación de Testing (Español)](../docs/es/token-sale-testing.md)**
 - **[Testing Documentation (English)](../docs/en/token-sale-testing.md)**
 
-### Cobertura de Código
+### Code Coverage
 
-El proyecto utiliza `solidity-coverage` para generar reportes de cobertura de código. Ejecuta:
+The project uses `solidity-coverage` to generate code coverage reports. Run:
 
 ```shell
 npx hardhat coverage
 ```
 
-Esto generará un reporte detallado mostrando qué líneas del código están cubiertas por los tests.
+This will generate a detailed report showing which lines of code are covered by tests.
 
-### Red Local de Hardhat
+### Hardhat Local Network
 
 ```shell
 npx hardhat node
@@ -161,49 +160,49 @@ npx hardhat run scripts/deploy.js --network baseMainnet
 npx hardhat run scripts/deploy.js --network baseTestnet
 ```
 
-### Verificar Contrato en Basescan
+### Verify Contract on Basescan
 
 ```shell
 npx hardhat verify --network baseMainnet <CONTRACT_ADDRESS> <RECIPIENT_ADDRESS>
 ```
 
-### Fuzzing con Echidna
+### Fuzzing with Echidna
 
-El proyecto incluye pruebas de fuzzing basadas en propiedades usando **Echidna**, una herramienta de fuzzing de contratos inteligentes desarrollada por Trail of Bits.
+The project includes property-based fuzzing tests using **Echidna**, a smart contract fuzzing tool developed by Trail of Bits.
 
-#### Requisitos
+#### Requirements
 
-- Docker instalado y en ejecución
-- Contratos compilados con Hardhat
+- Docker installed and running
+- Contracts compiled with Hardhat
 
-#### Ejecutar Fuzzing
+#### Run Fuzzing
 
-**Opción 1: Script principal (recomendado)**
+**Option 1: Main script (recommended)**
 
 ```shell
 ./echidna.sh
 ```
 
-Este script:
-- Compila los contratos con Hardhat
-- Ejecuta Echidna con Docker
-- Muestra los resultados en la terminal
+This script:
+- Compiles contracts with Hardhat
+- Runs Echidna with Docker
+- Displays results in the terminal
 
-**Opción 2: Script CLI**
+**Option 2: CLI script**
 
 ```shell
 ./echidna-cli.sh
 ```
 
-Similar al script principal, optimizado para ejecución en línea de comandos.
+Similar to the main script, optimized for command-line execution.
 
-**Opción 3: Ejecución manual**
+**Option 3: Manual execution**
 
 ```shell
-# Compilar contratos
+# Compile contracts
 npx hardhat compile
 
-# Ejecutar Echidna
+# Run Echidna
 docker run --rm \
     -v "$(pwd):/code" \
     -v "$(pwd)/node_modules:/code/node_modules:ro" \
@@ -214,21 +213,21 @@ docker run --rm \
     --contract TokenSaleProperties
 ```
 
-#### Propiedades Testeadas
+#### Tested Properties
 
-El contrato `TokenSaleProperties` incluye **15 propiedades comprehensivas** que cubren:
+The `TokenSaleProperties` contract includes **15 comprehensive properties** covering:
 
-- **Propiedades de Precio**: Límites, monotonicidad, cálculo consistente, casos edge
-- **Propiedades de Límites**: totalSold, wallet limits, remaining tokens
-- **Propiedades de Compra**: Fuzzing de buyTokens, consistencia con funciones view
-- **Propiedades de Seguridad**: Overflow protection, pause mechanism
-- **Propiedades Administrativas**: Validación de límites, actualizaciones de parámetros
+- **Price Properties**: Limits, monotonicity, consistent calculation, edge cases
+- **Limit Properties**: totalSold, wallet limits, remaining tokens
+- **Purchase Properties**: buyTokens fuzzing, consistency with view functions
+- **Security Properties**: Overflow protection, pause mechanism
+- **Administrative Properties**: Limit validation, parameter updates
 
-#### Resultados de Ejecución
+#### Execution Results
 
-**Última ejecución exitosa**: Diciembre 2024
+**Last successful execution**: December 2024
 
-**Todas las propiedades pasaron exitosamente** ✅:
+**All properties passed successfully** ✅:
 
 - ✅ `echidna_parameter_updates`: passing
 - ✅ `echidna_wallet_limit`: passing
@@ -240,111 +239,110 @@ El contrato `TokenSaleProperties` incluye **15 propiedades comprehensivas** que 
 - ✅ `echidna_price_calculation`: passing
 - ✅ `echidna_remaining_tokens`: passing
 
-**Estadísticas**:
-- Total de llamadas: 50,124
-- Instrucciones únicas: 7,281
-- Contratos analizados: 4
-- Tamaño del corpus: 7
+**Statistics**:
+- Total calls: 50,124
+- Unique instructions: 7,281
+- Analyzed contracts: 4
+- Corpus size: 7
 
-**Conclusión**: No se encontraron violaciones de seguridad. Todas las propiedades invariantes se mantienen bajo cualquier secuencia de transacciones generada aleatoriamente.
+**Conclusion**: No security violations found. All invariant properties hold under any randomly generated transaction sequence.
 
-#### Estructura
+#### Structure
 
 ```
 hardhat2/
 ├── echidna/
-│   ├── echidna.yaml              # Configuración de Echidna
-│   └── TokenSaleProperties.sol   # Contrato con propiedades de fuzzing
-├── echidna.sh                    # Script para ejecutar Echidna
-└── echidna-cli.sh                # Script para ejecución CLI
+│   ├── echidna.yaml              # Echidna configuration
+│   └── TokenSaleProperties.sol   # Contract with fuzzing properties
+├── echidna.sh                    # Script to run Echidna
+└── echidna-cli.sh                # CLI execution script
 ```
 
-#### Documentación
+#### Documentation
 
-Para información detallada sobre fuzzing con Echidna, consulta:
+For detailed information about fuzzing with Echidna, see:
 
-- **[Fuzzing con Echidna (Español)](../docs/es/fuzzing-echidna.md)**
 - **[Fuzzing with Echidna (English)](../docs/en/fuzzing-echidna.md)**
 
-### Análisis de Seguridad con Slither
+### Security Analysis with Slither
 
-El proyecto incluye el plugin `hardhat-slither` para análisis estático de seguridad de los contratos.
+The project includes the `hardhat-slither` plugin for static security analysis of contracts.
 
-#### Ejecutar Análisis de Slither
+#### Run Slither Analysis
 
-**Opción 1: Con interfaz web (UI)**
+**Option 1: With web interface (UI)**
 
 ```shell
 ./slither.sh
 ```
 
-O manualmente:
+Or manually:
 ```shell
 source .venv/bin/activate
 npx hardhat slither
 ```
 
-Este comando:
-- Analiza todos los contratos en el directorio `contracts/`
-- Inicia una interfaz web en `http://localhost:3000` para visualizar los resultados
-- Identifica vulnerabilidades potenciales, problemas de seguridad y oportunidades de optimización
+This command:
+- Analyzes all contracts in the `contracts/` directory
+- Starts a web interface at `http://localhost:3000` to visualize results
+- Identifies potential vulnerabilities, security issues, and optimization opportunities
 
-**Opción 2: Solo línea de comandos (sin UI)**
+**Option 2: Command line only (no UI)**
 
 ```shell
 ./slither-cli.sh
 ```
 
-O manualmente:
+Or manually:
 ```shell
 source .venv/bin/activate
 slither . --compile-force-framework hardhat
 ```
 
-Este comando:
-- Analiza todos los contratos y muestra los resultados directamente en la terminal
-- No inicia ningún servidor web
-- Útil para integración en CI/CD o cuando prefieres ver los resultados en la terminal
+This command:
+- Analyzes all contracts and displays results directly in the terminal
+- Does not start any web server
+- Useful for CI/CD integration or when you prefer to see results in the terminal
 
-#### Requisitos
+#### Requirements
 
-El plugin `hardhat-slither` está instalado como dependencia de desarrollo. Slither requiere Python 3.8+ y está instalado en un entorno virtual local (`.venv`).
+The `hardhat-slither` plugin is installed as a development dependency. Slither requires Python 3.8+ and is installed in a local virtual environment (`.venv`).
 
-**Nota**: Si el entorno virtual no existe, créalo e instala Slither con:
+**Note**: If the virtual environment doesn't exist, create it and install Slither with:
 ```shell
 python3 -m venv .venv
 source .venv/bin/activate
 pip install slither-analyzer
 ```
 
-## Estructura del Proyecto
+## Project Structure
 
 ```
 hardhat2/
 ├── contracts/
-│   ├── PelonClubToken.sol    # Contrato principal del token
-│   ├── TokenSale.sol         # Contrato de venta de tokens
-│   └── MockUSDC.sol          # Mock de USDC para testing
+│   ├── PelonClubToken.sol    # Main token contract
+│   ├── TokenSale.sol         # Token sale contract
+│   └── MockUSDC.sol          # USDC mock for testing
 ├── echidna/
-│   ├── echidna.yaml          # Configuración de Echidna
-│   └── TokenSaleProperties.sol # Contrato con propiedades de fuzzing
+│   ├── echidna.yaml          # Echidna configuration
+│   └── TokenSaleProperties.sol # Contract with fuzzing properties
 ├── scripts/
-│   └── deploy.js              # Script de deployment
+│   └── deploy.js              # Deployment script
 ├── test/
-│   └── TokenSale.test.ts      # Suite de tests para TokenSale
-├── echidna.sh                 # Script para ejecutar Echidna
-├── echidna-cli.sh             # Script para ejecución CLI de Echidna
-├── hardhat.config.js          # Configuración de Hardhat
-└── README.md                  # Este archivo
+│   └── TokenSale.test.ts      # Test suite for TokenSale
+├── echidna.sh                 # Script to run Echidna
+├── echidna-cli.sh             # CLI execution script for Echidna
+├── hardhat.config.js          # Hardhat configuration
+└── README.md                  # This file
 ```
 
-## Redes Configuradas
+## Configured Networks
 
 - **Hardhat Local**: Chain ID 31337
 - **Base Mainnet**: Chain ID 8453
 - **Base Testnet (Sepolia)**: Chain ID 84532
 
-## Contratos Desplegados
+## Deployed Contracts
 
 ### Base Mainnet
 
@@ -362,14 +360,14 @@ hardhat2/
 - **Chain ID**: 84532
 - **Network**: Base Sepolia Testnet
 
-## Información del Contrato
+## Contract Information
 
-- **Autor**: baeza.eth (King Of The Pelones)
+- **Author**: baeza.eth (King Of The Pelones)
 - **Website**: https://pelon.club
 - **Email**: carlos@pelon.club
 - **Twitter**: https://x.com/PelonClub
 - **Telegram**: https://t.me/PelonClub
 
-## Licencia
+## License
 
 MIT
