@@ -1,5 +1,7 @@
 # Pelon.club
 
+![Banner](docs/images/banner4.png)
+
 Monorepo for Baeza.eth (King Of The Pelones) - The Revolutionary Token-Gated Educational Platform & Student Social Network. Unlock exclusive access to premium educational resources, connect with elite students and educators globally, and participate in the first decentralized learning ecosystem that monetizes knowledge while building community. Early adopters gain privileged access to cutting-edge content, networking opportunities, and governance rights. Join the Web3 education revolution - where learning meets blockchain innovation.
 
 ## Links & Social Media
