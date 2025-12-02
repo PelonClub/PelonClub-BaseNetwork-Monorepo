@@ -1,11 +1,13 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useTokenHolders } from '@/hooks/useTokenHolders';
 import { TokenHolder } from '@/contracts/pelonClubToken';
 import LeaderboardCard from './LeaderboardCard';
 import { cn } from '@/lib/utils';
 
 export default function LeaderboardTable() {
+  const t = useTranslations('leaderboard');
   const { data: holders, isLoading, error } = useTokenHolders();
 
   if (isLoading) {
@@ -51,9 +53,9 @@ export default function LeaderboardTable() {
           'text-center'
         )}
       >
-        <p className="text-foreground font-bold text-lg mb-2">Error al cargar datos</p>
+        <p className="text-foreground font-bold text-lg mb-2">{t('errorLoading')}</p>
         <p className="text-muted-foreground text-sm">
-          {error instanceof Error ? error.message : 'Error desconocido'}
+          {error instanceof Error ? error.message : t('unknownError')}
         </p>
       </div>
     );
@@ -72,9 +74,9 @@ export default function LeaderboardTable() {
           'text-center'
         )}
       >
-        <p className="text-foreground font-bold text-lg">No hay holders disponibles</p>
+        <p className="text-foreground font-bold text-lg">{t('noHolders')}</p>
         <p className="text-muted-foreground text-sm mt-2">
-          Los datos aparecerán cuando haya transferencias del token
+          {t('noHoldersDescription')}
         </p>
       </div>
     );

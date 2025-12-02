@@ -19,7 +19,7 @@ export const TOKENOMICS_DATA: TokenomicsCategory[] = [
     name: 'Public Sale',
     percentage: 20,
     tokens: 200,
-    walletAddress: 'TokenSale Contract',
+    walletAddress: '0x42F94856e32bc8817dDe6CD1D8c0e8dF0b740Ba8',
     subcategories: [
       { name: 'Public Token Sale', percentage: 20, tokens: 200 },
     ],

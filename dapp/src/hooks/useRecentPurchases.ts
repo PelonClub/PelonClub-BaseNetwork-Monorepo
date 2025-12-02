@@ -48,7 +48,6 @@ async function fetchRecentPurchases(publicClient: any): Promise<RecentPurchase[]
         timestamp,
       });
     } catch (error) {
-      console.warn('Error processing purchase log:', error);
       continue;
     }
   }

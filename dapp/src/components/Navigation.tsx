@@ -20,9 +20,9 @@ export default function Navigation() {
 
   const navSections = [
     { name: t('navigation.home'), href: '/' },
-    { name: t('navigation.leaderboard'), href: '/leaderboard' },
-    { name: t('navigation.tokenomics'), href: '/tokenomics' },
     { name: t('navigation.tokenSale'), href: '/token-sale' },
+    { name: t('navigation.vault'), href: '/vault' },
+    { name: t('navigation.tokenomics'), href: '/tokenomics' },
   ];
 
   const getLocalizedHref = (href: string) => {
@@ -179,7 +179,7 @@ export default function Navigation() {
                                 >
                                   {chain.iconUrl && (
                                     <Image
-                                      alt={chain.name ?? 'Chain icon'}
+                                      alt={chain.name ?? t('common.chainIcon')}
                                       src={chain.iconUrl}
                                       width={12}
                                       height={12}
@@ -247,7 +247,7 @@ export default function Navigation() {
             >
               <Image
                 src="/img/icon.png"
-                alt="Pelon Club"
+                alt={t('common.pelonClubAlt')}
                 width={32}
                 height={32}
                 className="rounded-none"

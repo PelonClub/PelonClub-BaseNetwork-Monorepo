@@ -52,7 +52,6 @@ async function fetchTokenHolders(publicClient: any): Promise<TokenHolder[]> {
         balances.set(to, currentBalance + value);
       }
     } catch (error) {
-      console.warn('Error processing log:', error);
       continue;
     }
   }
@@ -76,7 +75,6 @@ async function fetchTokenHolders(publicClient: any): Promise<TokenHolder[]> {
         verifiedBalances.set(address, balance);
       }
     } catch (error) {
-      console.warn(`Error reading balance for ${address}:`, error);
     }
   }
 

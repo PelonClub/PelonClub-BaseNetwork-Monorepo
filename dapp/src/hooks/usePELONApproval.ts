@@ -1,41 +1,42 @@
 import { useEffect, useRef } from 'react';
 import { useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
 import { useAccount } from 'wagmi';
-import { parseUnits, formatUnits } from 'viem';
-import { USDC_ABI, USDC_ADDRESS } from '@/contracts/usdc';
-import { TOKEN_SALE_ADDRESS } from '@/contracts/tokenSale';
+import { parseUnits, formatUnits, Address } from 'viem';
+import { PELON_CLUB_TOKEN_ABI } from '@/contracts/pelonClubToken';
+import { PELON_STAKING_VAULT_ADDRESS } from '@/contracts/pelonStakingVault';
 
-const USDC_DECIMALS = 6;
+const PELON_DECIMALS = 18;
 
-interface UseUSDCApprovalOptions {
+interface UsePELONApprovalOptions {
   onApprovalSuccess?: (receipt: any) => void;
   onApprovalError?: (error: Error) => void;
 }
 
-export function useUSDCApproval(
-  usdcAmount: number,
-  options?: UseUSDCApprovalOptions
+export function usePELONApproval(
+  pelonAmount: number,
+  assetAddress?: Address,
+  options?: UsePELONApprovalOptions
 ) {
   const { address } = useAccount();
-  const usdcAmountBigInt = usdcAmount > 0 ? parseUnits(usdcAmount.toFixed(USDC_DECIMALS), USDC_DECIMALS) : 0n;
+  const pelonAmountBigInt = pelonAmount > 0 ? parseUnits(pelonAmount.toFixed(PELON_DECIMALS), PELON_DECIMALS) : 0n;
 
   const { data: allowance, refetch: refetchAllowance } = useReadContract({
-    address: USDC_ADDRESS,
-    abi: USDC_ABI,
+    address: assetAddress,
+    abi: PELON_CLUB_TOKEN_ABI,
     functionName: 'allowance',
-    args: address ? [address, TOKEN_SALE_ADDRESS] : undefined,
+    args: address && assetAddress ? [address, PELON_STAKING_VAULT_ADDRESS] : undefined,
     query: {
-      enabled: !!address,
+      enabled: !!address && !!assetAddress,
     },
   });
 
   const { data: balance } = useReadContract({
-    address: USDC_ADDRESS,
-    abi: USDC_ABI,
+    address: assetAddress,
+    abi: PELON_CLUB_TOKEN_ABI,
     functionName: 'balanceOf',
-    args: address ? [address] : undefined,
+    args: address && assetAddress ? [address] : undefined,
     query: {
-      enabled: !!address,
+      enabled: !!address && !!assetAddress,
     },
   });
 
@@ -75,18 +76,18 @@ export function useUSDCApproval(
     }
   }, [receiptError, approveHash, options]);
 
-  const needsApproval = allowance !== undefined && usdcAmountBigInt > 0n && allowance < usdcAmountBigInt;
-  const hasEnoughBalance = balance !== undefined && usdcAmountBigInt > 0n && balance >= usdcAmountBigInt;
+  const needsApproval = allowance !== undefined && pelonAmountBigInt > 0n && allowance < pelonAmountBigInt;
+  const hasEnoughBalance = balance !== undefined && pelonAmountBigInt > 0n && balance >= pelonAmountBigInt;
 
-  const approveUSDC = async () => {
-    if (!address) return;
+  const approvePELON = async () => {
+    if (!address || !assetAddress) return;
 
     try {
       await approve({
-        address: USDC_ADDRESS,
-        abi: USDC_ABI,
+        address: assetAddress,
+        abi: PELON_CLUB_TOKEN_ABI,
         functionName: 'approve',
-        args: [TOKEN_SALE_ADDRESS, usdcAmountBigInt],
+        args: [PELON_STAKING_VAULT_ADDRESS, pelonAmountBigInt],
       });
     } catch (error) {
       const errorObj = error instanceof Error ? error : new Error(String(error));
@@ -95,11 +96,11 @@ export function useUSDCApproval(
   };
 
   return {
-    allowance: allowance ? parseFloat(formatUnits(allowance, USDC_DECIMALS)) : 0,
-    balance: balance ? parseFloat(formatUnits(balance, USDC_DECIMALS)) : 0,
+    allowance: allowance ? parseFloat(formatUnits(allowance, PELON_DECIMALS)) : 0,
+    balance: balance ? parseFloat(formatUnits(balance, PELON_DECIMALS)) : 0,
     needsApproval,
     hasEnoughBalance,
-    approveUSDC,
+    approvePELON,
     isApproving: isApproving || isWaitingApproval,
     isApprovalSuccess,
     approveError,

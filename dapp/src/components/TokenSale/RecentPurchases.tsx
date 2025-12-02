@@ -1,12 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { formatTimestamp } from '@/data/tokenSale';
 import { useRecentPurchases } from '@/hooks/useRecentPurchases';
 
 export default function RecentPurchases() {
   const t = useTranslations('tokenSale.recentPurchases');
+  const locale = useLocale();
   const { data: purchases, isLoading } = useRecentPurchases();
 
   const formatAddress = (address: string): string => {
@@ -97,13 +98,13 @@ export default function RecentPurchases() {
                       <div className="text-right">
                         <div className="text-muted-foreground text-xs">{t('tokens')}</div>
                         <div className="text-foreground font-bold">
-                          {purchase.tokens.toLocaleString('en-US', { maximumFractionDigits: 0 })} PELON
+                          {purchase.tokens.toLocaleString(locale === 'es' ? 'es-ES' : 'en-US', { maximumFractionDigits: 0 })} PELON
                         </div>
                       </div>
                       <div className="text-right">
                         <div className="text-muted-foreground text-xs">{t('paid')}</div>
                         <div className="text-green-500 font-bold">
-                          {purchase.usdc.toLocaleString('en-US', { maximumFractionDigits: 2 })} USDC
+                          {purchase.usdc.toLocaleString(locale === 'es' ? 'es-ES' : 'en-US', { maximumFractionDigits: 2 })} USDC
                         </div>
                       </div>
                     </div>

@@ -1,6 +1,14 @@
 import { getRequestConfig } from 'next-intl/server';
 import { routing } from './routing';
 
+import messagesEs from '../messages/es.json';
+import messagesEn from '../messages/en.json';
+
+const messagesMap = {
+  es: messagesEs,
+  en: messagesEn,
+};
+
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;
 
@@ -8,22 +16,14 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = routing.defaultLocale;
   }
 
-  let messages;
-  try {
-    messages = (await import(`../messages/${locale}.json`)).default;
-  } catch (error) {
-    console.warn(`Failed to load messages for locale ${locale}, falling back to ${routing.defaultLocale}`);
-    messages = (await import(`../messages/${routing.defaultLocale}.json`)).default;
-  }
+  const messages = (locale && messagesMap[locale as keyof typeof messagesMap]) 
+    ? messagesMap[locale as keyof typeof messagesMap]
+    : messagesMap[routing.defaultLocale];
 
   return {
     locale,
     messages,
-    onError(error) {
-      if (process.env.NODE_ENV === 'development') {
-        console.warn('next-intl error:', error);
-      }
-    },
+    onError() {},
     getMessageFallback({ namespace, key, error }) {
       const path = [namespace, key].filter((part) => part != null).join('.');
       return `[${path}]`;

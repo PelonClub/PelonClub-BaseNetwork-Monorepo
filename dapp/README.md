@@ -1,289 +1,634 @@
 # Pelon Club dApp
 
-dApp de Next.js para Pelon Club, una plataforma de recursos educativos con token gating y red social para estudiantes. Desarrollada por Baeza.eth (King Of The Pelones).
+Next.js dApp for Pelon Club, a token-gated educational resources platform and social network for students. Developed by Baeza.eth (King Of The Pelones).
 
-## Descripción
+## Table of Contents
 
-Pelon Club es una aplicación descentralizada que permite monetizar conocimiento a través de recursos educativos protegidos por tokens y actividades token gated. La plataforma también funciona como una red social para estudiantes, facilitando la conexión y el aprendizaje colaborativo.
+- [Description](#description)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Architecture Overview](#architecture-overview)
+- [Installation & Setup](#installation--setup)
+- [Configuration](#configuration)
+- [Project Structure](#project-structure)
+- [Development](#development)
+- [Build & Static Export](#build--static-export)
+- [Deployment](#deployment)
+- [Design System](#design-system)
+- [Smart Contracts](#smart-contracts)
+- [Custom Hooks](#custom-hooks)
+- [Internationalization](#internationalization)
+- [Troubleshooting](#troubleshooting)
+- [Resources & References](#resources--references)
+- [License](#license)
 
-## Stack Tecnológico
+## Description
 
-### Framework y Core
-- **Next.js 15** - Framework React con SSR y exportación estática
-- **React 19** - Biblioteca UI
-- **TypeScript 5.5** - Tipado estático
+Pelon Club is a decentralized application that enables knowledge monetization through token-gated educational resources and activities. The platform also functions as a social network for students, facilitating connections and collaborative learning.
 
-### Blockchain y Web3
-- **wagmi 2.17** - Hooks de React para Ethereum
-- **RainbowKit 2.2** - Componentes UI para conexión de wallets
-- **viem 2.40** - Cliente TypeScript para Ethereum
-- **Base** - Blockchain L2 de Ethereum (red principal)
+The dApp is built with Next.js 15 and features a modern Web3 stack, supporting wallet connections, token purchases, staking vaults, and comprehensive tokenomics visualization.
 
-### Estilos y UI
-- **Tailwind CSS 4.1** - Framework de utilidades CSS
-- **@tailwindcss/postcss 4.1** - Plugin PostCSS para Tailwind v4
-- **Sistema de Diseño Neobrutalism** - Estética audaz con tema Indigo Dark
+## Features
 
-### Internacionalización
-- **next-intl 4.5** - Internacionalización para Next.js
-- **Idiomas**: Español (default), Inglés
+### Core Features
 
-### Utilidades
-- **react-hot-toast 2.6** - Notificaciones toast
-- **recharts 2.15** - Gráficos y visualizaciones
-- **react-icons 5.5** - Iconos
-- **class-variance-authority** - Variantes de componentes
-- **clsx & tailwind-merge** - Utilidades para clases CSS
+- 🔗 **Wallet Connection**: Full integration with RainbowKit for Ethereum wallet connections
+- 🎨 **Neobrutalism Design System**: Bold aesthetic with hard shadows, thick borders, and contrasting colors
+- 🌍 **Internationalization**: Full support for Spanish (default) and English with next-intl
+- 📊 **Leaderboard**: Ranking system and statistics for token holders
+- 💎 **Tokenomics**: Comprehensive visualization of token economics
+- 🚀 **Token Sale**: Interface for purchasing tokens via sigmoid bonding curve
+- 🏦 **Staking Vault**: ERC4626-compliant vault for staking PELON tokens
+- 📱 **Responsive Design**: Adaptive design for mobile, tablet, and desktop
+- ⚡ **Static Export**: Optimized build for static hosting
+- 🔍 **SEO Optimized**: Dynamic metadata and canonical URLs for all pages
 
-## Características Principales
+### Pages
 
-- 🔗 **Conexión de Wallet**: Integración completa con RainbowKit para conectar wallets de Ethereum
-- 🎨 **Sistema de Diseño Neobrutalism**: Estética audaz con sombras duras, bordes gruesos y colores contrastantes
-- 🌍 **Internacionalización**: Soporte completo para español e inglés con next-intl
-- 📊 **Leaderboard**: Sistema de clasificación y estadísticas
-- 💎 **Tokenomics**: Visualización de la economía del token
-- 🚀 **Token Sale**: Interfaz para compra de tokens
-- 📱 **Responsive Design**: Diseño adaptativo para móviles, tablets y desktop
-- ⚡ **Exportación Estática**: Build optimizado para hosting estático
+- **Home** (`/[locale]/index.tsx`) - Main page with bento cards navigation
+- **Leaderboard** (`/[locale]/leaderboard.tsx`) - Rankings and statistics
+- **Tokenomics** (`/[locale]/tokenomics.tsx`) - Token economics visualization
+- **Token Sale** (`/[locale]/token-sale.tsx`) - Token purchase interface with bonding curve
+- **Vault** (`/[locale]/vault.tsx`) - Staking vault interface for depositing and withdrawing tokens
 
-## Instalación y Configuración
+## Tech Stack
 
-### Requisitos Previos
+### Framework & Core
 
-- Node.js 18+ 
-- npm o yarn
-- WalletConnect Project ID (obtener en [cloud.walletconnect.com](https://cloud.walletconnect.com))
+- **Next.js 15** - React framework with SSR and static export
+- **React 19** - UI library
+- **TypeScript 5.5** - Static typing
 
-### Instalación
+### Blockchain & Web3
 
-1. Clonar el repositorio:
+- **wagmi 2.17** - React hooks for Ethereum
+- **RainbowKit 2.2** - UI components for wallet connections
+- **viem 2.40** - TypeScript Ethereum client
+- **Base Sepolia** - Ethereum L2 testnet (primary network)
+
+### Styling & UI
+
+- **Tailwind CSS 4.1** - Utility-first CSS framework
+- **@tailwindcss/postcss 4.1** - PostCSS plugin for Tailwind v4
+- **Neobrutalism Design System** - Bold aesthetic with Indigo Dark theme
+- **react-icons 5.5** - Icon library
+- **recharts 2.15** - Charts and visualizations
+
+### Internationalization
+
+- **next-intl 4.5** - Internationalization for Next.js
+- **Languages**: Spanish (default), English
+
+### Utilities
+
+- **react-hot-toast 2.6** - Toast notifications
+- **class-variance-authority** - Component variants
+- **clsx & tailwind-merge** - CSS class utilities
+- **@tanstack/react-query 5.55** - Data fetching and caching
+
+## Architecture Overview
+
+The application follows a modular architecture with clear separation of concerns:
+
+- **Pages**: Next.js pages with locale-based routing
+- **Components**: Reusable UI components organized by feature
+- **Hooks**: Custom React hooks for blockchain interactions
+- **Contracts**: Smart contract ABIs and address configurations
+- **i18n**: Internationalization configuration and message files
+- **Lib**: Utility functions and helpers
+- **Styles**: Global styles and Tailwind configuration
+
+The app uses static export for optimal performance and can be deployed to any static hosting service.
+
+## Installation & Setup
+
+### Prerequisites
+
+- **Node.js 18+** (recommended: Node.js 20+)
+- **npm** or **yarn**
+- **WalletConnect Project ID** (get one at [cloud.walletconnect.com](https://cloud.walletconnect.com))
+
+### Installation Steps
+
+1. **Clone the repository**:
 ```bash
 git clone <repository-url>
 cd dapp
 ```
 
-2. Instalar dependencias:
+2. **Install dependencies**:
 ```bash
 npm install
 ```
 
-3. Configurar variables de entorno:
+3. **Configure environment variables**:
 
-Crear un archivo `.env.local` en la raíz del proyecto:
+Create a `.env.local` file in the project root:
 
 ```bash
 cp .env.example .env.local
 ```
 
-Editar `.env.local` con tus valores:
+Edit `.env.local` with your values:
 
 ```env
-NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=tu_project_id_aqui
-NEXT_PUBLIC_PELON_TOKEN_ADDRESS=direccion_del_token
-NEXT_PUBLIC_USDC_ADDRESS=direccion_usdc
-NEXT_PUBLIC_TOKEN_SALE_ADDRESS=direccion_token_sale
+NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=your_project_id_here
+NEXT_PUBLIC_PELON_TOKEN_ADDRESS=token_contract_address
+NEXT_PUBLIC_USDC_ADDRESS=usdc_contract_address
+NEXT_PUBLIC_TOKEN_SALE_ADDRESS=token_sale_contract_address
+NEXT_PUBLIC_PELON_STAKING_VAULT_ADDRESS=vault_contract_address
 ```
 
-### Variables de Entorno
+4. **Start development server**:
+```bash
+npm run dev
+```
 
-| Variable | Descripción | Requerido |
-|----------|-------------|-----------|
-| `NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID` | ID del proyecto de WalletConnect | ✅ Sí |
-| `NEXT_PUBLIC_PELON_TOKEN_ADDRESS` | Dirección del contrato del token Pelon | Opcional |
-| `NEXT_PUBLIC_USDC_ADDRESS` | Dirección del contrato USDC | Opcional |
-| `NEXT_PUBLIC_TOKEN_SALE_ADDRESS` | Dirección del contrato de venta de tokens | Opcional |
+The application will be available at `http://localhost:3000`
 
-## Scripts Disponibles
+## Configuration
+
+### Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID` | WalletConnect project ID | ✅ Yes |
+| `NEXT_PUBLIC_PELON_TOKEN_ADDRESS` | PELON token contract address | Optional |
+| `NEXT_PUBLIC_USDC_ADDRESS` | USDC token contract address | Optional |
+| `NEXT_PUBLIC_TOKEN_SALE_ADDRESS` | Token sale contract address | Optional |
+| `NEXT_PUBLIC_PELON_STAKING_VAULT_ADDRESS` | Staking vault contract address | Optional |
+
+### Network Configuration
+
+The application is configured to use **Base Sepolia** testnet by default. The network configuration is defined in `src/wagmi.ts`:
+
+- **Network**: Base Sepolia
+- **RPC URL**: `https://sepolia.base.org`
+- **Chain ID**: 84532
+
+To change the network, modify the `chains` array in `src/wagmi.ts`.
+
+### Available Scripts
 
 ```bash
-# Desarrollo
-npm run dev          # Inicia el servidor de desarrollo en http://localhost:3000
+# Development
+npm run dev          # Start development server at http://localhost:3000
 
 # Build
-npm run build        # Construye la aplicación para producción (exportación estática)
+npm run build        # Build the application for production (static export)
+                     # Automatically runs postbuild script to generate index.html
 
-# Producción
-npm start            # Inicia el servidor de producción (requiere build previo)
+# Production
+npm start            # Start production server (requires build first)
 ```
 
-## Estructura del Proyecto
+### Postbuild Script
+
+The `postbuild` script (`scripts/generate-index.js`) automatically:
+
+1. Generates a root `index.html` file that detects browser language and redirects to the appropriate locale
+2. Copies `.htaccess` template (if exists) to the output directory for Apache server configuration
+
+This ensures proper routing for static hosting environments.
+
+## Project Structure
 
 ```
 dapp/
 ├── src/
-│   ├── components/          # Componentes reutilizables
-│   │   ├── Leaderboard/     # Componentes del leaderboard
-│   │   ├── SEO/             # Componentes de SEO y metadata
-│   │   ├── Tokenomics/      # Componentes de tokenomics
-│   │   ├── TokenSale/       # Componentes de venta de tokens
-│   │   ├── LanguageSelector.tsx
-│   │   ├── Navigation.tsx
-│   │   └── SocialIcons.tsx
-│   ├── contracts/           # Definiciones de contratos inteligentes
-│   │   ├── pelonClubToken.ts
-│   │   ├── tokenSale.ts
-│   │   └── usdc.ts
-│   ├── data/                # Datos estáticos y configuraciones
-│   ├── hooks/               # Custom hooks de React
-│   ├── i18n/                # Configuración de internacionalización
-│   │   ├── config.ts
-│   │   ├── request.ts
-│   │   └── routing.ts
-│   ├── lib/                 # Utilidades y helpers
-│   │   ├── seo.ts
-│   │   └── utils.ts
-│   ├── messages/            # Archivos de traducción
-│   │   ├── es.json
-│   │   └── en.json
-│   ├── pages/               # Páginas de Next.js
-│   │   ├── [locale]/        # Páginas con internacionalización
-│   │   │   ├── index.tsx
-│   │   │   ├── leaderboard.tsx
-│   │   │   ├── tokenomics.tsx
-│   │   │   └── token-sale.tsx
-│   │   └── _app.tsx
-│   ├── styles/              # Estilos globales
-│   │   └── globals.css      # Tailwind CSS v4 y tema Neobrutalism
-│   └── wagmi.ts             # Configuración de wagmi
-├── public/                  # Archivos estáticos
-├── components.json          # Configuración de shadcn/ui
-├── next.config.js           # Configuración de Next.js
-├── postcss.config.js        # Configuración de PostCSS
-├── tailwind.config.js       # Configuración de Tailwind CSS
-├── tsconfig.json            # Configuración de TypeScript
-└── package.json             # Dependencias y scripts
+│   ├── components/              # Reusable components
+│   │   ├── Leaderboard/         # Leaderboard components
+│   │   │   ├── LeaderboardStats.tsx
+│   │   │   └── LeaderboardTable.tsx
+│   │   ├── SEO/                 # SEO and metadata components
+│   │   │   └── Metadata.tsx
+│   │   ├── Tokenomics/          # Tokenomics components
+│   │   │   ├── TokenomicsStats.tsx
+│   │   │   ├── TokenomicsCharts.tsx
+│   │   │   ├── TokenomicsTable.tsx
+│   │   │   └── TokenInfo.tsx
+│   │   ├── TokenSale/           # Token sale components
+│   │   │   ├── TokenSaleStats.tsx
+│   │   │   └── TokenSalePurchase.tsx
+│   │   ├── Vault/               # Staking vault components
+│   │   │   ├── VaultStats.tsx
+│   │   │   ├── VaultDeposit.tsx
+│   │   │   ├── VaultDepositMint.tsx
+│   │   │   ├── VaultMint.tsx
+│   │   │   ├── VaultWithdraw.tsx
+│   │   │   ├── VaultApprove.tsx
+│   │   │   ├── VaultConverter.tsx
+│   │   │   └── DepositHistory.tsx
+│   │   ├── LanguageSelector.tsx # Language selector component
+│   │   ├── Navigation.tsx      # Main navigation component
+│   │   └── SocialIcons.tsx      # Social media icons
+│   ├── contracts/               # Smart contract definitions
+│   │   ├── pelonClubToken.ts    # PELON token ABI and address
+│   │   ├── tokenSale.ts         # Token sale contract ABI and address
+│   │   ├── pelonStakingVault.ts # Staking vault ABI and address
+│   │   └── usdc.ts              # USDC token ABI and address
+│   ├── data/                    # Static data and configurations
+│   │   ├── tokenomics.ts        # Tokenomics data
+│   │   └── tokenSale.ts         # Token sale data
+│   ├── hooks/                   # Custom React hooks
+│   │   ├── useTokenSale.ts      # Token sale interactions
+│   │   ├── useTokenSaleStats.ts # Token sale statistics
+│   │   ├── useTokenSalePurchase.ts # Token purchase logic
+│   │   ├── useRecentPurchases.ts # Recent purchase history
+│   │   ├── useTokenHolders.ts   # Token holder data
+│   │   ├── useUSDCApproval.ts   # USDC token approval
+│   │   ├── usePELONApproval.ts  # PELON token approval
+│   │   ├── useVault.ts          # Vault interactions
+│   │   ├── useUserVaultData.ts  # User vault data
+│   │   ├── useVaultDeposit.ts   # Vault deposit logic
+│   │   ├── useVaultMint.ts      # Vault mint logic
+│   │   └── useVaultWithdraw.ts  # Vault withdraw logic
+│   ├── i18n/                    # Internationalization configuration
+│   │   ├── config.ts            # Locale configuration
+│   │   ├── request.ts           # Request configuration for next-intl
+│   │   └── routing.ts           # Routing configuration
+│   ├── lib/                     # Utilities and helpers
+│   │   ├── seo.ts               # SEO utility functions
+│   │   └── utils.ts             # General utilities (cn, stringifyWithBigInt)
+│   ├── messages/                # Translation files
+│   │   ├── es.json              # Spanish translations
+│   │   └── en.json              # English translations
+│   ├── pages/                   # Next.js pages
+│   │   ├── [locale]/            # Locale-based pages
+│   │   │   ├── index.tsx        # Home page
+│   │   │   ├── leaderboard.tsx  # Leaderboard page
+│   │   │   ├── tokenomics.tsx   # Tokenomics page
+│   │   │   ├── token-sale.tsx   # Token sale page
+│   │   │   └── vault.tsx        # Vault page
+│   │   ├── _app.tsx             # App component with providers
+│   │   └── _document.tsx        # Document component
+│   ├── styles/                  # Global styles
+│   │   └── globals.css          # Tailwind CSS v4 and Neobrutalism theme
+│   └── wagmi.ts                 # wagmi configuration
+├── public/                      # Static assets
+│   └── img/                     # Images
+├── scripts/                     # Build scripts
+│   └── generate-index.js        # Postbuild script for index.html generation
+├── components.json              # shadcn/ui configuration
+├── next.config.js               # Next.js configuration
+├── postcss.config.js            # PostCSS configuration
+├── tailwind.config.js           # Tailwind CSS configuration
+├── tsconfig.json                # TypeScript configuration
+├── package.json                 # Dependencies and scripts
+└── .env.example                 # Environment variables template
 ```
 
-## Sistema de Diseño
+## Development
 
-El proyecto utiliza un **Sistema de Diseño Neobrutalism** con un **tema Indigo Dark**. Las características principales incluyen:
+### Routing Structure with i18n
 
-### Principios Neobrutalistas
-- **Sombras Duras**: Sombras definidas y angulares (`4px 4px 0px` en negro)
-- **Bordes Gruesos**: Bordes sólidos de 3px o 4px en negro
-- **Colores Audaces**: Paleta vibrante y contrastante
-- **Sin Bordes Redondeados**: Esquinas afiladas (`border-radius: 0px`)
-- **Tipografía Bold**: Font-weight 700 para títulos y elementos destacados
-- **Alto Contraste**: Contraste extremo para legibilidad
-
-### Paleta de Colores (Tema Indigo Dark)
-
-- **Fondo Principal**: `#0f172a` (slate-900)
-- **Fondo Secundario**: `#1e293b` (slate-800)
-- **Texto Principal**: `#f1f5f9` (slate-100)
-- **Texto Secundario**: `#cbd5e1` (slate-300)
-- **Color Primario**: `#4338ca` (indigo-700)
-- **Color Primario Hover**: `#4f46e5` (indigo-600)
-- **Color Primario Active**: `#3730a3` (indigo-800)
-
-### Utilidades Neobrutalistas
-
-El proyecto incluye clases utilitarias personalizadas definidas en `src/styles/globals.css`:
-
-- `.shadow-neobrutal` - Sombra estándar (4px 4px 0px)
-- `.shadow-neobrutal-sm` - Sombra pequeña (2px 2px 0px)
-- `.shadow-neobrutal-md` - Sombra mediana (6px 6px 0px)
-- `.shadow-neobrutal-lg` - Sombra grande (8px 8px 0px)
-- `.border-neobrutal` - Borde estándar (3px sólido negro)
-- `.border-neobrutal-thick` - Borde grueso (4px sólido negro)
-- `.rounded-neobrutal` - Sin bordes redondeados (0px)
-
-Para más detalles sobre el sistema de diseño, consulta la documentación completa en las reglas del workspace.
-
-## Desarrollo
-
-### Estructura de Rutas con i18n
-
-El proyecto utiliza `next-intl` para internacionalización. Las rutas siguen el patrón:
+The project uses `next-intl` for internationalization. Routes follow the pattern:
 
 ```
 /[locale]/[page]
 ```
 
-Ejemplos:
-- `/es` - Home en español
-- `/en` - Home en inglés
-- `/es/leaderboard` - Leaderboard en español
-- `/en/tokenomics` - Tokenomics en inglés
+Examples:
+- `/es` - Home in Spanish
+- `/en` - Home in English
+- `/es/leaderboard` - Leaderboard in Spanish
+- `/en/tokenomics` - Tokenomics in English
+- `/es/vault` - Vault in Spanish
 
-El locale por defecto es `es` (español).
+The default locale is `es` (Spanish).
 
-### Páginas Disponibles
+### Component Development
 
-- **Home** (`/[locale]/index.tsx`) - Página principal con bento cards
-- **Leaderboard** (`/[locale]/leaderboard.tsx`) - Clasificación y estadísticas
-- **Tokenomics** (`/[locale]/tokenomics.tsx`) - Economía del token
-- **Token Sale** (`/[locale]/token-sale.tsx`) - Interfaz de compra de tokens
+Components are organized by feature in the `src/components/` directory. Each feature has its own subdirectory with related components.
 
-### Componentes Principales
+When creating new components:
 
-- **Navigation** - Navegación principal con selector de idioma y conexión de wallet
-- **LanguageSelector** - Selector de idioma (ES/EN)
-- **SocialIcons** - Iconos de redes sociales
-- **Metadata** - Componente SEO para metadata dinámica
+1. Use TypeScript for type safety
+2. Follow the Neobrutalism design system
+3. Use Tailwind utility classes (no custom CSS classes)
+4. Implement internationalization using `useTranslations()` from next-intl
+5. Add proper TypeScript types for props
 
-## Build y Exportación Estática
+### Custom Hooks
 
-El proyecto está configurado para exportación estática (`output: 'export'` en `next.config.js`). Esto significa que:
+Custom hooks are located in `src/hooks/` and provide reusable logic for:
 
-1. El build genera archivos HTML estáticos en la carpeta `out/`
-2. No requiere un servidor Node.js para funcionar
-3. Puede ser desplegado en cualquier hosting estático (Vercel, Netlify, GitHub Pages, etc.)
+- **Token Sale**: Purchase tokens, view stats, check approvals
+- **Vault**: Deposit, mint, withdraw, view user data
+- **Token Management**: Check balances, approvals, holders
 
-Para construir la aplicación:
+All hooks use wagmi for blockchain interactions and React Query for data caching.
 
+### Contract Interactions
+
+Smart contract interactions are handled through:
+
+1. **Contract Definitions** (`src/contracts/`): ABIs and addresses
+2. **wagmi Hooks**: Use wagmi's built-in hooks for read/write operations
+3. **Custom Hooks**: Wrap wagmi hooks with application-specific logic
+
+Example contract interaction:
+
+```typescript
+import { useReadContract } from 'wagmi';
+import { PELON_CLUB_TOKEN_ABI, PELON_CLUB_TOKEN_ADDRESS } from '@/contracts/pelonClubToken';
+
+const { data: balance } = useReadContract({
+  abi: PELON_CLUB_TOKEN_ABI,
+  address: PELON_CLUB_TOKEN_ADDRESS,
+  functionName: 'balanceOf',
+  args: [address],
+});
+```
+
+## Build & Static Export
+
+The project is configured for static export (`output: 'export'` in `next.config.js`). This means:
+
+1. The build generates static HTML files in the `out/` directory
+2. No Node.js server is required to run the application
+3. Can be deployed to any static hosting service (Vercel, Netlify, GitHub Pages, Cloudflare Pages, etc.)
+
+### Build Process
+
+1. **Run the build command**:
 ```bash
 npm run build
 ```
 
-Los archivos estáticos se generarán en la carpeta `out/`.
+2. **Postbuild script execution**:
+   - Generates root `index.html` with language detection and redirect
+   - Copies `.htaccess` template if available
+
+3. **Output directory**:
+   - All static files are generated in the `out/` directory
+   - Ready for deployment to static hosting
+
+### Static Export Configuration
+
+The `next.config.js` includes:
+
+- `output: 'export'` - Enables static export
+- `images.unoptimized: true` - Required for static export
+- `webpack` configuration for external dependencies
 
 ## Deployment
 
-### Preparación para Producción
+### Preparation for Production
 
-1. Asegúrate de tener todas las variables de entorno configuradas en tu plataforma de hosting
-2. El build genera archivos estáticos en `out/`
-3. Configura las variables de entorno en tu plataforma de hosting
+1. **Set environment variables** in your hosting platform
+2. **Build the application**:
+```bash
+npm run build
+```
 
-### Variables de Entorno en Producción
+3. **Deploy the `out/` directory** to your static hosting service
 
-Configura las siguientes variables de entorno en tu plataforma de hosting:
+### Environment Variables in Production
 
-- `NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID`
-- `NEXT_PUBLIC_PELON_TOKEN_ADDRESS` (opcional)
-- `NEXT_PUBLIC_USDC_ADDRESS` (opcional)
-- `NEXT_PUBLIC_TOKEN_SALE_ADDRESS` (opcional)
+Configure the following environment variables in your hosting platform:
 
-### Plataformas Recomendadas
+- `NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID` (required)
+- `NEXT_PUBLIC_PELON_TOKEN_ADDRESS` (optional)
+- `NEXT_PUBLIC_USDC_ADDRESS` (optional)
+- `NEXT_PUBLIC_TOKEN_SALE_ADDRESS` (optional)
+- `NEXT_PUBLIC_PELON_STAKING_VAULT_ADDRESS` (optional)
 
-- **Vercel**: Deploy automático desde Git, soporte nativo de Next.js
-- **Netlify**: Deploy automático, soporte para sitios estáticos
-- **GitHub Pages**: Hosting gratuito para sitios estáticos
-- **Cloudflare Pages**: Hosting rápido y global
+### Recommended Platforms
 
-## Recursos y Referencias
+- **Vercel**: Automatic deployment from Git, native Next.js support
+- **Netlify**: Automatic deployment, support for static sites
+- **GitHub Pages**: Free hosting for static sites
+- **Cloudflare Pages**: Fast and global hosting
 
-### Documentación Oficial
+### Apache Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - Documentación de Next.js
-- [RainbowKit Documentation](https://rainbowkit.com) - Documentación de RainbowKit
-- [wagmi Documentation](https://wagmi.sh) - Documentación de wagmi
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - Documentación de Tailwind CSS
-- [next-intl Documentation](https://next-intl-docs.vercel.app/) - Documentación de next-intl
-- [viem Documentation](https://viem.sh) - Documentación de viem
+If deploying to Apache, the postbuild script copies a `.htaccess.template` file (if present) to the output directory. This file should contain:
 
-### Recursos Adicionales
+- URL rewriting rules for locale routing
+- Redirect rules for the root path
 
-- [Base Blockchain](https://base.org) - Documentación de Base
-- [WalletConnect Cloud](https://cloud.walletconnect.com) - Obtener Project ID
-- [Neobrutalism Design](https://www.neobrutalism.dev/) - Referencia de diseño Neobrutalism
+## Design System
 
-## Licencia
+The project uses a **Neobrutalism Design System** with an **Indigo Dark theme**. Key characteristics include:
 
-Este proyecto es privado y propiedad de Baeza.eth (King Of The Pelones).
+### Neobrutalism Principles
+
+- **Hard Shadows**: Defined, angular shadows (`4px 4px 0px` in black)
+- **Thick Borders**: Solid 3px or 4px borders in black
+- **Bold Colors**: Vibrant and contrasting color palette
+- **No Rounded Corners**: Sharp edges (`border-radius: 0px`)
+- **Bold Typography**: Font-weight 700 for titles and highlighted elements
+- **High Contrast**: Extreme contrast for readability
+
+### Color Palette (Indigo Dark Theme)
+
+- **Background**: `#0f172a` (slate-900)
+- **Background Secondary**: `#1e293b` (slate-800)
+- **Foreground**: `#f1f5f9` (slate-100)
+- **Foreground Muted**: `#cbd5e1` (slate-300)
+- **Primary**: `#4338ca` (indigo-700)
+- **Primary Hover**: `#4f46e5` (indigo-600)
+- **Primary Active**: `#3730a3` (indigo-800)
+
+### Neobrutalism Utilities
+
+The project includes custom utility classes defined in `src/styles/globals.css`:
+
+- `.shadow-neobrutal` - Standard shadow (4px 4px 0px)
+- `.shadow-neobrutal-sm` - Small shadow (2px 2px 0px)
+- `.shadow-neobrutal-md` - Medium shadow (6px 6px 0px)
+- `.shadow-neobrutal-lg` - Large shadow (8px 8px 0px)
+- `.border-neobrutal` - Standard border (3px solid black)
+- `.border-neobrutal-thick` - Thick border (4px solid black)
+- `.rounded-neobrutal` - No rounded corners (0px)
+
+For complete design system documentation, see the workspace rules.
+
+## Smart Contracts
+
+The dApp interacts with the following smart contracts:
+
+### PELON Token (`pelonClubToken.ts`)
+
+- **Standard**: ERC20 with additional features (ERC1363, ERC20Votes)
+- **Purpose**: Native token of the Pelon Club ecosystem
+- **Address**: Configurable via `NEXT_PUBLIC_PELON_TOKEN_ADDRESS`
+
+### USDC Token (`usdc.ts`)
+
+- **Standard**: ERC20
+- **Purpose**: Stablecoin used for token purchases
+- **Address**: Configurable via `NEXT_PUBLIC_USDC_ADDRESS`
+
+### Token Sale (`tokenSale.ts`)
+
+- **Purpose**: Manages token sales via sigmoid bonding curve
+- **Features**: 
+  - Sigmoid bonding curve pricing
+  - Maximum tokens per wallet
+  - Maximum total sale amount
+  - Pausable functionality
+- **Address**: Configurable via `NEXT_PUBLIC_TOKEN_SALE_ADDRESS`
+
+### Staking Vault (`pelonStakingVault.ts`)
+
+- **Standard**: ERC4626 (Tokenized Vault Standard)
+- **Purpose**: Allows users to stake PELON tokens and receive vault shares
+- **Features**:
+  - Deposit and mint functions
+  - Withdraw and redeem functions
+  - Fee mechanism (BPS-based)
+  - Timelock functionality
+- **Address**: Configurable via `NEXT_PUBLIC_PELON_STAKING_VAULT_ADDRESS`
+
+All contract ABIs are defined in TypeScript files in `src/contracts/` using viem's type-safe ABI format.
+
+## Custom Hooks
+
+### Token Sale Hooks
+
+- **`useTokenSale.ts`**: Main hook for token sale contract interactions
+- **`useTokenSaleStats.ts`**: Fetches token sale statistics (total sold, current price, etc.)
+- **`useTokenSalePurchase.ts`**: Handles token purchase transactions
+- **`useRecentPurchases.ts`**: Fetches recent purchase history
+- **`useTokenHolders.ts`**: Retrieves token holder data for leaderboard
+
+### Approval Hooks
+
+- **`useUSDCApproval.ts`**: Manages USDC token approval for token sale
+- **`usePELONApproval.ts`**: Manages PELON token approval for vault operations
+
+### Vault Hooks
+
+- **`useVault.ts`**: Main hook for vault contract interactions
+- **`useUserVaultData.ts`**: Fetches user-specific vault data (balance, shares, etc.)
+- **`useVaultDeposit.ts`**: Handles vault deposit transactions
+- **`useVaultMint.ts`**: Handles vault mint transactions
+- **`useVaultWithdraw.ts`**: Handles vault withdraw transactions
+
+All hooks use wagmi for blockchain interactions and React Query for caching and state management.
+
+## Internationalization
+
+The application supports multiple languages using `next-intl`:
+
+### Supported Languages
+
+- **Spanish (es)**: Default language
+- **English (en)**: Secondary language
+
+### Configuration
+
+- **Locale Config**: `src/i18n/config.ts` - Defines available locales
+- **Routing Config**: `src/i18n/routing.ts` - Defines routing behavior
+- **Request Config**: `src/i18n/request.ts` - Configures next-intl server-side
+
+### Translation Files
+
+Translation files are located in `src/messages/`:
+
+- `es.json` - Spanish translations
+- `en.json` - English translations
+
+### Usage in Components
+
+```typescript
+import { useTranslations } from 'next-intl';
+
+function MyComponent() {
+  const t = useTranslations();
+  
+  return <h1>{t('common.appName')}</h1>;
+}
+```
+
+### SEO and i18n
+
+The application includes SEO optimization with:
+
+- Canonical URLs for each locale
+- Alternate language links
+- Locale-specific metadata
+- Proper Open Graph tags
+
+See `src/lib/seo.ts` for SEO utility functions.
+
+## Troubleshooting
+
+### Common Issues
+
+#### Wallet Connection Issues
+
+- **Problem**: Wallet not connecting
+- **Solution**: 
+  - Ensure `NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID` is set correctly
+  - Check that you're on the correct network (Base Sepolia)
+  - Clear browser cache and try again
+
+#### Build Errors
+
+- **Problem**: Build fails with webpack errors
+- **Solution**:
+  - Delete `node_modules` and `.next` directories
+  - Run `npm install` again
+  - Check that all environment variables are set
+
+#### Static Export Issues
+
+- **Problem**: Routes not working after static export
+- **Solution**:
+  - Ensure the postbuild script ran successfully
+  - Check that `.htaccess` is configured correctly (for Apache)
+  - Verify locale routing in `next.config.js`
+
+#### TypeScript Errors
+
+- **Problem**: Type errors in contract interactions
+- **Solution**:
+  - Ensure contract ABIs are up to date
+  - Check that contract addresses are correctly typed
+  - Verify viem version compatibility
+
+### Getting Help
+
+For issues and questions:
+
+- Check the [Resources & References](#resources--references) section
+- Review the workspace design system documentation
+- Contact: carlos@pelon.club
+
+## Resources & References
+
+### Official Documentation
+
+- [Next.js Documentation](https://nextjs.org/docs) - Next.js framework documentation
+- [RainbowKit Documentation](https://rainbowkit.com) - RainbowKit wallet connection library
+- [wagmi Documentation](https://wagmi.sh) - wagmi React hooks documentation
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - Tailwind CSS utility framework
+- [next-intl Documentation](https://next-intl-docs.vercel.app/) - next-intl internationalization
+- [viem Documentation](https://viem.sh) - viem TypeScript Ethereum client
+- [React Query Documentation](https://tanstack.com/query/latest) - React Query data fetching
+
+### Additional Resources
+
+- [Base Blockchain](https://base.org) - Base L2 blockchain documentation
+- [WalletConnect Cloud](https://cloud.walletconnect.com) - Get WalletConnect Project ID
+- [Neobrutalism Design](https://www.neobrutalism.dev/) - Neobrutalism design reference
+- [ERC4626 Standard](https://eips.ethereum.org/EIPS/eip-4626) - Tokenized Vault Standard
+
+### Project Links
+
+- **Website**: [pelon.club](https://pelon.club)
+- **Twitter**: [@PelonClub](https://x.com/PelonClub)
+- **Telegram**: [t.me/PelonClub](https://t.me/PelonClub)
+- **Email**: carlos@pelon.club
+
+## License
+
+This project is private and proprietary to Baeza.eth (King Of The Pelones).
 
 ---
 
-**Desarrollado por**: Baeza.eth (King Of The Pelones)  
-**Versión**: 0.1.0
+**Developed by**: Baeza.eth (King Of The Pelones)  
+**Version**: 0.1.0

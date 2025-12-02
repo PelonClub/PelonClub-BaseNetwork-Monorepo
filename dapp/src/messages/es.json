@@ -2,7 +2,14 @@
   "common": {
     "appName": "Pelon Club",
     "selectLanguage": "Seleccionar idioma",
-    "toggleMenu": "Alternar menú"
+    "toggleMenu": "Alternar menú",
+    "unlocked": "🔓 Desbloqueado",
+    "unlocksIn": "⏳ Se desbloquea en:",
+    "locked": "BLOQUEADO",
+    "unlockedStatus": "DESBLOQUEADO",
+    "chainIcon": "Icono de cadena",
+    "pelonClubAlt": "Pelon Club",
+    "loading": "Cargando..."
   },
   "navigation": {
     "home": "Inicio",
@@ -10,7 +17,8 @@
     "community": "Comunidad",
     "leaderboard": "Leaderboard",
     "tokenomics": "Tokenomics",
-    "tokenSale": "Venta de Tokens"
+    "tokenSale": "Venta de Tokens",
+    "vault": "Vault"
   },
   "wallet": {
     "connect": "Conectar Wallet",
@@ -38,6 +46,10 @@
         "title": "Tokenomics",
         "description": "Explora la distribución completa de tokens PELON y su modelo económico"
       },
+      "vault": {
+        "title": "Staking Vault",
+        "description": "Deposita PELON y recibe CALDERO. Sistema de staking con timelock y fees de retiro"
+      },
       "cta": "Explorar"
     }
   },
@@ -51,6 +63,10 @@
     "subtitle": "Descubre quiénes son los principales holders del Pelon Club Token y su posición en el ranking",
     "rankings": "Rankings",
     "viewTokenomics": "Ver detalles",
+    "errorLoading": "Error al cargar datos",
+    "unknownError": "Error desconocido",
+    "noHolders": "No hay holders disponibles",
+    "noHoldersDescription": "Los datos aparecerán cuando haya transferencias del token",
     "info": {
       "title": "¿Cómo funciona?",
       "description1": "Este leaderboard muestra los principales holders del Pelon Club Token (PELON) basado en sus balances actuales.",
@@ -93,6 +109,188 @@
       "description1": "Nuestro modelo de asignación conservador pero estratégico prioriza el crecimiento comunitario (15%), la estabilidad del mercado (25%) y la alineación a largo plazo (20% asignación al equipo).",
       "description2": "Con 15% asignado a iniciativas comunitarias, aseguramos que el valor fluya directamente a los usuarios que contribuyen al éxito de la plataforma.",
       "description3": "Todas las asignaciones son transparentes y verificables on-chain a través del explorador de la red Base usando las direcciones de wallet proporcionadas arriba."
+    },
+    "education": {
+      "title": "Guía Educativa de Tokenomics",
+      "tabs": {
+        "introduction": "Introducción",
+        "distribution": "Distribución",
+        "publicSale": "Venta Pública",
+        "community": "Comunidad",
+        "liquidity": "Liquidez",
+        "strategy": "Estrategia",
+        "verification": "Verificación"
+      },
+      "introduction": {
+        "title": "El Futuro de la Educación Token-Gated Está Aquí",
+        "paragraph1": "Pelon Club Token impulsa la primera plataforma educativa descentralizada que realmente monetiza el conocimiento mientras construye una comunidad global de estudiantes y educadores de élite.",
+        "paragraph2": "Con un suministro total de 1 billón de tokens PELON, nuestro modelo tokenómico está diseñado para sostenibilidad a largo plazo, crecimiento comunitario y creación de valor estratégico.",
+        "tokenSpecs": {
+          "title": "Especificaciones del Token",
+          "tokenName": "Nombre del Token: Pelon Club Token",
+          "symbol": "Símbolo: PELON",
+          "totalSupply": "Suministro Total: 1,000,000,000,000 PELON (1 Billón)",
+          "network": "Red: Base (Ethereum L2)",
+          "standard": "Estándar: ERC20 con extensiones avanzadas (ERC1363, ERC20Permit, ERC20Votes, ERC20Burnable)"
+        },
+        "overview": "Nuestro modelo de asignación conservador prioriza el crecimiento comunitario, la estabilidad del mercado y el desarrollo sostenible."
+      },
+      "distribution": {
+        "title": "Distribución Tokenómica Completa",
+        "paragraph1": "Nuestro modelo de asignación conservador prioriza el crecimiento comunitario, la estabilidad del mercado y el desarrollo sostenible. Así es como se asignan estratégicamente 1 billón de tokens PELON:",
+        "categories": {
+          "title": "Categorías de Asignación",
+          "publicSale": "Venta Pública: 20% (200B tokens)",
+          "community": "Comunidad y Ecosistema: 15% (150B tokens)",
+          "liquidity": "Liquidez y Market Making: 25% (250B tokens)",
+          "team": "Equipo y Fundadores: 20% (200B tokens)",
+          "marketing": "Marketing y Crecimiento: 10% (100B tokens)",
+          "treasury": "Tesorería y Operaciones: 5% (50B tokens)",
+          "reserve": "Fondo de Reserva: 5% (50B tokens)"
+        },
+        "total": "Total asignado: 100% (1 Billón PELON)"
+      },
+      "publicSale": {
+        "title": "Venta Pública de Tokens (20% - 200B PELON)",
+        "paragraph1": "Una porción significativa del suministro total se destina a la venta pública de tokens, permitiendo que la comunidad y los inversores participen directamente en el ecosistema desde el inicio.",
+        "features": {
+          "title": "Características de la Venta",
+          "pricing": "Precio: Bonding curve sigmoide con precio dinámico",
+          "initialPrice": "Precio Inicial: 0.000003 USDC por PELON token (1 USDC = 333,333.33 PELON tokens)",
+          "priceMechanism": "Mecanismo de Precio: El precio aumenta dinámicamente a medida que se venden tokens, alcanzando un precio máximo configurable",
+          "paymentMethod": "Método de Pago: USDC (USD Coin)",
+          "antiWhale": "Mecanismo Anti-Whale: Límite máximo por wallet para prevenir concentración excesiva",
+          "totalLimit": "Límite Total: 200B tokens (20% del suministro total)",
+          "contract": "Contrato: TokenSale desplegado en Base Mainnet"
+        },
+        "breakdown": {
+          "title": "Desglose",
+          "description": "Venta Pública (20% - 200B): Tokens disponibles para compra pública usando USDC a través del contrato TokenSale"
+        },
+        "note": "Los 200B tokens destinados a la venta pública fueron restados de la asignación original de Comunidad y Ecosistema (35% - 350B), quedando 15% (150B) para las iniciativas comunitarias restantes.",
+        "whyMatters": "La venta pública democratiza el acceso al token, permite que la comunidad participe desde el inicio, y proporciona capital inicial para el desarrollo y crecimiento de la plataforma. El mecanismo anti-whale asegura una distribución más equitativa entre los participantes."
+      },
+      "community": {
+        "title": "Comunidad y Ecosistema (15% - 150B PELON)",
+        "paragraph1": "Esta asignación refleja nuestro compromiso con la construcción de una comunidad próspera y comprometida. Esta categoría impulsa la adquisición de usuarios, la retención y el crecimiento de la plataforma.",
+        "breakdown": {
+          "title": "Desglose",
+          "airdrops": "Airdrops Iniciales (5% - 50B): Recompensar early adopters y construir base de usuarios inicial",
+          "participation": "Incentivos de Participación (5% - 50B): Fomentar participación activa y uso de la plataforma",
+          "referrals": "Programa de Referidos (5% - 50B): Mecanismo de crecimiento viral para adquisición orgánica de usuarios",
+          "governance": "Gobernanza DAO (5% - 50B): Empoderar toma de decisiones comunitaria y descentralización"
+        },
+        "note": "La categoría de Comunidad y Ecosistema originalmente estaba asignada con 35% (350B tokens). De esta asignación original, se restaron 200B tokens para la venta pública, redistribuyendo el resto proporcionalmente entre las subcategorías restantes.",
+        "whyMatters": "Una comunidad fuerte es la base de cualquier proyecto Web3 exitoso. Aunque la asignación se redujo para incluir la venta pública, seguimos priorizando iniciativas comunitarias que aseguran que el valor fluya directamente a los usuarios que contribuyen al éxito de la plataforma."
+      },
+      "liquidity": {
+        "title": "Liquidez y Market Making (25% - 250B PELON)",
+        "paragraph1": "La estabilidad del mercado y la liquidez son críticas para la utilidad del token y la confianza de los inversores. Esta asignación garantiza condiciones de trading saludables desde el primer día.",
+        "breakdown": {
+          "title": "Desglose",
+          "initial": "Liquidez Inicial DEX (15% - 150B): Lanzamiento con pools de liquidez profundos",
+          "reserve": "Reserva de Liquidez (10% - 100B): Mantener profundidad y estabilidad del mercado a lo largo del tiempo"
+        },
+        "whyMatters": "La liquidez adecuada previene la manipulación de precios, reduce el slippage y crea una mejor experiencia de trading para todos los participantes. Esta asignación demuestra nuestro compromiso con la construcción de una economía de tokens sostenible."
+      },
+      "strategy": {
+        "title": "Por Qué Este Modelo Tokenómico Funciona",
+        "conservative": {
+          "title": "Conservador Pero Estratégico",
+          "description": "Nuestro modelo de asignación equilibra múltiples objetivos:",
+          "publicAccess": "Acceso público con 20% de asignación a venta pública democratiza la participación",
+          "communityFocus": "Enfoque comunitario con 15% de asignación asegura creación de valor para usuarios",
+          "marketStability": "Estabilidad del mercado a través de 25% de asignación de liquidez construye confianza de inversores",
+          "longTerm": "Alineación a largo plazo con 20% de asignación del equipo asegura desarrollo sostenido",
+          "growth": "Aceleración del crecimiento a través de 10% de asignación de marketing impulsa adopción",
+          "security": "Seguridad operativa con 10% combinado de tesorería y reservas"
+        },
+        "sustainability": {
+          "title": "Diseñado para Sostenibilidad",
+          "description": "A diferencia de proyectos que asignan demasiado a fundadores o marketing, nuestro modelo prioriza:",
+          "communityValue": "Valor comunitario - Los usuarios obtienen la mayor participación",
+          "marketHealth": "Salud del mercado - Liquidez fuerte previene volatilidad",
+          "thinking": "Pensamiento a largo plazo - Incentivos del equipo alineados con éxito multi-anual",
+          "balanced": "Crecimiento balanceado - Marketing sin sobre-asignación"
+        },
+        "transparency": {
+          "title": "Transparente y Verificable",
+          "description": "Todas las asignaciones están claramente definidas y pueden ser verificadas on-chain. Esta transparencia construye confianza con inversores, usuarios y la comunidad en general."
+        }
+      },
+      "verification": {
+        "title": "Verificación On-Chain",
+        "paragraph1": "Todas las asignaciones de tokens se gestionan a través de direcciones de wallet dedicadas en la red Base. Cada categoría tiene su propia wallet para un seguimiento transparente y verificable de las asignaciones on-chain.",
+        "publicSale": {
+          "title": "Venta Pública",
+          "contract": "Contrato TokenSale: Dirección del contrato (se actualiza después del deployment)",
+          "allocation": "Asignación Total: 20% (200B PELON)",
+          "pricing": "Precio: Bonding curve sigmoide con precio dinámico",
+          "initialPrice": "Precio Inicial: 0.000003 USDC por PELON token",
+          "paymentMethod": "Método de Pago: USDC (USD Coin)",
+          "usdcWallet": "Wallet de Recepción de Fondos USDC: 0xe76117151DCD6D9cb4DcEE496DCA2F8513Ca7D7f"
+        },
+        "community": {
+          "title": "Comunidad y Ecosistema",
+          "address": "Dirección de Wallet: 0xeB7D78ed5F19592dFD5cF97443d961e85595Daa5",
+          "allocation": "Asignación Total: 15% (150B PELON) - Ajustada desde 35% (350B) original"
+        },
+        "liquidity": {
+          "title": "Liquidez y Market Making",
+          "address": "Dirección de Wallet: 0xFF9e0a72842751698A62050e94fad0CE8C0b368a",
+          "allocation": "Asignación Total: 25% (250B PELON)"
+        },
+        "team": {
+          "title": "Equipo y Fundadores",
+          "address": "Dirección de Wallet: 0xaEeaA55ED4f7df9E4C5688011cEd1E2A1b696772",
+          "allocation": "Asignación Total: 20% (200B PELON)"
+        },
+        "marketing": {
+          "title": "Marketing y Crecimiento",
+          "address": "Dirección de Wallet: 0xc08bF97eeE16e73DFA022265118B513D10Ae3F1C",
+          "allocation": "Asignación Total: 10% (100B PELON)"
+        },
+        "treasury": {
+          "title": "Tesorería y Operaciones",
+          "address": "Dirección de Wallet: 0x4826b07de6d05783121A7f28147F82D3eEEb7E1b",
+          "allocation": "Asignación Total: 5% (50B PELON)"
+        },
+        "reserve": {
+          "title": "Fondo de Reserva",
+          "address": "Dirección de Wallet: 0xfBeec866499B868B87C3730AA4F3a7921707f7b2",
+          "allocation": "Asignación Total: 5% (50B PELON)"
+        },
+        "note": "Todas las asignaciones pueden ser verificadas on-chain a través del explorador de la red Base usando las direcciones de wallet proporcionadas arriba."
+      }
+    },
+    "tokens": {
+      "title": "Tokens del Ecosistema",
+      "currentNetwork": "Red Actual",
+      "network": "Red",
+      "switchNetwork": "Cambia a Base Mainnet o Testnet",
+      "bothNetworksNote": "Puedes agregar los tokens a tu wallet tanto en Mainnet como en Testnet usando los botones de abajo.",
+      "mainnet": "Base Mainnet",
+      "testnet": "Base Testnet",
+      "contractAddress": "Dirección del Contrato",
+      "addToWallet": "Agregar a Wallet",
+      "connectToAdd": "Conecta tu Wallet",
+      "connectWallet": "Por favor, conecta tu wallet primero",
+      "walletNotFound": "No se encontró una wallet compatible. Por favor, instala MetaMask u otra wallet compatible.",
+      "adding": "Agregando...",
+      "added": "✓ Agregado",
+      "addTokenError": "Error al agregar el token. Por favor, inténtalo de nuevo.",
+      "pelonClubToken": "Pelon Club Token"
+    },
+    "console": {
+      "errorBuyingTokens": "Error comprando tokens:",
+      "errorWithdrawingAssets": "Error retirando assets:",
+      "errorRedeemingShares": "Error canjeando shares:",
+      "errorMintingShares": "Error acuñando shares:",
+      "errorDepositingAssets": "Error depositando assets:",
+      "errorApprovingPELON": "Error aprobando PELON:",
+      "errorApprovingUSDC": "Error aprobando USDC:",
+      "errorAddingToken": "Error agregando token:",
+      "errorProcessingLog": "Error procesando log:"
     }
   },
   "tokenSale": {
@@ -174,6 +372,514 @@
       "noMint": {
         "title": "Sin Función de Mint",
         "description": "El token PELON no tiene función de mint. Todos los tokens fueron creados en el momento del deployment y están disponibles en el contrato TokenSale. No se pueden crear nuevos tokens, lo que garantiza un suministro fijo y predecible."
+      }
+    },
+    "education": {
+      "title": "Guía Educativa de la Venta de Tokens",
+      "tabs": {
+        "introduction": "Introducción",
+        "sigmoidCurve": "Curva Sigmoide",
+        "priceTiers": "Tiers de Precio",
+        "userGuide": "Guía de Usuario",
+        "useCases": "Casos de Uso",
+        "examples": "Ejemplos",
+        "security": "Seguridad",
+        "benefits": "Beneficios",
+        "fomo": "No Te Lo Pierdas"
+      },
+      "introduction": {
+        "title": "¿Qué es la Venta de Tokens PELON?",
+        "paragraph1": "La venta de tokens PELON es un mecanismo innovador de distribución de tokens que utiliza una curva de vinculación (bonding curve) sigmoide. A diferencia de las ventas tradicionales con precio fijo, el precio de PELON aumenta automáticamente a medida que se venden más tokens, recompensando a los compradores tempranos con mejores precios.",
+        "paragraph2": "Este sistema garantiza una distribución justa y transparente, donde cada compra afecta el precio de forma determinística. El momento de tu compra es crucial: mientras más temprano compres, más tokens obtienes por tu USDC.",
+        "concepts": {
+          "title": "Conceptos Básicos",
+          "initialPrice": "Precio Inicial: El precio más bajo al que se venden los tokens al inicio de la venta (0.000003 USDC por PELON)",
+          "maxPrice": "Precio Máximo: El precio más alto que alcanzará la curva (0.01 USDC por PELON)",
+          "tokensSold": "Tokens Vendidos: La cantidad total de tokens vendidos determina el precio actual",
+          "timing": "Momento: El factor más importante - los primeros compradores obtienen hasta 1,666x más tokens que los tardíos"
+        }
+      },
+      "sigmoidCurve": {
+        "title": "La Curva Sigmoide",
+        "paragraph1": "La curva sigmoide es una función matemática que tiene forma de 'S' cuando se grafica. En nuestra venta de tokens, esta curva determina cómo aumenta el precio a medida que se venden más tokens. La belleza de esta curva es que el precio aumenta suavemente y de forma predecible, sin saltos bruscos.",
+        "paragraph2": "Piensa en la curva sigmoide como una máquina expendedora que se vuelve más cara a medida que se queda sin productos. Cuando la máquina está llena (ningún token vendido), los precios están en su punto más bajo. A medida que la gente compra tokens, la máquina tiene menos disponibles, así que cobra más.",
+        "howItWorks": {
+          "title": "Cómo Funciona",
+          "description": "El precio se calcula automáticamente usando una fórmula matemática basada en cuántos tokens se han vendido. Al inicio (0 tokens vendidos), el precio está en su mínimo absoluto. A medida que se venden tokens, el precio aumenta gradual y suavemente. En el punto medio (100B tokens vendidos), el precio está aproximadamente a la mitad entre el mínimo y el máximo. Cerca del final (200B tokens vendidos), el precio alcanza su máximo."
+        },
+        "priceOnlyUp": {
+          "title": "El Precio Solo Sube, Nunca Baja",
+          "description": "La curva de vinculación solo se mueve en una dirección: hacia arriba. Una vez que se venden tokens, el precio de los tokens restantes aumenta. Esto protege a los compradores tempranos y asegura una distribución justa. No hay forma de que el precio baje una vez que se ha vendido un token."
+        },
+        "transparency": {
+          "title": "Transparencia y Previsibilidad",
+          "description": "No hay sorpresas. El precio se calcula automáticamente basado en exactamente cuántos tokens se han vendido. Siempre puedes verificar el precio actual antes de comprar. El sistema es completamente transparente y verificable on-chain."
+        }
+      },
+      "priceTiers": {
+        "title": "Tiers de Precio",
+        "paragraph1": "Hemos dividido la venta en cuatro tiers basados en cuántos tokens se han vendido. Cada tier representa una fase diferente de la venta, y la diferencia de precio entre tiers puede ser significativa. Los números no mienten: esperar te cuesta. Mucho.",
+        "tier1": {
+          "title": "Tier 1: Early Bird (0 - 20B tokens vendidos)",
+          "description": "Rango de Precio: 0.000003 - 0.00001 USDC por PELON. Este es el mejor momento absoluto para comprar. Estás entrando desde el principio. En este tier, 1 USDC te da aproximadamente 333,333 a 100,000 tokens PELON.",
+          "example": "Ejemplo: Gastas 100 USDC y recibes ~10,000,000 a ~33,333,333 tokens PELON. Este es el precio más barato que verás. Punto."
+        },
+        "tier2": {
+          "title": "Tier 2: Early Adopter (20B - 50B tokens vendidos)",
+          "description": "Rango de Precio: ~0.00001 - 0.00005 USDC por PELON. Todavía es un punto de entrada excelente. El precio ha aumentado, pero sigues obteniendo un trato fantástico. En este tier, 1 USDC te da aproximadamente 20,000 a 100,000 tokens PELON.",
+          "example": "Ejemplo: Gastas 100 USDC y recibes ~2,000,000 a ~10,000,000 tokens PELON. Todavía estás temprano, pero la ventana se está cerrando."
+        },
+        "tier3": {
+          "title": "Tier 3: Fase de Crecimiento (50B - 100B tokens vendidos)",
+          "description": "Rango de Precio: ~0.00005 - 0.001 USDC por PELON. La venta está ganando momentum. Los precios son notablemente más altos, pero todavía hay valor que encontrar. En este tier, 1 USDC te da aproximadamente 1,000 a 20,000 tokens PELON.",
+          "example": "Ejemplo: Gastas 100 USDC y recibes ~100,000 a ~2,000,000 tokens PELON. La ventaja del early bird se ha ido en su mayoría. Estás pagando 3-30x más que los compradores del Tier 1."
+        },
+        "tier4": {
+          "title": "Tier 4: Madurez (100B - 200B tokens vendidos)",
+          "description": "Rango de Precio: ~0.001 - 0.01 USDC por PELON. La fase final. Los precios están en su punto más alto, acercándose al máximo. En este tier, 1 USDC te da aproximadamente 100 a 1,000 tokens PELON.",
+          "example": "Ejemplo: Gastas 100 USDC y recibes ~10,000 a ~100,000 tokens PELON. Estás pagando 10-300x más que los compradores del Tier 1. El costo de oportunidad de esperar es masivo."
+        }
+      },
+      "userGuide": {
+        "title": "Cómo Comprar Tokens",
+        "steps": {
+          "title": "Paso a Paso",
+          "step1": "Conecta tu wallet a la plataforma Pelon Club",
+          "step2": "Verifica el precio actual - Verás exactamente cuántos tokens obtendrás",
+          "step3": "Ingresa tu cantidad de USDC - Se aplican montos mínimos de compra",
+          "step4": "Aprueba la transacción - Tu wallet pedirá confirmación",
+          "step5": "Recibe tus tokens PELON - Aparecen en tu wallet inmediatamente"
+        },
+        "limits": {
+          "title": "Límites Importantes",
+          "maxPerWallet": "Máximo por wallet: 20B tokens PELON (puedes hacer múltiples compras hasta este límite)",
+          "maxTotalSale": "Límite total de venta: 200B tokens PELON (una vez que se alcance, la venta termina)",
+          "paymentMethod": "Método de pago: Solo USDC"
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "earlyPurchase": {
+          "title": "Por Qué Comprar Temprano es Crucial",
+          "description": "Cada compra de tokens hace que la siguiente sea un poco más cara. Mientras más temprano compres, más tokens obtienes por tu USDC. Los compradores del Tier 1 obtienen hasta 1,666x más tokens que los del Tier 4 con la misma inversión. La diferencia es masiva."
+        },
+        "strategies": {
+          "title": "Estrategias de Compra",
+          "description": "Puedes usar diferentes estrategias: compra única grande en el Tier 1 para maximizar tokens, DCA (dollar cost averaging) comprando en múltiples momentos, o múltiples compras pequeñas. Cada estrategia tiene sus ventajas, pero todas benefician de comprar temprano."
+        },
+        "ecosystem": {
+          "title": "Participación en el Ecosistema Pelon Club",
+          "description": "Al comprar tokens PELON, te conviertes en parte activa del ecosistema Pelon Club. Los tokens PELON te dan acceso a contenido educativo token-gated, participación en gobernanza, y beneficios futuros del ecosistema."
+        },
+        "investment": {
+          "title": "Inversión a Corto y Largo Plazo",
+          "description": "Los tokens PELON pueden ser una inversión tanto a corto como largo plazo. Los compradores tempranos tienen la ventaja de obtener tokens a precios bajos, mientras que los compradores tardíos pueden participar en el ecosistema aunque a precios más altos."
+        }
+      },
+      "examples": {
+        "title": "Ejemplos Prácticos",
+        "comparison": {
+          "title": "Comparación Real: $1,000 en Diferentes Tiers",
+          "description": "Si quieres comprar $1,000 en tokens PELON, esto es lo que obtendrías dependiendo de cuándo compres: En Tier 1 (5B tokens vendidos) obtienes ~333,333,333 PELON. En Tier 2 (35B tokens vendidos) obtienes ~50,000,000 PELON (6.7x menos). En Tier 3 (75B tokens vendidos) obtienes ~3,333,333 PELON (100x menos). En Tier 4 (150B tokens vendidos) obtienes ~200,000 PELON (1,666x menos)."
+        },
+        "scenario1": {
+          "title": "Escenario 1: Compras 100 USDC en el Tier 1",
+          "description": "Obtienes: ~33,333,333 tokens PELON. Si el precio llega a 0.01 USDC: Tus tokens valen ~333,333 USDC. Ganancia: ~333,233 USDC (333,133% de ganancia)."
+        },
+        "scenario2": {
+          "title": "Escenario 2: Esperas y compras 100 USDC en el Tier 4",
+          "description": "Obtienes: ~10,000 tokens PELON. Si el precio llega a 0.01 USDC: Tus tokens valen ~100 USDC. Ganancia: ~0 USDC (quedaste igual). Misma inversión. Resultado completamente diferente. ¿La diferencia? El momento."
+        },
+        "roi": {
+          "title": "Cálculos de ROI Potencial",
+          "description": "Los compradores tempranos tienen potencial de ROI masivo. Si compras en Tier 1 y el precio alcanza el máximo (0.01 USDC), tu inversión puede multiplicarse por más de 3,000x. Los compradores tardíos en Tier 4 pueden ver ganancias, pero mucho menores debido al precio de entrada más alto."
+        }
+      },
+      "security": {
+        "title": "Seguridad y Auditorías",
+        "paragraph1": "El contrato TokenSale ha sido diseñado con seguridad como prioridad máxima. Utiliza OpenZeppelin como base, una de las bibliotecas más probadas y auditadas en el ecosistema Ethereum, y ha sido sometido a análisis exhaustivos de seguridad.",
+        "audits": {
+          "title": "Auditorías Realizadas",
+          "description": "El contrato ha sido analizado con herramientas de análisis estático como Slither, que identifica vulnerabilidades comunes y problemas de seguridad. También se han realizado pruebas de fuzzing con Echidna para verificar propiedades invariantes del contrato. Todos los hallazgos han sido abordados y corregidos."
+        },
+        "mechanisms": {
+          "title": "Mecanismos de Seguridad Implementados",
+          "description": "El contrato implementa protección contra reentrancy mediante ReentrancyGuard, control de acceso mediante Ownable, y capacidad de pausar operaciones mediante Pausable. Todas estas son implementaciones probadas de OpenZeppelin utilizadas por miles de proyectos DeFi."
+        },
+        "testing": {
+          "title": "Testing Exhaustivo",
+          "description": "El contrato ha sido sometido a 82 tests comprehensivos que cubren todos los escenarios posibles: compras exitosas, validaciones, casos límite, protección contra ataques, y más. La cobertura de tests es exhaustiva y asegura que el contrato funcione correctamente en todas las condiciones."
+        },
+        "openzeppelin": {
+          "title": "OpenZeppelin como Base Probada",
+          "description": "El contrato extiende múltiples contratos de OpenZeppelin (Ownable, ReentrancyGuard, Pausable), que son implementaciones estándar y ampliamente auditadas. OpenZeppelin es utilizado por miles de proyectos DeFi y ha sido probado en producción con billones de dólares en valor bloqueado."
+        }
+      },
+      "benefits": {
+        "title": "Beneficios de la Venta de Tokens",
+        "noFees": {
+          "title": "Sin Fees de Compra/Venta",
+          "description": "El contrato TokenSale no cobra fees adicionales. Pagas exactamente el precio calculado por la bonding curve, sin comisiones ocultas ni fees de transacción adicionales. El único costo es el precio del token según la curva actual."
+        },
+        "noManipulation": {
+          "title": "Sin Manipulación del Precio",
+          "description": "El precio se calcula automáticamente según la fórmula matemática de la curva sigmoide. No hay manipulación externa del precio - cada compra aumenta el precio de forma determinística y transparente. El precio actual se calcula en tiempo real basado en la cantidad total de tokens vendidos."
+        },
+        "transparency": {
+          "title": "Transparencia Total On-Chain",
+          "description": "Todas las transacciones, precios, y cambios son completamente transparentes y verificables on-chain. Puedes verificar cualquier aspecto de la venta usando el explorador de bloques de Base. No hay sorpresas ni mecanismos ocultos."
+        },
+        "fixedSupply": {
+          "title": "Suministro Fijo",
+          "description": "El token PELON no tiene función de mint. Todos los tokens fueron creados en el momento del deployment y están disponibles en el contrato TokenSale. No se pueden crear nuevos tokens, lo que garantiza un suministro fijo y predecible."
+        },
+        "noOwnerImpact": {
+          "title": "Funciones de Owner No Afectan las Compras",
+          "description": "Aunque el contrato tiene funciones de owner (como pausar la venta o ajustar parámetros), estas no afectan el mecanismo fundamental de compra/venta. El precio se calcula automáticamente según la fórmula de la bonding curve y no puede ser manipulado por el owner. Las compras funcionan de forma descentralizada y transparente."
+        }
+      },
+      "fomo": {
+        "title": "No Te Lo Pierdas",
+        "paragraph1": "Esta es una oportunidad única de participar en el ecosistema educativo más innovador de Web3 desde el inicio, obteniendo tokens PELON a los mejores precios posibles.",
+        "earlyBuyers": {
+          "title": "Los Primeros Compradores Obtienen Hasta 1,666x Más Tokens",
+          "description": "Los compradores del Tier 1 obtienen hasta 1,666 veces más tokens que los del Tier 4 con la misma inversión. Esta diferencia es masiva y puede significar la diferencia entre una inversión exitosa y una que apenas se mantiene a flote."
+        },
+        "priceOnlyUp": {
+          "title": "El Precio Solo Sube, Nunca Baja",
+          "description": "Cada compra hace que la siguiente sea más cara. El precio nunca retrocede. Una vez que se venden tokens, el precio de los tokens restantes aumenta permanentemente. Esto significa que cada día que esperas, estás pagando más por los mismos tokens."
+        },
+        "hardLimit": {
+          "title": "Límite Duro: Solo 200B Tokens se Venderán",
+          "description": "Una vez que se venden 200B tokens, la venta termina. El precio habrá alcanzado su máximo (0.01 USDC por PELON). Después de eso, los tokens estarán disponibles en exchanges descentralizados donde los precios serán determinados por la oferta y demanda del mercado, probablemente a precios más altos."
+        },
+        "noGoingBack": {
+          "title": "Una Vez que Pierdes un Tier, No Puedes Volver",
+          "description": "Si esperas y el precio sube al siguiente tier, nunca podrás volver al tier anterior. Los precios más bajos son para siempre para los compradores tempranos. No hay segunda oportunidad para obtener esos precios."
+        },
+        "paragraph2": "No esperes. Cada compra hace que la siguiente sea más cara. El mejor momento para comprar tokens PELON fue cuando comenzó la venta. El segundo mejor momento es ahora mismo."
+      }
+    }
+  },
+  "vault": {
+    "meta": {
+      "title": "Staking Vault - Pelon Club",
+      "description": "Deposita tokens PELON en el vault y obtén shares CALDERO. Sistema de staking con timelock y fees de retiro",
+      "keywords": "Pelon Club, staking vault, PELON, CALDERO, ERC4626, staking, timelock, DeFi, Base network, vault"
+    },
+    "title": "Staking Vault",
+    "subtitle": "Deposita tus tokens PELON y obtén shares CALDERO. Retira cuando el timelock expire con fees distribuidos",
+    "stats": {
+      "vaultStats": "Estadísticas del Vault",
+      "yourStats": "Tus Estadísticas",
+      "totalAssets": "Total de Assets",
+      "totalSupply": "Total de Shares",
+      "exchangeRate": "Tasa de Cambio",
+      "timelockDuration": "Duración del Timelock",
+      "withdrawalFee": "Fee de Retiro",
+      "yourPelonBalance": "Tu Balance PELON",
+      "yourShares": "Tus Shares",
+      "withdrawable": "Retirable"
+    },
+    "deposit": {
+      "title": "Depositar",
+      "amountInPELON": "Cantidad en PELON",
+      "enterPELON": "Ingresa cantidad en PELON",
+      "youWillReceive": "Recibirás",
+      "youWillDeposit": "Depositarás",
+      "balance": "Balance",
+      "deposit": "Depositar",
+      "processing": "Procesando...",
+      "connectWallet": "Conecta tu wallet para depositar",
+      "successMessage": "¡Depósito exitoso! Has recibido shares CALDERO.",
+      "errorDepositFailed": "Error al procesar el depósito",
+      "errorInsufficientBalance": "Balance de PELON insuficiente",
+      "errorInsufficientAllowance": "Aprobación insuficiente. Por favor aprueba más tokens.",
+      "errorApprovalFailed": "Error al aprobar PELON",
+      "successApprovalMessage": "¡Aprobación de PELON exitosa! Ahora puedes depositar.",
+      "approving": "Aprobando...",
+      "approvePELON": "Aprobar PELON"
+    },
+    "withdraw": {
+      "title": "Retirar",
+      "withdrawAssets": "Retirar Assets",
+      "redeemShares": "Canjear Shares",
+      "amountInPELON": "Cantidad en PELON",
+      "amountInShares": "Cantidad en Shares",
+      "enterPELON": "Ingresa cantidad en PELON",
+      "enterShares": "Ingresa cantidad en shares",
+      "withdrawable": "Retirable",
+      "withdrawableShares": "Shares Retirables",
+      "amountBeforeFee": "Cantidad antes de fee",
+      "totalFee": "Fee Total",
+      "feeToWallet": "Fee a Wallet",
+      "feeToRestake": "Fee Re-stakeado",
+      "feeToBurn": "Fee Quemado",
+      "youWillReceive": "Recibirás",
+      "withdraw": "Retirar",
+      "redeem": "Canjear",
+      "processing": "Procesando...",
+      "connectWallet": "Conecta tu wallet para retirar",
+      "successWithdrawMessage": "¡Retiro exitoso! Los tokens han sido transferidos a tu wallet.",
+      "successRedeemMessage": "¡Canje exitoso! Los tokens han sido transferidos a tu wallet.",
+      "errorWithdrawFailed": "Error al procesar el retiro",
+      "errorRedeemFailed": "Error al procesar el canje",
+      "errorTimelockNotExpired": "El timelock no ha expirado. No tienes suficiente cantidad retirable.",
+      "errorInsufficientWithdrawable": "Cantidad insuficiente retirable. Verifica el timelock de tus depósitos.",
+      "feeToVault": "Fee al Vault"
+    },
+    "mint": {
+      "title": "Acuñar Shares",
+      "amountInShares": "Cantidad en Shares",
+      "enterShares": "Ingresa cantidad en shares",
+      "description": "Especifica cuántas shares CALDERO quieres recibir y el contrato calculará cuántos PELON necesitas depositar.",
+      "youWillReceive": "Recibirás",
+      "youWillDeposit": "Depositarás",
+      "mint": "Acuñar",
+      "processing": "Procesando...",
+      "connectWallet": "Conecta tu wallet para acuñar shares",
+      "successMessage": "¡Acuñado exitoso! Has recibido shares CALDERO.",
+      "errorMintFailed": "Error al procesar el acuñado",
+      "errorInsufficientBalance": "Balance de PELON insuficiente",
+      "errorInsufficientAllowance": "Aprobación insuficiente. Por favor aprueba más tokens.",
+      "errorApprovalFailed": "Error al aprobar PELON",
+      "successApprovalMessage": "¡Aprobación de PELON exitosa! Ahora puedes acuñar.",
+      "approving": "Aprobando...",
+      "approvePELON": "Aprobar PELON"
+    },
+    "approve": {
+      "title": "Aprobar Tokens",
+      "amountToApprove": "Cantidad a Aprobar",
+      "enterAmount": "Ingresa cantidad a aprobar",
+      "description": "Antes de depositar tokens en el vault, necesitas aprobar que el contrato pueda retirarlos de tu wallet. Esta aprobación solo da permiso; no transfiere tokens todavía.",
+      "currentAllowance": "Aprobación actual",
+      "alreadyApproved": "Ya tienes suficiente aprobación para esta cantidad",
+      "approve": "Aprobar",
+      "processing": "Procesando...",
+      "connectWallet": "Conecta tu wallet para aprobar tokens",
+      "successMessage": "¡Aprobación exitosa! Ahora puedes depositar tokens.",
+      "errorApprovalFailed": "Error al aprobar tokens"
+    },
+    "converter": {
+      "title": "Conversión",
+      "description": "Calcula la equivalencia entre tokens PELON y shares CALDERO sin realizar transacciones. El exchange rate cambia con el tiempo a medida que se acumulan fees en el vault.",
+      "assetsToShares": "PELON → CALDERO",
+      "sharesToAssets": "CALDERO → PELON",
+      "amountInPELON": "Cantidad en PELON",
+      "amountInShares": "Cantidad en Shares",
+      "enterPELON": "Ingresa cantidad en PELON",
+      "enterShares": "Ingresa cantidad en shares",
+      "result": "Resultado",
+      "calculating": "Calculando",
+      "connectWallet": "Conecta tu wallet para usar el conversor"
+    },
+    "history": {
+      "title": "Historial de Depósitos",
+      "connectWallet": "Conecta tu wallet para ver tu historial",
+      "loading": "Cargando...",
+      "noDeposits": "No has realizado ningún depósito todavía.",
+      "depositedAt": "Depositado en",
+      "unlocksAt": "Se desbloquea en",
+      "unlocked": "🔓 Desbloqueado",
+      "unlocksIn": "⏳ Se desbloquea en:",
+      "locked": "BLOQUEADO",
+      "unlockedStatus": "DESBLOQUEADO"
+    },
+    "fees": {
+      "title": "Distribución de Fees",
+      "description": "Las fees de retiro se distribuyen en tres partes"
+    },
+    "errors": {
+      "timelockNotExpired": "El timelock no ha expirado para esta cantidad"
+    },
+    "info": {
+      "title": "Información del Vault",
+      "timelock": {
+        "title": "Sistema de Timelock",
+        "description": "Cada depósito tiene un período de timelock fijo de 1 día (86400 segundos) antes de poder ser retirado. El timelock se resetea cada vez que realizas un nuevo depósito, por lo que debes esperar 1 día desde tu último depósito para poder retirar."
+      },
+      "fees": {
+        "title": "Fees de Retiro",
+        "description": "Cuando retiras tokens, se aplica una fee fija del 3% (300 basis points) que se distribuye de la siguiente manera: 50% va al fee wallet (dirección inmutable establecida en el despliegue), y 50% permanece en el vault (aumentando el valor de todas las shares CALDERO)."
+      },
+      "vaultRetention": {
+        "title": "Retención de Fees en el Vault",
+        "description": "El 50% de las fees de retiro permanece en el vault sin mintear nuevos shares. Esto aumenta el valor por share para todos los holders, creando un mecanismo de recompensa compuesto que beneficia a todos los stakers mientras mantienen sus shares CALDERO."
+      },
+      "shares": {
+        "title": "Shares CALDERO",
+        "description": "Las shares del vault se llaman CALDERO y representan tu participación en el vault. El valor de tus shares CALDERO aumenta cuando otros usuarios depositan o cuando se acumulan fees en el vault (50% de cada retiro permanece en el vault)."
+      }
+    },
+    "education": {
+      "title": "Guía Educativa del Vault",
+      "tabs": {
+        "introduction": "Introducción",
+        "userGuide": "Guía de Usuario",
+        "useCases": "Casos de Uso",
+        "examples": "Ejemplos",
+        "security": "Seguridad",
+        "benefits": "Beneficios",
+        "fomo": "No Te Lo Pierdas",
+        "caldero": "CALDERO"
+      },
+      "introduction": {
+        "title": "¿Qué es el PelonStakingVault?",
+        "paragraph1": "El PelonStakingVault es un vault tokenizado compatible con el estándar ERC4626 que te permite hacer staking de tus tokens PELON. Cuando depositas tokens PELON en el vault, recibes shares del vault (CALDERO) que representan tu propiedad proporcional de los assets del vault. Piensa en ello como un fondo mutuo descentralizado: depositas assets y recibes shares que puedes transferir, comerciar o usar en otros protocolos DeFi.",
+        "paragraph2": "El vault mantiene una relación entre assets y shares. Inicialmente, esta relación es 1:1 (1 PELON = 1 CALDERO), pero puede cambiar según los assets totales del vault y las shares totales. El estándar ERC4626 proporciona funciones integradas para convertir entre assets y shares de manera precisa y transparente.",
+        "concepts": {
+          "title": "Conceptos Básicos",
+          "assets": "Assets: Tokens PELON que depositas en el vault. Estos son los tokens subyacentes que respaldan el valor del vault.",
+          "shares": "Shares: Tokens CALDERO que representan tu propiedad en el vault. Recibes estos cuando depositas assets y su valor aumenta con el tiempo.",
+          "exchangeRate": "Tasa de Cambio: La relación entre assets y shares. Se calcula como totalAssets / totalSupply. Cuando el vault está vacío, la tasa es 1:1.",
+          "timelock": "Timelock: Un período fijo de 1 día durante el cual los assets depositados no pueden ser retirados. El timelock se reinicia en cada nuevo depósito."
+        }
+      },
+      "userGuide": {
+        "title": "Cómo Usar el Vault",
+        "deposits": {
+          "title": "Hacer Depósitos",
+          "description": "Para depositar tokens PELON, primero necesitas aprobar el contrato del vault para gastar tus tokens. Luego, puedes llamar a la función deposit() especificando cuántos tokens PELON depositar. El vault calculará automáticamente cuántas shares CALDERO recibirás según la tasa de cambio actual. Si eres el primer depositante, recibirás shares en una relación 1:1."
+        },
+        "withdrawals": {
+          "title": "Retirar Assets",
+          "description": "Para retirar assets, puedes usar withdraw() para especificar cuántos tokens PELON quieres retirar, o redeem() para canjear una cantidad específica de shares CALDERO. Ambas funciones aplican el timelock de 1 día y la fee de retiro del 3%. El 50% de la fee permanece en el vault, aumentando el valor por share para todos los holders."
+        },
+        "timelock": {
+          "title": "Sistema de Timelock de 1 Día",
+          "description": "Cada depósito bloquea los assets por un período fijo de 1 día antes de poder ser retirado. El timelock se reinicia cada vez que haces un nuevo depósito, contando desde el último depósito. Este mecanismo fomenta el staking a corto plazo y reduce la volatilidad del vault."
+        },
+        "fees": {
+          "title": "Sistema de Fees del 3%",
+          "description": "Cuando retiras assets usando withdraw() o redeem(), se deduce automáticamente una fee fija del 3% que se distribuye: 50% va al fee wallet (dirección inmutable establecida en el despliegue), y 50% permanece en el vault sin mintear nuevos shares. Esto aumenta el valor por share para todos los holders, creando un mecanismo de recompensa compuesto."
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso Reales",
+        "shortTerm": {
+          "title": "Staking a Corto Plazo para Obtener Yield",
+          "description": "El vault es perfecto para usuarios que quieren hacer staking de sus tokens PELON por períodos cortos (mínimo 1 día) mientras obtienen yield pasivo. Cada retiro de otros usuarios genera fees que aumentan el valor de tus shares CALDERO, incluso sin hacer nada adicional."
+        },
+        "ecosystem": {
+          "title": "Participación en el Ecosistema Pelon Club",
+          "description": "Al depositar en el vault, te conviertes en parte activa del ecosistema Pelon Club. Tus shares CALDERO no solo representan tu participación en el vault, sino que también te dan acceso a beneficios futuros y contenido exclusivo del ecosistema."
+        },
+        "accumulation": {
+          "title": "Acumulación de Shares CALDERO para Beneficios Futuros",
+          "description": "Los holders de CALDERO tendrán acceso a páginas secretas y contenido token-gated exclusivo. Acumular CALDERO ahora te posiciona para acceder a estos beneficios cuando se lancen. Mientras más CALDERO tengas, más acceso tendrás."
+        },
+        "strategies": {
+          "title": "Estrategias de Inversión con el Vault",
+          "description": "Puedes usar el vault como parte de una estrategia de inversión más amplia. Deposita tokens PELON cuando quieras hacer staking, y retira cuando necesites liquidez. El timelock de 1 día es suficientemente corto para mantener flexibilidad, pero lo suficientemente largo para desincentivar trading de alta frecuencia."
+        }
+      },
+      "examples": {
+        "title": "Ejemplos Prácticos",
+        "initialDeposit": {
+          "title": "Ejemplo de Depósito Inicial",
+          "description": "Si depositas 10,000 PELON cuando el vault está vacío, recibirás aproximadamente 10,000 CALDERO (relación 1:1 inicial). Si el vault ya tiene 100,000 PELON y 100,000 CALDERO en circulación, depositar 10,000 PELON te daría aproximadamente 10,000 CALDERO también, manteniendo la proporción."
+        },
+        "withdrawal": {
+          "title": "Ejemplo de Retiro con Cálculo de Fees",
+          "description": "Si tienes 10,000 CALDERO y quieres retirar, y la tasa de cambio es 1:1, recibirías 10,000 PELON. Sin embargo, con la fee del 3%, recibirías 9,700 PELON. De los 300 PELON de fee, 150 van al fee wallet y 150 permanecen en el vault, aumentando el valor por share para todos los holders restantes."
+        },
+        "shareValue": {
+          "title": "Cómo Aumenta el Valor por Share",
+          "description": "Imagina que el vault tiene 100,000 PELON y 100,000 CALDERO (tasa 1:1). Si alguien retira 10,000 PELON pagando 300 de fee (150 al vault), el vault ahora tiene 90,150 PELON y 90,000 CALDERO. La nueva tasa es 1.00167:1, lo que significa que cada CALDERO ahora vale más PELON. Todos los holders se benefician de este aumento."
+        },
+        "yield": {
+          "title": "Cálculos de Yield Potencial",
+          "description": "Si el vault procesa retiros frecuentes, el 50% de las fees que permanece en el vault puede generar yield compuesto significativo. Por ejemplo, si se retiran 1,000,000 PELON en un mes con fees del 3%, 15,000 PELON van al vault (50% de 30,000). Este crecimiento beneficia a todos los holders proporcionalmente a sus shares."
+        }
+      },
+      "security": {
+        "title": "Seguridad y Auditorías",
+        "paragraph1": "El PelonStakingVault ha sido diseñado con seguridad como prioridad máxima. El contrato utiliza OpenZeppelin como base, una de las bibliotecas más probadas y auditadas en el ecosistema Ethereum, y ha sido sometido a análisis exhaustivos de seguridad.",
+        "audits": {
+          "title": "Auditorías Realizadas",
+          "description": "El contrato ha sido analizado con herramientas de análisis estático como Slither, que identifica vulnerabilidades comunes y problemas de seguridad. También se han realizado pruebas de fuzzing con Echidna para verificar propiedades invariantes del contrato. Todos los hallazgos han sido abordados y corregidos."
+        },
+        "mechanisms": {
+          "title": "Mecanismos de Seguridad Implementados",
+          "description": "El contrato implementa protección contra reentrancy, utiliza el estándar ERC4626 probado, y tiene un diseño minimalista que reduce la superficie de ataque. El timelock y las fees están codificados de forma inmutable, lo que significa que no pueden ser cambiados después del despliegue."
+        },
+        "openzeppelin": {
+          "title": "OpenZeppelin como Base Probada",
+          "description": "El contrato extiende ERC4626 de OpenZeppelin, que es una implementación estándar y ampliamente auditada. OpenZeppelin es utilizado por miles de proyectos DeFi y ha sido probado en producción con billones de dólares en valor bloqueado."
+        },
+        "immutable": {
+          "title": "Contrato No Actualizable (Inmutable)",
+          "description": "Una vez desplegado, el contrato no puede ser modificado. Esto significa que no hay riesgo de que un administrador cambie las reglas del juego. El fee wallet, las tasas, y el timelock están todos codificados de forma inmutable, garantizando transparencia total y previsibilidad."
+        }
+      },
+      "benefits": {
+        "title": "Beneficios del Vault",
+        "yield": {
+          "title": "Yield Regular de Protocol Fees",
+          "description": "El 50% de todas las fees de retiro permanece en el vault sin mintear nuevos shares. Esto significa que el valor por share aumenta constantemente con cada retiro. No necesitas hacer nada adicional: simplemente mantén tus shares CALDERO y verás cómo su valor aumenta con el tiempo gracias a las fees acumuladas."
+        },
+        "shareValue": {
+          "title": "Aumento del Valor por Share para Todos los Holders",
+          "description": "Cada retiro genera fees que aumentan el valor de todas las shares CALDERO en circulación. Esto crea un efecto de recompensa compuesto donde todos los stakers se benefician mutuamente. Mientras más usuarios participen y más retiros se procesen, más valor se acumula en el vault."
+        },
+        "compound": {
+          "title": "Mecanismo de Recompensa Compuesto",
+          "description": "El vault implementa un mecanismo de recompensa compuesto único. Las fees que permanecen en el vault aumentan el valor por share, lo que significa que tus shares CALDERO se vuelven más valiosas con el tiempo sin necesidad de acciones adicionales de tu parte. Es como tener interés compuesto en tus shares."
+        },
+        "transparency": {
+          "title": "Transparencia Total On-Chain",
+          "description": "Todas las transacciones, fees, y cambios en el vault son completamente transparentes y verificables on-chain. Puedes verificar cualquier aspecto del vault usando el explorador de bloques de Base. No hay sorpresas ni mecanismos ocultos."
+        },
+        "noAdmin": {
+          "title": "Sin Funciones Administrativas que Afecten Usuarios",
+          "description": "El contrato no tiene funciones administrativas que puedan afectar negativamente a los usuarios. No hay forma de que un administrador cambie las fees, el timelock, o cualquier otro parámetro después del despliegue. El contrato funciona de forma completamente descentralizada y autónoma."
+        }
+      },
+      "fomo": {
+        "title": "No Te Quedes Fuera",
+        "paragraph1": "Esta es una oportunidad única de participar en el ecosistema educativo más innovador de Web3 mientras obtienes yield pasivo de tus tokens PELON.",
+        "early": {
+          "title": "Los Primeros Depositantes Obtienen Mejor Tasa Inicial",
+          "description": "Cuanto antes deposites, mejor será tu tasa inicial de conversión. Los primeros depositantes obtienen shares CALDERO cuando el vault está más vacío, lo que significa que tienen una posición más temprana en el crecimiento del vault."
+        },
+        "shareIncrease": {
+          "title": "El Valor por Share Aumenta con Cada Retiro",
+          "description": "Cada vez que alguien retira tokens del vault, el 50% de las fees permanece en el vault, aumentando el valor por share para todos. Esto significa que mientras más tiempo mantengas tus shares CALDERO, más valor acumularán gracias a las fees de otros usuarios."
+        },
+        "audited": {
+          "title": "Contratos Auditados y Seguros",
+          "description": "El vault ha sido analizado exhaustivamente con herramientas de seguridad profesionales. Utiliza OpenZeppelin como base, que es la biblioteca más confiable y probada en el ecosistema. Puedes depositar con confianza sabiendo que tus assets están protegidos."
+        },
+        "baseNetwork": {
+          "title": "Base Network con Fees Bajos",
+          "description": "El vault está desplegado en Base, una red Layer 2 de Ethereum con fees de transacción extremadamente bajos. Esto significa que puedes depositar y retirar sin preocuparte por costos de gas exorbitantes, haciendo que el vault sea accesible para todos."
+        },
+        "paragraph2": "Únete ahora y sé parte de la revolución educativa Web3. Cada día que esperas es un día de yield perdido y una oportunidad de crecimiento que se escapa."
+      },
+      "caldero": {
+        "title": "El Poder de CALDERO",
+        "paragraph1": "CALDERO no es solo un token de shares del vault. Es tu llave de acceso al futuro del ecosistema Pelon Club y a contenido exclusivo que solo los holders de CALDERO podrán acceder.",
+        "power": {
+          "title": "CALDERO como Token de Shares",
+          "description": "CALDERO representa tu participación en el PelonStakingVault. Cada CALDERO que posees te da una porción proporcional de los assets del vault. Pero CALDERO es más que solo un token de participación: es tu pasaporte a beneficios exclusivos."
+        },
+        "secretPages": {
+          "title": "CALDERO Habilitará Páginas Secretas",
+          "description": "Los holders de CALDERO tendrán acceso exclusivo a páginas secretas dentro del ecosistema Pelon Club. Estas páginas contendrán contenido educativo avanzado, recursos exclusivos, y oportunidades que solo estarán disponibles para aquellos que posean CALDERO. Mientras más CALDERO tengas, más acceso tendrás."
+        },
+        "exclusive": {
+          "title": "Acceso Exclusivo a Contenido Token-Gated",
+          "description": "El ecosistema Pelon Club implementará un sistema de contenido token-gated donde CALDERO será la moneda de acceso. Cursos avanzados, materiales educativos premium, y actividades exclusivas estarán disponibles solo para holders de CALDERO. Es como tener una membresía VIP que se vuelve más valiosa con el tiempo."
+        },
+        "future": {
+          "title": "Beneficios Futuros para Holders de CALDERO",
+          "description": "A medida que el ecosistema Pelon Club crezca, se introducirán más beneficios para los holders de CALDERO. Estos pueden incluir descuentos en cursos, acceso prioritario a nuevos recursos, participación en gobernanza, y más. Acumular CALDERO ahora te posiciona para estos beneficios futuros."
+        },
+        "strategy": {
+          "title": "Estrategia de Acumulación de CALDERO",
+          "description": "La mejor estrategia es depositar tokens PELON en el vault lo antes posible y mantener tus shares CALDERO. No solo obtendrás yield pasivo de las fees, sino que también estarás acumulando acceso a contenido exclusivo y beneficios futuros. Cada CALDERO que acumules ahora será más valioso en el futuro."
+        },
+        "paragraph2": "CALDERO es más que un token: es tu inversión en el futuro de la educación Web3. Acumula CALDERO ahora y desbloquea un mundo de oportunidades exclusivas."
       }
     }
   }

@@ -20,25 +20,26 @@ export interface MetadataProps {
   siteName?: string;
 }
 
-const DEFAULT_SITE_NAME = 'Pelon Club';
 const DEFAULT_TWITTER_HANDLE = '@PelonClub';
 const DEFAULT_OG_IMAGE = '/img/icon.png';
 const DEFAULT_ROBOTS = 'index, follow';
-const DEFAULT_AUTHOR = 'Pelon Club';
 
 export default function Metadata({
   title,
   description,
   keywords,
-  author = DEFAULT_AUTHOR,
+  author,
   ogImage = DEFAULT_OG_IMAGE,
   canonicalUrl,
   locale,
   alternateLocales,
   twitterHandle = DEFAULT_TWITTER_HANDLE,
   robots = DEFAULT_ROBOTS,
-  siteName = DEFAULT_SITE_NAME,
+  siteName,
 }: MetadataProps) {
+  const finalAuthor = author || 'Pelon Club';
+  const finalSiteName = siteName || 'Pelon Club';
+  
   const ogImageUrl = getAbsoluteImageUrl(ogImage);
   const ogLocale = getOgLocale(locale);
   
@@ -68,7 +69,7 @@ export default function Metadata({
       <title>{title}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
-      <meta name="author" content={author} />
+      <meta name="author" content={finalAuthor} />
       <meta name="robots" content={robots} />
 
       <link rel="canonical" href={canonicalUrl} />
@@ -78,7 +79,7 @@ export default function Metadata({
       <meta property="og:image" content={ogImageUrl} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content={siteName} />
+      <meta property="og:site_name" content={finalSiteName} />
       <meta property="og:locale" content={ogLocale} />
 
       <meta name="twitter:card" content="summary_large_image" />

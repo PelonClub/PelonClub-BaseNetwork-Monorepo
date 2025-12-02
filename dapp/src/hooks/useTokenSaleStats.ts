@@ -44,7 +44,6 @@ async function fetchTokenSaleStats(publicClient: any): Promise<TokenSaleStats> {
       totalRaised += parseFloat(formatUnits(usdcAmount, 6));
       uniqueBuyers.add(buyer);
     } catch (error) {
-      console.warn('Error processing purchase log:', error);
       continue;
     }
   }

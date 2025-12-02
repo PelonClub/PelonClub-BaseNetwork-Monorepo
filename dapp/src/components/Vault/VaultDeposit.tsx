@@ -7,28 +7,26 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { cn, stringifyWithBigInt } from '@/lib/utils';
-import { useTokenSale } from '@/hooks/useTokenSale';
-import { useTokenSalePurchase } from '@/hooks/useTokenSalePurchase';
-import { useUSDCApproval } from '@/hooks/useUSDCApproval';
-import { useTokenSaleStats } from '@/hooks/useTokenSaleStats';
-import { TOKEN_SALE_ADDRESS } from '@/contracts/tokenSale';
+import { useVault } from '@/hooks/useVault';
+import { useVaultDeposit } from '@/hooks/useVaultDeposit';
+import { usePELONApproval } from '@/hooks/usePELONApproval';
+import { useUserVaultData } from '@/hooks/useUserVaultData';
+import { PELON_STAKING_VAULT_ADDRESS } from '@/contracts/pelonStakingVault';
 
-export default function TokenSalePurchase() {
-  const t = useTranslations('tokenSale.purchase');
+export default function VaultDeposit() {
+  const t = useTranslations('vault.deposit');
   const locale = useLocale();
   const { address, isConnected } = useAccount();
   const [inputValue, setInputValue] = useState('');
   const queryClient = useQueryClient();
-  const lastBuyError = useRef<string | null>(null);
+  const lastDepositError = useRef<string | null>(null);
   const lastApproveError = useRef<string | null>(null);
   const refetchAllowanceRef = useRef<(() => void) | null>(null);
 
-  const { currentPrice, remainingTokens, paused, isLoading: isLoadingTokenSale } = useTokenSale();
-  const { refetch: refetchStats } = useTokenSaleStats();
+  const { assetAddress, isLoading: isLoadingVault } = useVault();
+  const { pelonBalance, isLoading: isLoadingUser } = useUserVaultData(assetAddress);
 
   const numValue = parseFloat(inputValue) || 0;
-  const usdcAmount = numValue;
-  const tokensAmount = currentPrice > 0 ? numValue / currentPrice : 0;
 
   const handleApprovalSuccess = useCallback(() => {
     refetchAllowanceRef.current?.();
@@ -43,84 +41,68 @@ export default function TokenSalePurchase() {
     }
   }, [t]);
 
-  const handlePurchaseSuccess = useCallback(() => {
+  const handleDepositSuccess = useCallback(() => {
     setInputValue('');
     
     setTimeout(() => {
-      const tokenSaleAddressLower = TOKEN_SALE_ADDRESS.toLowerCase();
+      const vaultAddressLower = PELON_STAKING_VAULT_ADDRESS.toLowerCase();
       
       queryClient.invalidateQueries({
         predicate: (query) => {
           const queryKey = query.queryKey;
           const queryKeyString = stringifyWithBigInt(queryKey).toLowerCase();
-          return queryKeyString.includes(tokenSaleAddressLower);
+          return queryKeyString.includes(vaultAddressLower);
         },
-      });
-      
-      queryClient.invalidateQueries({
-        queryKey: ['tokenSaleStats', TOKEN_SALE_ADDRESS],
       });
       
       queryClient.refetchQueries({
         predicate: (query) => {
           const queryKey = query.queryKey;
           const queryKeyString = stringifyWithBigInt(queryKey).toLowerCase();
-          return queryKeyString.includes(tokenSaleAddressLower);
+          return queryKeyString.includes(vaultAddressLower);
         },
       });
-      
-      refetchStats();
       
       refetchAllowanceRef.current?.();
     }, 1000);
     
     toast.success(t('successMessage'));
-  }, [queryClient, refetchStats, t]);
+  }, [queryClient, t]);
 
-  const handlePurchaseError = useCallback((error: Error) => {
+  const handleDepositError = useCallback((error: Error) => {
     const errorMessage = error.message || '';
-    let toastMessage = t('errorPurchaseFailed');
+    let toastMessage = t('errorDepositFailed');
     
-    if (errorMessage.includes('Sale is paused')) toastMessage = t('errorSalePaused');
-    else if (errorMessage.includes('exceed wallet limit')) toastMessage = t('errorWalletLimit');
-    else if (errorMessage.includes('exceed total sale limit')) toastMessage = t('errorTotalSaleLimit');
-    else if (errorMessage.includes('Insufficient tokens')) toastMessage = t('errorNotEnoughTokens');
-    else if (errorMessage.includes('Insufficient')) toastMessage = t('errorInsufficientBalance');
+    if (errorMessage.includes('insufficient balance')) toastMessage = t('errorInsufficientBalance');
+    else if (errorMessage.includes('allowance')) toastMessage = t('errorInsufficientAllowance');
     
-    if (lastBuyError.current !== errorMessage) {
-      lastBuyError.current = errorMessage;
+    if (lastDepositError.current !== errorMessage) {
+      lastDepositError.current = errorMessage;
       toast.error(toastMessage);
     }
   }, [t]);
 
   const {
-    pelonAmount,
-    canPurchase,
-    purchaseReason,
-    tokensPurchased,
-    maxTokensPerWallet,
-    purchaseTokens,
-    isBuying,
-    isBuySuccess,
-    buyError,
-    isLoading: isLoadingPurchase,
-    isLoadingCanPurchase,
-    canPurchaseResult,
-  } = useTokenSalePurchase(usdcAmount, {
-    onPurchaseSuccess: handlePurchaseSuccess,
-    onPurchaseError: handlePurchaseError,
+    sharesToReceive,
+    depositAssets,
+    isDepositing,
+    isDepositSuccess,
+    depositError,
+    isLoading: isLoadingDeposit,
+  } = useVaultDeposit(numValue, {
+    onDepositSuccess: handleDepositSuccess,
+    onDepositError: handleDepositError,
   });
 
   const {
-    balance: usdcBalance,
     needsApproval,
     hasEnoughBalance,
-    approveUSDC,
+    approvePELON,
     isApproving,
     isApprovalSuccess,
     approveError,
     refetchAllowance,
-  } = useUSDCApproval(usdcAmount, {
+  } = usePELONApproval(numValue, assetAddress, {
     onApprovalSuccess: handleApprovalSuccess,
     onApprovalError: handleApprovalError,
   });
@@ -128,16 +110,16 @@ export default function TokenSalePurchase() {
   refetchAllowanceRef.current = refetchAllowance;
 
   useEffect(() => {
-    if (buyError) {
-      const errorMessage = buyError.message || '';
-      if (lastBuyError.current !== errorMessage) {
-        lastBuyError.current = errorMessage;
-        handlePurchaseError(buyError);
+    if (depositError) {
+      const errorMessage = depositError.message || '';
+      if (lastDepositError.current !== errorMessage) {
+        lastDepositError.current = errorMessage;
+        handleDepositError(depositError);
       }
-    } else if (lastBuyError.current) {
-      lastBuyError.current = null;
+    } else if (lastDepositError.current) {
+      lastDepositError.current = null;
     }
-  }, [buyError, handlePurchaseError]);
+  }, [depositError, handleDepositError]);
 
   useEffect(() => {
     if (approveError) {
@@ -152,72 +134,36 @@ export default function TokenSalePurchase() {
   }, [approveError, handleApprovalError]);
 
   useEffect(() => {
-    if (isBuySuccess) {
+    if (isDepositSuccess) {
       setInputValue('');
     }
-  }, [isBuySuccess]);
+  }, [isDepositSuccess]);
 
   const handleInputChange = (value: string) => {
     setInputValue(value);
   };
 
-  const minPurchaseUSDC = 1;
-
-  const getMaxUsdcAmount = (): number => {
-    if (!isConnected || !usdcBalance || usdcBalance <= 0) return 0;
-    
-    let maxAmount = usdcBalance;
-    
-    if (currentPrice > 0 && !isLoadingTokenSale) {
-      if (remainingTokens > 0) {
-        const maxFromRemainingTokens = remainingTokens * currentPrice;
-        maxAmount = Math.min(maxAmount, maxFromRemainingTokens);
-      }
-      
-      if (maxTokensPerWallet > 0) {
-        let maxFromWalletLimit: number;
-        if (tokensPurchased > 0) {
-          const remainingTokensForWallet = maxTokensPerWallet - tokensPurchased;
-          if (remainingTokensForWallet > 0) {
-            maxFromWalletLimit = remainingTokensForWallet * currentPrice;
-            maxAmount = Math.min(maxAmount, maxFromWalletLimit);
-          } else {
-            return 0;
-          }
-        } else {
-          maxFromWalletLimit = maxTokensPerWallet * currentPrice;
-          maxAmount = Math.min(maxAmount, maxFromWalletLimit);
-        }
-      }
-    }
-    
-    return Math.max(maxAmount, 0);
-  };
-
   const handleMaxClick = () => {
-    const maxAmount = getMaxUsdcAmount();
-    if (maxAmount > 0) {
-      setInputValue(maxAmount.toFixed(2));
+    if (pelonBalance > 0) {
+      setInputValue(pelonBalance.toFixed(6));
     }
   };
+
   const isValid =
-    usdcAmount >= minPurchaseUSDC &&
-    usdcAmount > 0 &&
-    canPurchase &&
+    numValue > 0 &&
     hasEnoughBalance &&
-    !paused &&
-    !isLoadingPurchase &&
-    !isLoadingTokenSale;
+    !isLoadingDeposit &&
+    !isLoadingVault &&
+    !isLoadingUser;
 
   const handleApprove = async () => {
-    await approveUSDC();
+    await approvePELON();
   };
 
-  const handlePurchase = async () => {
+  const handleDeposit = async () => {
     if (!isValid || !isConnected) return;
-    await purchaseTokens();
+    await depositAssets();
   };
-
 
   return (
     <div
@@ -251,15 +197,15 @@ export default function TokenSalePurchase() {
         <div className="space-y-6">
           <div>
             <label className="text-foreground font-bold text-sm block mb-3">
-              {t('amountInUSDC')}
+              {t('amountInPELON')}
             </label>
             <div className="relative">
               <input
                 type="number"
                 value={inputValue}
                 onChange={(e) => handleInputChange(e.target.value)}
-                placeholder={t('enterUSDC')}
-                step="0.01"
+                placeholder={t('enterPELON')}
+                step="0.000001"
                 min="0"
                 className={cn(
                   'w-full',
@@ -278,11 +224,11 @@ export default function TokenSalePurchase() {
                   'text-lg'
                 )}
               />
-              {isConnected && usdcBalance > 0 && (
+              {isConnected && pelonBalance > 0 && (
                 <button
                   type="button"
                   onClick={handleMaxClick}
-                  disabled={getMaxUsdcAmount() <= 0}
+                  disabled={pelonBalance <= 0}
                   className={cn(
                     'absolute',
                     'right-1',
@@ -319,12 +265,12 @@ export default function TokenSalePurchase() {
             </div>
             {isConnected && (
               <p className="text-xs text-muted-foreground mt-2">
-                {t('balance')}: {usdcBalance.toLocaleString(locale === 'es' ? 'es-ES' : 'en-US', { maximumFractionDigits: 2 })} USDC
+                {t('balance')}: {pelonBalance.toLocaleString(locale === 'es' ? 'es-ES' : 'en-US', { maximumFractionDigits: 6 })} PELON
               </p>
             )}
           </div>
 
-          {(inputValue && (pelonAmount > 0 || tokensAmount > 0)) && (
+          {inputValue && sharesToReceive > 0 && (
             <div
               className={cn(
                 'bg-background',
@@ -336,43 +282,23 @@ export default function TokenSalePurchase() {
               <div className="flex justify-between items-center mb-2">
                 <span className="text-muted-foreground text-sm">{t('youWillReceive')}</span>
                 <span className="text-foreground font-bold text-lg">
-                  {pelonAmount.toLocaleString(locale === 'es' ? 'es-ES' : 'en-US', { maximumFractionDigits: 0 })}{' '}
-                  PELON
+                  {sharesToReceive.toLocaleString(locale === 'es' ? 'es-ES' : 'en-US', { maximumFractionDigits: 6 })}{' '}
+                  CALDERO
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-muted-foreground text-sm">{t('youWillPay')}</span>
+                <span className="text-muted-foreground text-sm">{t('youWillDeposit')}</span>
                 <span className="text-foreground font-bold text-lg">
-                  {usdcAmount.toLocaleString(locale === 'es' ? 'es-ES' : 'en-US', { maximumFractionDigits: 2 })} USDC
+                  {numValue.toLocaleString(locale === 'es' ? 'es-ES' : 'en-US', { maximumFractionDigits: 6 })} PELON
                 </span>
               </div>
-              {currentPrice > 0 && (
-                <div className="flex justify-between items-center mt-2 pt-2 border-t border-border">
-                  <span className="text-muted-foreground text-xs">
-                    {t('pricePerToken', { price: currentPrice.toFixed(6) })}
-                  </span>
-                </div>
-              )}
-            </div>
-          )}
-
-          {tokensPurchased > 0 && (
-            <div className="text-xs text-muted-foreground">
-              <p>
-                {t('purchasedSoFar')}: {tokensPurchased.toLocaleString(locale === 'es' ? 'es-ES' : 'en-US', { maximumFractionDigits: 0 })} PELON
-              </p>
-              {maxTokensPerWallet > 0 && (
-                <p>
-                  {t('maxPerWallet')}: {maxTokensPerWallet.toLocaleString(locale === 'es' ? 'es-ES' : 'en-US', { maximumFractionDigits: 0 })} PELON
-                </p>
-              )}
             </div>
           )}
 
           {needsApproval && !isApprovalSuccess && (
             <button
               onClick={handleApprove}
-              disabled={isApproving || usdcAmount <= 0}
+              disabled={isApproving || numValue <= 0}
               className={cn(
                 'w-full',
                 'bg-accent',
@@ -394,14 +320,14 @@ export default function TokenSalePurchase() {
                 'disabled:cursor-not-allowed'
               )}
             >
-              {isApproving ? t('approving') : t('approveUSDC')}
+              {isApproving ? t('approving') : t('approvePELON')}
             </button>
           )}
 
           {(!needsApproval || isApprovalSuccess) && (
             <button
-              onClick={handlePurchase}
-              disabled={!isValid || isBuying || isLoadingPurchase || isLoadingTokenSale}
+              onClick={handleDeposit}
+              disabled={!isValid || isDepositing || isLoadingDeposit || isLoadingVault || isLoadingUser}
               className={cn(
                 'w-full',
                 'bg-primary',
@@ -427,7 +353,7 @@ export default function TokenSalePurchase() {
                 'disabled:active:shadow-neobrutal'
               )}
             >
-              {isBuying ? t('processing') : t('buyNow')}
+              {isDepositing ? t('processing') : t('deposit')}
             </button>
           )}
         </div>
@@ -435,3 +361,4 @@ export default function TokenSalePurchase() {
     </div>
   );
 }
+

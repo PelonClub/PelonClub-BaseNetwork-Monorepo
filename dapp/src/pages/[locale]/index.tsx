@@ -32,11 +32,10 @@ export default function Home() {
       rowSpan: 'row-span-1 md:row-span-2',
     },
     {
-      href: '/leaderboard',
-      title: t('home.bento.leaderboard.title'),
-      description: t('home.bento.leaderboard.description'),
-      emoji: '🏆',
-      gradient: 'from-indigo-600 to-indigo-800',
+      href: '/vault',
+      title: t('home.bento.vault.title'),
+      description: t('home.bento.vault.description'),
+      imagePath: '/img/vault.png',
       colSpan: 'col-span-1',
       rowSpan: 'row-span-1',
     },
@@ -64,6 +63,7 @@ export default function Home() {
         canonicalUrl={canonicalUrl}
         locale={locale}
         twitterHandle={t('meta.twitterHandle')}
+        siteName={t('common.appName')}
       />
 
       <main className="min-h-screen bg-background">
@@ -124,14 +124,16 @@ export default function Home() {
                       </div>
                     )}
                     {card.imagePath ? (
-                      <div className="relative -mx-6 sm:-mx-8 -mt-6 sm:-mt-8 px-6 sm:px-8 pt-6 sm:pt-8 pb-4 bg-background-secondary/95">
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-                          {card.title}
-                        </h2>
-                        <p className="text-base sm:text-lg text-muted-foreground">
-                          {card.description}
-                        </p>
-                      </div>
+                      card.href !== '/vault' && (
+                        <div className="relative -mx-6 sm:-mx-8 -mt-6 sm:-mt-8 px-6 sm:px-8 pt-6 sm:pt-8 pb-4 bg-background-secondary/95">
+                          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+                            {card.title}
+                          </h2>
+                          <p className="text-base sm:text-lg text-muted-foreground">
+                            {card.description}
+                          </p>
+                        </div>
+                      )
                     ) : (
                       <>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
@@ -144,12 +146,20 @@ export default function Home() {
                     )}
                   </div>
                   <div className="mt-6">
-                    <span className="text-foreground font-bold text-sm sm:text-base inline-flex items-center gap-2">
-                      {t('home.bento.cta')}
-                      <span className="group-hover:translate-x-1 transition-transform">
-                        →
+                    {card.href === '/vault' ? (
+                      <div className="relative -mb-6 sm:-mb-8 -mx-6 sm:-mx-8 px-6 sm:px-8 pt-4 pb-6 sm:pb-8 bg-background-secondary/95">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+                          {card.title}
+                        </h2>
+                      </div>
+                    ) : (
+                      <span className="text-foreground font-bold text-sm sm:text-base inline-flex items-center gap-2">
+                        {t('home.bento.cta')}
+                        <span className="group-hover:translate-x-1 transition-transform">
+                          →
+                        </span>
                       </span>
-                    </span>
+                    )}
                   </div>
                 </div>
               </Link>

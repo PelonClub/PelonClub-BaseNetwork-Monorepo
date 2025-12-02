@@ -36,6 +36,7 @@ Información sobre los contratos desplegados en Base Mainnet:
 
 - **TokenSale**: [`0x42F94856e32bc8817dDe6CD1D8c0e8dF0b740Ba8`](https://basescan.org/address/0x42F94856e32bc8817dDe6CD1D8c0e8dF0b740Ba8)
 - **PelonClubToken**: [`0x591e967fb0496beB4BDa117959e6D70D7Ad49a1C`](https://basescan.org/address/0x591e967fb0496beB4BDa117959e6D70D7Ad49a1C)
+- **PelonStakingVault**: [`0x2239E40A03DCC1AB9C12F02f44cad7cb2E966452`](https://basescan.org/address/0x2239E40A03DCC1AB9C12F02f44cad7cb2E966452)
 - **USDC**: [`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`](https://basescan.org/address/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913)
 - **Chain ID**: 8453
 - **Network**: Base Mainnet

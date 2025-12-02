@@ -1,5 +1,5 @@
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
-import { base } from 'wagmi/chains';
+import { baseSepolia } from 'wagmi/chains';
 
 const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID;
 
@@ -9,11 +9,11 @@ if (!projectId) {
   );
 }
 
-const baseCustom = {
-  ...base,
+const baseSepoliaCustom = {
+  ...baseSepolia,
   rpcUrls: {
     default: {
-      http: ['https://base-rpc.publicnode.com'],
+      http: ['https://sepolia.base.org'],
     },
   },
 };
@@ -21,6 +21,6 @@ const baseCustom = {
 export const config = getDefaultConfig({
   appName: 'Pelon Club',
   projectId,
-  chains: [baseCustom],
+  chains: [baseSepoliaCustom],
   ssr: true,
 });

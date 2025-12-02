@@ -109,7 +109,6 @@ export function useTokenSalePurchase(
         args: [usdcAmountBigInt],
       });
     } catch (error) {
-      console.error('Error buying tokens:', error);
       const errorObj = error instanceof Error ? error : new Error(String(error));
       options?.onPurchaseError?.(errorObj);
     }

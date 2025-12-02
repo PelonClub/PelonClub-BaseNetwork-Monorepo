@@ -25,6 +25,7 @@ export default function Leaderboard() {
         canonicalUrl={canonicalUrl}
         locale={locale}
         twitterHandle={t('meta.twitterHandle')}
+        siteName={t('common.appName')}
       />
 
       <main className="min-h-screen bg-background">
