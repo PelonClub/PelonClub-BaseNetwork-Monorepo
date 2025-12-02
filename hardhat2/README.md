@@ -18,16 +18,14 @@ PelonClubToken is a complete ERC20 token that extends OpenZeppelin's standard co
 
 ### PelonStakingVault
 
-PelonStakingVault is an ERC4626-compliant tokenized vault for staking PELON tokens with advanced features:
+PelonStakingVault is an ERC4626-compliant tokenized vault for staking PELON tokens with simple but effective features:
 
 - **ERC4626**: Standard vault interface for interoperability with DeFi protocols
-- **Configurable FIFO Timelock**: Configurable timelock system (1-90 days, default 15 days) with strict first-in-first-out processing
-- **Configurable Withdrawal Fees**: Configurable fee (0-10%, default 3%) on withdrawals with 50/25/25 distribution (fee wallet/re-staking/burn)
-- **Re-staking Mechanism**: 25% of fees re-staked without minting shares, increasing value per share for all holders
-- **Deposit Tracking**: Individual deposit tracking with timestamps for timelock enforcement
-- **Optimized FIFO**: Index-based deposit removal for gas efficiency
-- **Preview Functions**: Functions showing net amounts after fees
-- **Ownable**: Administrative control over fee wallet, timelock duration, and fee percentage
+- **Fixed 1-Day Timelock**: Fixed timelock system that prevents immediate withdrawals
+- **Fixed Withdrawal Fees**: Fixed 3% fee on withdrawals with 50/50 distribution (fee wallet/vault retention)
+- **Vault Retention Mechanism**: 50% of fees remains in vault, increasing value per share for all holders
+- **Simple Timestamp Tracking**: Per-user timestamp tracking for timelock enforcement
+- **Fully Decentralized**: No administrative functions or owner control
 
 ### PelonClubToken Features
 
@@ -39,15 +37,14 @@ PelonStakingVault is an ERC4626-compliant tokenized vault for staking PELON toke
 
 ### PelonStakingVault Features
 
-- **Vault Shares**: psvPELON (Pelon Staking Vault shares)
-- **Timelock Duration**: Configurable (1-90 days, default 15 days = 1,296,000 seconds)
-- **Withdrawal Fee**: Configurable (0-10%, default 3% = 300 basis points)
-- **Fee Distribution**: 50% to fee wallet, 25% re-staked (increases share value), 25% burned
+- **Vault Shares**: CALDERO (Pelon Vault: Caldero)
+- **Timelock Duration**: Fixed (1 day = 86,400 seconds)
+- **Withdrawal Fee**: Fixed (3% = 300 basis points)
+- **Fee Distribution**: 50% to fee wallet, 50% remains in vault (increases share value)
 - **ERC4626 Compliant**: Full standard compliance for DeFi interoperability
-- **FIFO System**: Strict first-in-first-out deposit processing with optimized index-based removal
-- **Preview Functions**: `previewWithdrawAfterFee()` and `previewRedeemAfterFee()` show net amounts
-- **Fee Wallet**: Configurable address for withdrawal fee collection
-- **Administrative Functions**: Owner can configure timelock duration, fee percentage, and fee wallet
+- **Simple Timelock**: Per-user timestamp tracking that resets on each deposit
+- **Fee Wallet**: Immutable address for withdrawal fee collection (set at deployment)
+- **Fully Decentralized**: No administrative functions or owner control
 
 ## Prerequisites
 
@@ -157,42 +154,23 @@ The test suite includes **82 comprehensive tests** covering:
 - Events: 7 tests ✅
 - Integration: 3 tests ✅
 
-### PelonStakingVault Test Suite
+### PelonStakingVault Contract
 
-The `PelonStakingVault` contract has a comprehensive test suite with **75 comprehensive tests** covering all aspects of the contract:
+The `PelonStakingVault` contract is a minimal, non-upgradeable ERC4626 vault implementation:
 
-**Current Status**: ✅ **All tests passing (75/75)** - Last execution: December 2024
-
-- **Constructor and Initial Configuration** (3 tests): Deployment validation and parameter checks
-- **Deposit Functions** (8 tests): Deposit and mint operations, FIFO recording
-- **Timelock FIFO System** (7 tests): Timelock enforcement and FIFO order validation
-- **Withdraw and Redeem Functions** (8 tests): Withdrawal operations with fee application
-- **Fee Calculation and Distribution** (4 tests): Three-way fee distribution (50/25/25)
-- **Preview Functions** (6 tests): ERC4626 compliance and fee-aware previews
-- **View Functions** (4 tests): State query functions
-- **Admin Functions** (9 tests): Administrative controls and access control
-- **Edge Cases and Precision** (6 tests): Boundary conditions and precision handling
-- **Security and Reentrancy** (3 tests): Reentrancy protection and SafeERC20 usage
-- **Events** (6 tests): Event emission validation
-- **Integration and Complete Flows** (3 tests): End-to-end user journeys
-- **Special Cases: _removeDeposits** (3 tests): Optimized FIFO removal mechanism
-- **Special Cases: _burnFee** (2 tests): Fee burning logic
-- **ERC4626 Compliance** (3 tests): Standard compliance validation
-
-### Test Results
-
-**PelonStakingVault Test Execution**:
-- ✅ **75/75 tests passing** (100% success rate)
-- ⏱️ **Execution time**: ~3 seconds
-- 📊 **Coverage**: Extensive coverage across all functions and edge cases
+**Contract Characteristics**:
+- ✅ **Minimal Implementation**: Simple and secure design
+- ✅ **ERC4626 Compliant**: Full standard compliance
+- ✅ **Fully Decentralized**: No administrative functions
+- ✅ **Security**: Uses OpenZeppelin's battle-tested contracts
 
 ### Testing Documentation
 
 For detailed information about the testing strategy, covered cases, and how to run tests, see:
 
 - **[TokenSale Testing Documentation (English)](../docs/en/token-sale-testing.md)**
-- **[PelonStakingVault Security Analysis (English)](../docs/en/pelon-staking-vault-security-analysis.md)** - Includes comprehensive test analysis (75 tests)
-- **[Análisis de Seguridad PelonStakingVault (Español)](../docs/es/analisis-seguridad-pelon-staking-vault.md)** - Incluye análisis comprehensivo de tests (75 tests)
+- **[PelonStakingVault Security Analysis (English)](../docs/en/pelon-staking-vault-security-analysis.md)** - Comprehensive security analysis
+- **[Análisis de Seguridad PelonStakingVault (Español)](../docs/es/analisis-seguridad-pelon-staking-vault.md)** - Análisis comprehensivo de seguridad
 
 ### Code Coverage
 
@@ -337,9 +315,9 @@ Comprehensive technical documentation about the PelonStakingVault contract:
 
 The PelonStakingVault documentation includes:
 - ERC4626 standard compliance and architecture
-- FIFO timelock system implementation
-- Withdrawal fee mechanism
-- Deposit tracking and management
+- Simple timelock system implementation (1 day fixed)
+- Withdrawal fee mechanism (3% fixed)
+- Per-user timestamp tracking
 - Security considerations and gas optimizations
 - Mermaid diagrams of flows and state transitions
 
@@ -353,13 +331,13 @@ Comprehensive user guide for investors explaining how to use the PelonStakingVau
 The staking vault user guide includes:
 - Introduction to ERC4626 vaults and core concepts
 - Detailed explanation of vault mechanics and share calculation
-- Comprehensive guide to the 15-day FIFO timelock system
-- Withdrawal fee system explanation (3% fee)
+- Comprehensive guide to the fixed 1-day timelock system
+- Withdrawal fee system explanation (3% fixed fee, 50/50 distribution)
 - Step-by-step user operations (deposits, withdrawals, redemptions)
 - Practical use cases with real-world examples and calculations
 - Frequently asked questions
 - Technical considerations (gas costs, best practices, security)
-- Mermaid diagrams of deposit flows, withdrawal processes, and FIFO state transitions
+- Mermaid diagrams of deposit flows and withdrawal processes
 
 ### Security Analysis with Slither
 
@@ -369,10 +347,10 @@ The project includes the `hardhat-slither` plugin for static security analysis o
 
 The PelonStakingVault contract has undergone comprehensive security analysis:
 
-- **Slither Analysis**: Static analysis completed with minimal findings (2 contract-specific findings, both acceptable)
-- **Test Coverage**: 75 comprehensive tests with 100% pass rate
-- **Security Features**: Reentrancy protection, FIFO timelock enforcement, safe token transfers, access control
-- **Innovative Mechanisms**: Index-based FIFO optimization, non-dilutive re-staking, three-way fee distribution
+- **Security Analysis**: Comprehensive analysis of security posture
+- **Security Features**: Reentrancy protection (CEI pattern), simple timelock enforcement, safe token transfers
+- **Minimal Implementation**: Reduced attack surface through simplicity
+- **Immutable Parameters**: Maximum security through immutability
 
 For detailed security analysis documentation, see:
 - **[PelonStakingVault Security Analysis (English)](../docs/en/pelon-staking-vault-security-analysis.md)**
@@ -467,6 +445,7 @@ hardhat2/
 
 - **TokenSale**: [`0xdF556BD113FFC32CC85E098520BfC615438Ca16B`](https://sepolia.basescan.org/address/0xdF556BD113FFC32CC85E098520BfC615438Ca16B)
 - **PelonClubToken**: [`0x734AE77B7dE9B5cc3Ce9d3D20B92c769d8588f15`](https://sepolia.basescan.org/address/0x734AE77B7dE9B5cc3Ce9d3D20B92c769d8588f15)
+- **PelonStakingVault**: [`0x0c874C04783e0838E92f42D52bD8A2a9eCE56b40`](https://sepolia.basescan.org/address/0x0c874C04783e0838E92f42D52bD8A2a9eCE56b40)
 - **USDC Mock Token**: [`0x145Ef9F6a4324A181537Dfb7074F6E4B3E19Ec70`](https://sepolia.basescan.org/address/0x145Ef9F6a4324A181537Dfb7074F6E4B3E19Ec70)
 - **Chain ID**: 84532
 - **Network**: Base Sepolia Testnet
