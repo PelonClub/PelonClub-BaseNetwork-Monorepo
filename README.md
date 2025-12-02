@@ -43,6 +43,8 @@ Comprehensive technical documentation about the project's smart contracts:
 
 - **TokenSale Contract (English)**: [docs/en/token-sale-contract.md](docs/en/token-sale-contract.md) - Complete technical analysis of the token sale contract
 - **TokenSale Contract (Español)**: [docs/es/token-sale-contract.md](docs/es/token-sale-contract.md) - Complete technical analysis of the token sale contract (Spanish)
+- **PelonStakingVault Contract (English)**: [docs/en/pelon-staking-vault.md](docs/en/pelon-staking-vault.md) - Complete technical analysis of the staking vault contract
+- **PelonStakingVault Contract (Español)**: [docs/es/pelon-staking-vault.md](docs/es/pelon-staking-vault.md) - Complete technical analysis of the staking vault contract (Spanish)
 
 The TokenSale contract documentation includes:
 - Architectural analysis and contract inheritance
@@ -51,6 +53,34 @@ The TokenSale contract documentation includes:
 - Administration and query functions
 - Technical considerations and edge cases
 - Mermaid diagrams of architecture and flows
+
+The PelonStakingVault contract documentation includes:
+- ERC4626 standard compliance and architecture
+- Fixed 1-day timelock system
+- Fixed 3% withdrawal fee mechanism with 50/50 distribution
+- Vault retention mechanism that increases value per share for all holders
+- Simple per-user timestamp tracking
+- Security considerations and gas optimizations
+- Mermaid diagrams of flows and state transitions
+
+### Staking Vault User Guide
+
+Comprehensive user guide for investors explaining how to use the PelonStakingVault:
+
+- **Staking Vault User Guide (English)**: [docs/en/staking-vault-user-guide.md](docs/en/staking-vault-user-guide.md) - Complete user guide explaining how to stake PELON tokens, understand the fixed 1-day timelock system, withdrawal fees, and practical use cases
+- **Guía de Usuario del Vault de Staking (Español)**: [docs/es/guia-usuario-vault-staking.md](docs/es/guia-usuario-vault-staking.md) - Guía de usuario completa que explica cómo hacer staking de tokens PELON, entender el sistema de timelock fijo de 1 día, tarifas de retiro, y casos de uso prácticos (Spanish)
+
+The staking vault user guide includes:
+- Introduction to ERC4626 vaults and core concepts
+- Detailed explanation of vault mechanics and share calculation
+- Comprehensive guide to the fixed 1-day timelock system
+- Withdrawal fee system explanation with 50/50 distribution (fixed 3%)
+- Vault retention benefits that increase value per share for all holders
+- Step-by-step user operations (deposits, withdrawals, redemptions)
+- Practical use cases with real-world examples and calculations
+- Frequently asked questions
+- Technical considerations (gas costs, best practices, security)
+- Mermaid diagrams of deposit flows and withdrawal processes
 
 ### Security Analysis
 
@@ -65,6 +95,22 @@ The security documentation includes:
 - Implemented fixes and their impact
 - Security, gas, and precision improvements
 - Future recommendations for maintaining security
+
+### PelonStakingVault Security Analysis
+
+Comprehensive security analysis and testing documentation for the PelonStakingVault contract:
+
+- **PelonStakingVault Security Analysis (English)**: [docs/en/pelon-staking-vault-security-analysis.md](docs/en/pelon-staking-vault-security-analysis.md) - Comprehensive security analysis including security features, best practices, and mechanisms
+- **Análisis de Seguridad PelonStakingVault (Español)**: [docs/es/analisis-seguridad-pelon-staking-vault.md](docs/es/analisis-seguridad-pelon-staking-vault.md) - Análisis técnico exhaustivo incluyendo características de seguridad, mejores prácticas, y mecanismos (Spanish)
+
+The PelonStakingVault security analysis includes:
+- Complete security analysis and findings
+- Security features and mechanisms (reentrancy protection, simple timelock, fee distribution)
+- Best practices and conventions (OpenZeppelin usage, ERC4626 compliance, gas optimization)
+- Simple timelock and fee mechanisms
+- Mermaid diagrams (architecture, flows, state transitions)
+- Security metrics and analysis
+- Guidelines and recommendations for auditors, developers, and users
 
 ### Testing
 
@@ -110,6 +156,7 @@ The fuzzing documentation includes:
 
 - **TokenSale**: [`0xdF556BD113FFC32CC85E098520BfC615438Ca16B`](https://sepolia.basescan.org/address/0xdF556BD113FFC32CC85E098520BfC615438Ca16B)
 - **PelonClubToken**: [`0x734AE77B7dE9B5cc3Ce9d3D20B92c769d8588f15`](https://sepolia.basescan.org/address/0x734AE77B7dE9B5cc3Ce9d3D20B92c769d8588f15)
+- **PelonStakingVault**: [`0x0c874C04783e0838E92f42D52bD8A2a9eCE56b40`](https://sepolia.basescan.org/address/0x0c874C04783e0838E92f42D52bD8A2a9eCE56b40)
 - **USDC Mock Token**: [`0x145Ef9F6a4324A181537Dfb7074F6E4B3E19Ec70`](https://sepolia.basescan.org/address/0x145Ef9F6a4324A181537Dfb7074F6E4B3E19Ec70)
 - **Chain ID**: 84532
 - **Network**: Base Sepolia Testnet
@@ -161,11 +208,25 @@ The project includes comprehensive test suites for all smart contracts. The `Tok
 
 **Current Status**: ✅ **All tests passing (82/82)** - Last execution: December 2024
 
+The `PelonStakingVault` contract is a minimal, secure ERC4626 implementation with comprehensive security analysis.
+
+**PelonStakingVault Status**: ✅ **Production Ready** - Minimal implementation with comprehensive security analysis
+
 Run tests:
 
 ```shell
 cd hardhat2
 npx hardhat test
+```
+
+Run specific contract tests:
+
+```shell
+# Run PelonStakingVault tests
+npx hardhat test test/PelonStakingVault.test.ts
+
+# Run TokenSale tests
+npx hardhat test test/TokenSale.test.ts
 ```
 
 Run tests with coverage:
@@ -176,8 +237,10 @@ npx hardhat coverage
 ```
 
 For detailed testing documentation, see:
-- **[Testing Documentation (English)](docs/en/token-sale-testing.md)**
-- **[Testing Documentation (Español)](docs/es/token-sale-testing.md)**
+- **[TokenSale Testing Documentation (English)](docs/en/token-sale-testing.md)**
+- **[TokenSale Testing Documentation (Español)](docs/es/token-sale-testing.md)**
+- **[PelonStakingVault Security Analysis (English)](docs/en/pelon-staking-vault-security-analysis.md)** - Comprehensive security analysis
+- **[Análisis de Seguridad PelonStakingVault (Español)](docs/es/analisis-seguridad-pelon-staking-vault.md)** - Análisis comprehensivo de seguridad
 
 ### [dapp](dapp/)
 

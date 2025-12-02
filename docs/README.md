@@ -45,11 +45,10 @@ The TokenSale contract documentation includes:
 
 The PelonStakingVault contract documentation includes:
 - ERC4626 standard compliance and architecture
-- Configurable FIFO timelock system (1-90 days, default 15 days)
-- Configurable withdrawal fee mechanism (0-10%, default 3%) with 50/25/25 distribution
-- Re-staking mechanism that increases value per share for all holders
-- Deposit tracking and management with optimized index-based FIFO
-- Preview functions showing net amounts after fees
+- Fixed 1-day timelock system
+- Fixed 3% withdrawal fee mechanism with 50/50 distribution
+- Vault retention mechanism that increases value per share for all holders
+- Simple per-user timestamp tracking
 - Security considerations and gas optimizations
 - Mermaid diagrams of flows and state transitions
 
@@ -63,15 +62,14 @@ Comprehensive user guide for investors explaining how to use the PelonStakingVau
 The staking vault user guide includes:
 - Introduction to ERC4626 vaults and core concepts
 - Detailed explanation of vault mechanics and share calculation
-- Comprehensive guide to the configurable FIFO timelock system (1-90 days, default 15 days)
-- Withdrawal fee system explanation with 50/25/25 distribution (configurable 0-10%, default 3%)
-- Re-staking benefits that increase value per share for all holders
+- Comprehensive guide to the fixed 1-day timelock system
+- Withdrawal fee system explanation with 50/50 distribution (fixed 3%)
+- Vault retention benefits that increase value per share for all holders
 - Step-by-step user operations (deposits, withdrawals, redemptions)
-- Preview functions showing net amounts after fees
 - Practical use cases with real-world examples and calculations
 - Frequently asked questions
 - Technical considerations (gas costs, best practices, security)
-- Mermaid diagrams of deposit flows, withdrawal processes, and FIFO state transitions
+- Mermaid diagrams of deposit flows and withdrawal processes
 
 ### Security Analysis
 
@@ -96,12 +94,11 @@ Comprehensive security analysis and testing documentation for the PelonStakingVa
 
 The PelonStakingVault security analysis includes:
 - Complete Slither static analysis results and findings
-- Comprehensive test suite analysis (75 tests, 100% pass rate)
-- Security features and mechanisms (reentrancy protection, FIFO timelock, fee distribution)
+- Security features and mechanisms (reentrancy protection, simple timelock, fee distribution)
 - Best practices and conventions (OpenZeppelin usage, ERC4626 compliance, gas optimization)
-- Innovative features (index-based FIFO, non-dilutive re-staking, three-way fee distribution)
+- Simple timelock and fee mechanisms
 - Mermaid diagrams (architecture, flows, state transitions)
-- Metrics and statistics (gas analysis, test coverage, security metrics)
+- Security metrics and analysis
 - Guidelines and recommendations for auditors, developers, and users
 
 ### Testing
@@ -119,7 +116,7 @@ The TokenSale testing documentation includes:
 - Testing metrics and statistics
 - References and additional resources
 
-**PelonStakingVault Testing**: The PelonStakingVault contract has **75 comprehensive tests** with 100% pass rate. Detailed test analysis is included in the [PelonStakingVault Security Analysis](./en/pelon-staking-vault-security-analysis.md) documentation.
+**PelonStakingVault Testing**: The PelonStakingVault contract is a minimal implementation with comprehensive security analysis. Detailed security analysis is included in the [PelonStakingVault Security Analysis](./en/pelon-staking-vault-security-analysis.md) documentation.
 
 ### Fuzzing
 
@@ -154,6 +151,7 @@ Information about contracts deployed on Base Sepolia Testnet:
 
 - **TokenSale**: [`0xdF556BD113FFC32CC85E098520BfC615438Ca16B`](https://sepolia.basescan.org/address/0xdF556BD113FFC32CC85E098520BfC615438Ca16B)
 - **PelonClubToken**: [`0x734AE77B7dE9B5cc3Ce9d3D20B92c769d8588f15`](https://sepolia.basescan.org/address/0x734AE77B7dE9B5cc3Ce9d3D20B92c769d8588f15)
+- **PelonStakingVault**: [`0x0c874C04783e0838E92f42D52bD8A2a9eCE56b40`](https://sepolia.basescan.org/address/0x0c874C04783e0838E92f42D52bD8A2a9eCE56b40)
 - **USDC Mock Token**: [`0x145Ef9F6a4324A181537Dfb7074F6E4B3E19Ec70`](https://sepolia.basescan.org/address/0x145Ef9F6a4324A181537Dfb7074F6E4B3E19Ec70)
 - **Chain ID**: 84532
 - **Network**: Base Sepolia Testnet
